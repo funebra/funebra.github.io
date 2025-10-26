@@ -1,0 +1,15 @@
+{
+  "name": "Funebra \u2014 Math\u2011Art Engine",
+  "short_name": "Funebra",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0f",
+  "theme_color": "#0b0b0f",
+  "icons": [
+    {
+      "src": "/assets/funebra-star.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Funebra — Math‑Art Engine</title>
+  <meta name="description" content="Funebra Math‑Art Engine — parametric geometry, generative visuals, and 3D printing ready exports by pLabs Entertainment." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Funebra — Math‑Art Engine" />
+  <meta property="og:description" content="Experience the Funebra home: generative math‑art, 3D scenes, and printable models." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://funebra.github.io/" />
+  <meta property="og:image" content="https://funebra.github.io/assets/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/assets/funebra-star.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="canonical" href="https://funebra.github.io/" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Import map to use modern ESM (Three.js) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/styles/style.css" />
+  <script type="module" src="/src/main.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Funebra Math‑Art Engine",
+    "applicationCategory": "GraphicsApplication",
+    "creator": {"@type": "Organization", "name": "pLabs Entertainment"},
+    "url": "https://funebra.github.io/",
+    "operatingSystem": "Any",
+    "image": "https://funebra.github.io/assets/og-cover.png",
+    "description": "Browser‑based, hackable, parametric geometry and generative‑art toolkit."
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="/assets/funebra-star.svg" alt="Funebra star" class="logo" />
+      <h1>Funebra</h1>
+      <span class="tag">Math‑Art Engine</span>
+    </div>
+    <nav class="nav">
+      <a href="#playground">Playground</a>
+      <a href="#docs">Docs</a>
+      <a href="#prints">3D Prints</a>
+      <a href="#support">Support</a>
+      <a href="https://github.com/funebra/math-art-engine" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h2>Open the gates — code geometry, export reality.</h2>
+        <p>Real‑time parametric shapes, WebGL scenes, PNG/GIF/OBJ/GLTF exporters, and maker‑friendly workflows.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#playground">Launch Playground</a>
+          <a class="btn" href="https://soundcloud.com/peter-lugha" target="_blank" rel="noopener">Funebra Sound</a>
+        </div>
+      </div>
+      <canvas id="funebra-canvas" aria-label="Funebra WebGL scene" role="img"></canvas>
+    </section>
+
+    <section id="playground" class="panel">
+      <h3>Playground</h3>
+      <p>Tweak parameters live. Try presets below.</p>
+      <div class="controls">
+        <label>Shape
+          <select id="shapeSel">
+            <option value="torusKnot">Torus Knot</option>
+            <option value="icosahedron">Icosahedron</option>
+            <option value="mobius">Möbius (parametric)</option>
+          </select>
+        </label>
+        <label>Wireframe <input type="checkbox" id="wireChk" /></label>
+        <label>Spin <input type="checkbox" id="spinChk" checked /></label>
+        <button id="snapBtn" class="btn">Snapshot PNG</button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section id="prints" class="panel">
+      <h3>3D Printing</h3>
+      <p>Export meshes you can slice for your Bambu Lab P1S (or any printer). OBJ/GLTF export planned here.</p>
+    </section>
+
+    <section id="support" class="panel">
+      <h3>Support Funebra</h3>
+      <p>If you like this project, consider a one‑time boost ❤️</p>
+      <div class="donate">
+        <a class="btn primary" href="https://buy.stripe.com/test_123" target="_blank" rel="noopener">Donate €50</a>
+        <a class="btn" href="https://buy.stripe.com/test_456" target="_blank" rel="noopener">Donate €100</a>
+      </div>
+      <small>Funebra™ · pLabs Entertainment © 1982–2025</small>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>pLabs Entertainment © 2000–2025 · <a href="/privacy.html">Privacy</a></p>
+  </footer>
+</body>
+</html>

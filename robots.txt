@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://funebra.github.io/sitemap.xml
