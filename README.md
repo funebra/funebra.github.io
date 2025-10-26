@@ -3,7 +3,7 @@
 Welcome to **`funebra.github.io`**, the official user site for the **Funebra Math‑Art Engine** — a browser‑based, hackable toolkit for **parametric geometry**, **generative visuals**, and **maker‑friendly exports** by **pLabs Entertainment**.
 
 > **Live site:** https://funebra.github.io  
-> **Sound:** https://soundcloud.com/peter-lugha
+> **Sound:** https://soundcloud.com/peter-lugha-553056840
 
 ---
 
