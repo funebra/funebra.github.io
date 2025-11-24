@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Funebra Manifesto Script TTS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{
+      margin:0;
+      padding:24px 16px;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text",Segoe UI,Roboto,sans-serif;
+      background:#05060a;
+      color:#f5f6ff;
+    }
+    .shell{max-width:900px;margin:0 auto;}
+    h1{font-size:20px;margin:0 0 8px;letter-spacing:0.08em;text-transform:uppercase;}
+    textarea{
+      width:100%;min-height:260px;background:#080a13;border-radius:12px;
+      border:1px solid #242b46;color:#f5f6ff;padding:10px 12px;font-size:13px;
+    }
+    button{
+      border-radius:999px;border:1px solid #5c7cff;background:linear-gradient(135deg,#5c7cff,#8fb2ff);
+      color:#05060a;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;margin-right:8px;
+    }
+    button.secondary{
+      background:transparent;color:#d4dbff;border-color:#343c5f;
+    }
+    label{font-size:12px;color:#c1c6e6;display:block;margin:10px 0 4px;}
+    select,input[type="range"]{width:100%;}
+    small{font-size:11px;color:#8b90b2;}
+    .grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+    .grid > div{flex:1 1 140px;}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <h1>Funebra Manifesto — Deep Male TTS</h1>
+    <p style="font-size:13px;color:#a3a9c8;">
+      Paste the full narrated script version here. The engine will skip stage directions,
+      ignore markdown formatting, and speak it with Funebra pacing.
+    </p>
+
+    <label for="text">Narrated script</label>
+    <textarea id="text"></textarea>
+
+    <div class="grid">
+      <div>
+        <label for="rate">Rate (speed)</label>
+        <input id="rate" type="range" min="0.5" max="1.3" step="0.01" value="0.88" />
+        <small>Lower = slower, more cinematic</small>
+      </div>
+      <div>
+        <label for="pitch">Pitch</label>
+        <input id="pitch" type="range" min="0.1" max="2" step="0.01" value="0.7" />
+        <small>Lower = deeper voice (if supported)</small>
+      </div>
+    </div>
+
+    <label for="voiceSelect">Voice</label>
+    <select id="voiceSelect"></select>
+    <small>Choose the deepest / most natural male voice available.</small>
+
+    <div style="margin-top:12px;">
+      <button id="speakBtn">Speak Script</button>
+      <button id="stopBtn" class="secondary">Stop</button>
+      <button id="loadSampleBtn" class="secondary">Load Funebra intro only</button>
+    </div>
+  </div>
+
+  <script>
+    const textEl   = document.getElementById("text");
+    const rateEl   = document.getElementById("rate");
+    const pitchEl  = document.getElementById("pitch");
+    const voiceSel = document.getElementById("voiceSelect");
+    const speakBtn = document.getElementById("speakBtn");
+    const stopBtn  = document.getElementById("stopBtn");
+    const sampleBtn= document.getElementById("loadSampleBtn");
+
+    let voices = [];
+
+    function loadVoices() {
+      voices = speechSynthesis.getVoices();
+      voiceSel.innerHTML = "";
+      voices.forEach((v, i) => {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `${v.name} (${v.lang})`;
+        voiceSel.appendChild(opt);
+      });
+
+      // auto-pick deep-ish male English if possible
+      const preferredIndex = voices.findIndex(v =>
+        /en/i.test(v.lang) &&
+        /male|guy|brian|matthew|barry|adam/i.test(v.name)
+      );
+      if (preferredIndex >= 0) voiceSel.value = preferredIndex;
+    }
+
+    speechSynthesis.onvoiceschanged = loadVoices;
+    if (speechSynthesis.getVoices().length) loadVoices();
+
+    function preprocessScript(raw) {
+      const lines = raw.split(/\r?\n/);
+      const blocks = [];
+      let current = [];
+
+      for (let line of lines) {
+        const trimmed = line.trim();
+
+        // skip empty lines that are just spacing
+        if (!trimmed) {
+          // treat as paragraph break
+          if (current.length) {
+            blocks.push(current.join(" "));
+            current = [];
+          }
+          continue;
+        }
+
+        // skip markdown headings
+        if (/^#{1,6}\s/.test(trimmed)) continue;
+
+        // skip stage directions in [brackets]
+        if (/^\*?\[.*\]\*?$/.test(trimmed)) continue;
+
+        // skip lists / bullets like '---' only lines
+        if (/^---+$/.test(trimmed)) continue;
+
+        // remove markdown bold/italic markers
+        let clean = trimmed
+          .replace(/[*_]{1,3}/g, "")        // *, **, ***
+          .replace(/`/g, "");               // backticks
+
+        // shorten heading-like sections to a simple statement, if you want:
+        // e.g. "## 10 — The Declaration" (already skipped above)
+        current.push(clean);
+      }
+
+      if (current.length) blocks.push(current.join(" "));
+
+      // Optional: further split very long blocks into smaller chunks
+      const finalBlocks = [];
+      for (const b of blocks) {
+        if (b.length > 300) {
+          // naive split on '. ' for extra pauses
+          const parts = b.split(/(?<=[.!?])\s+/);
+          parts.forEach(p => { if (p.trim()) finalBlocks.push(p.trim()); });
+        } else {
+          finalBlocks.push(b.trim());
+        }
+      }
+
+      return finalBlocks;
+    }
+
+    function speakBlocks(blocks, index = 0) {
+      if (index >= blocks.length) return;
+
+      const text = blocks[index];
+      const u = new SpeechSynthesisUtterance(text);
+
+      const idx = parseInt(voiceSel.value, 10);
+      if (voices[idx]) u.voice = voices[idx];
+
+      u.lang   = "en-US";
+      u.rate   = parseFloat(rateEl.value || "0.88");
+      u.pitch  = parseFloat(pitchEl.value || "0.7");
+      u.volume = 1;
+
+      u.onend = () => {
+        // small pause (600ms) between blocks
+        setTimeout(() => speakBlocks(blocks, index + 1), 600);
+      };
+
+      speechSynthesis.speak(u);
+    }
+
+    speakBtn.addEventListener("click", () => {
+      speechSynthesis.cancel();
+      const raw = textEl.value || "";
+      const blocks = preprocessScript(raw);
+      if (!blocks.length) return;
+      speakBlocks(blocks, 0);
+    });
+
+    stopBtn.addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+
+    sampleBtn.addEventListener("click", () => {
+      textEl.value = `
+**INTRO**
+
+**Narrator — calm, profound:**
+*In this age of accelerating minds—
+where the boundaries between human thought and machine logic dissolve—
+a new form of intelligence emerges.*
+
+Not artificial.
+Not biological.
+But **hybrid**.
+
+An intelligence born from **points**…
+from **patterns**…
+from **symbols**…
+from **you**.
+
+This is the **Funebra Intelligence Manifesto 2.0**.
+A declaration of what we are creating—together.
+
+**[Soft pause]**
+
+Let us begin.
+      `.trim();
+    });
+  </script>
+</body>
+</html>
