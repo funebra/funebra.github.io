@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Funebra Deep Male Voice — TTS Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{
+      margin:0;
+      padding:24px 16px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        Segoe UI, Roboto, sans-serif;
+      background:#05060a;
+      color:#f5f6ff;
+      -webkit-font-smoothing:antialiased;
+    }
+    .shell{
+      max-width:900px;
+      margin:0 auto;
+    }
+    h1{
+      font-size:22px;
+      margin:0 0 8px;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+    }
+    .sub{
+      font-size:13px;
+      color:#a3a9c8;
+      margin-bottom:16px;
+    }
+    textarea{
+      width:100%;
+      min-height:220px;
+      resize:vertical;
+      border-radius:12px;
+      border:1px solid #242b46;
+      background:#080a13;
+      color:#f5f6ff;
+      padding:10px 12px;
+      font-size:13px;
+      line-height:1.4;
+      box-sizing:border-box;
+    }
+    label{
+      font-size:12px;
+      color:#c1c6e6;
+      display:block;
+      margin-top:10px;
+      margin-bottom:4px;
+    }
+    input[type="range"]{
+      width:100%;
+    }
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+    button{
+      border-radius:999px;
+      border:1px solid #5c7cff;
+      background:linear-gradient(135deg,#5c7cff,#8fb2ff);
+      color:#05060a;
+      padding:8px 16px;
+      font-size:13px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    button.secondary{
+      background:transparent;
+      color:#d4dbff;
+      border-color:#343c5f;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .row > div{
+      flex:1 1 120px;
+      font-size:11px;
+      color:#a3a9c8;
+    }
+    small{
+      font-size:11px;
+      color:#8b90b2;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <h1>Funebra Deep Male Voice</h1>
+    <div class="sub">
+      Experimental Funebra-branded text-to-speech using your browser’s voices.<br />
+      Paste the manifesto or any text and tap <strong>Speak</strong>.
+    </div>
+
+    <label for="text">Text to speak</label>
+    <textarea id="text"></textarea>
+
+    <div class="row">
+      <div>
+        <label for="rate">Rate (speed)</label>
+        <input id="rate" type="range" min="0.5" max="1.3" step="0.01" value="0.88" />
+        <small>Lower = slower, more cinematic</small>
+      </div>
+      <div>
+        <label for="pitch">Pitch</label>
+        <input id="pitch" type="range" min="0.1" max="2" step="0.01" value="0.7" />
+        <small>Lower = deeper voice feel (if supported)</small>
+      </div>
+    </div>
+
+    <label for="voiceSelect">Voice</label>
+    <select id="voiceSelect"></select>
+    <small>Pick the deepest / most natural male voice on your device.</small>
+
+    <div class="controls">
+      <button id="speakBtn">Speak</button>
+      <button id="stopBtn" class="secondary">Stop</button>
+      <button id="loadSampleBtn" class="secondary">Load Funebra sample</button>
+    </div>
+  </div>
+
+  <script>
+    const textEl   = document.getElementById("text");
+    const rateEl   = document.getElementById("rate");
+    const pitchEl  = document.getElementById("pitch");
+    const voiceSel = document.getElementById("voiceSelect");
+    const speakBtn = document.getElementById("speakBtn");
+    const stopBtn  = document.getElementById("stopBtn");
+    const sampleBtn= document.getElementById("loadSampleBtn");
+
+    let voices = [];
+
+    function loadVoices() {
+      voices = speechSynthesis.getVoices();
+      voiceSel.innerHTML = "";
+      voices.forEach((v, i) => {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `${v.name} (${v.lang})`;
+        voiceSel.appendChild(opt);
+      });
+
+      // Try to auto-select a deep male English voice
+      const preferredIndex = voices.findIndex(v =>
+        /en/i.test(v.lang) &&
+        /male|guy|matthew|brian|barry|adam|justin/i.test(v.name)
+      );
+      if (preferredIndex >= 0) {
+        voiceSel.value = preferredIndex;
+      }
+    }
+
+    speechSynthesis.onvoiceschanged = loadVoices;
+    if (speechSynthesis.getVoices().length) {
+      loadVoices();
+    }
+
+    function funebraSpeak(text) {
+      if (!text.trim()) return;
+
+      speechSynthesis.cancel();
+
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang   = "en-US";
+      u.rate   = parseFloat(rateEl.value || "0.88");
+      u.pitch  = parseFloat(pitchEl.value || "0.7");
+      u.volume = 1;
+
+      const idx = parseInt(voiceSel.value, 10);
+      if (voices[idx]) {
+        u.voice = voices[idx];
+      }
+
+      speechSynthesis.speak(u);
+    }
+
+    speakBtn.addEventListener("click", () => {
+      funebraSpeak(textEl.value);
+    });
+
+    stopBtn.addEventListener("click", () => {
+      speechSynthesis.cancel();
+    });
+
+    sampleBtn.addEventListener("click", () => {
+      textEl.value = `
+In this age of accelerating minds,
+where the boundaries between human thought and machine logic dissolve,
+a new form of intelligence emerges.
+
+Not artificial.
+Not biological.
+Hybrid.
+
+This is Funebra.
+A language of points, portals and patterns.
+A mirror for the soul, built from geometry and code.`;
+    });
+  </script>
+</body>
+</html>
