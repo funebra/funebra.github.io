@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra 2741 – Thermal Geometry v1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta property="og:title" content="Funebra 2741 – Thermal Geometry v1">
+  <meta property="og:description" content="Where heat stops being temperature and becomes movement of conscious Funebra points.">
+  <meta property="og:type" content="article">
+
+  <style>
+    :root {
+      --bg: #02040a;
+      --bg-soft: #050818;
+      --ink: #f5f7ff;
+      --muted: #9aa4c6;
+      --accent: #ffdd6b;
+      --accent2: #3cf2ff;
+      --accent3: #ff3cff;
+      --card: #070b1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #08102b 0, #02040a 55%, #000 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 2rem 1.25rem 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 880px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #18223f, #281241);
+      color: var(--accent);
+      border: 1px solid rgba(255, 221, 107, 0.45);
+      margin-bottom: 1rem;
+    }
+
+    .pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    header {
+      margin-bottom: 2.25rem;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    h1 span.highlight {
+      background: linear-gradient(120deg, var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin-top: 0.8rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .tagline {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      font-size: 0.78rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 1px solid rgba(60, 242, 255, 0.4);
+      padding: 0.2rem 0.7rem;
+      color: var(--muted);
+      background: radial-gradient(circle at top, #111a3b 0, #050818 60%);
+    }
+
+    /* Chapter navigation */
+    .chapters {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin-bottom: 1.8rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(7, 13, 40, 0.96), rgba(9, 8, 32, 0.98));
+      border: 1px solid rgba(163, 177, 255, 0.5);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.65);
+      backdrop-filter: blur(14px);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .chapters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chapters-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+    }
+
+    .chapters-nav {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    .chapters-nav a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(60, 242, 255, 0.45);
+      background: radial-gradient(circle at top, #152347 0, #050818 70%);
+      color: var(--ink);
+      white-space: nowrap;
+      transition: background 0.18s ease, transform 0.12s ease, border-color 0.18s ease;
+    }
+
+    .chapters-nav a:hover {
+      background: radial-gradient(circle at top, #1c365f 0, #06081a 70%);
+      transform: translateY(-1px);
+      border-color: var(--accent2);
+    }
+
+    .chapters-nav a span.num {
+      color: var(--accent2);
+      font-size: 0.76em;
+      margin-right: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .chapters-nav a.to-top {
+      border-style: dashed;
+      border-color: rgba(154,164,198,0.7);
+      font-size: 0.75rem;
+    }
+
+    /* Sections */
+    .section {
+      background: radial-gradient(circle at top left, #151a3b 0, #050818 50%, #02040a 100%);
+      border-radius: 1.4rem;
+      border: 1px solid rgba(163, 177, 255, 0.2);
+      padding: 1.6rem 1.5rem 1.4rem;
+      margin-bottom: 1.5rem;
+      box-shadow:
+        0 18px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(28, 80, 187, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.13;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(60, 242, 255, 0.6) 0, transparent 45%),
+        radial-gradient(circle at 100% 10%, rgba(255, 60, 255, 0.55) 0, transparent 40%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.7rem;
+      color: var(--accent);
+    }
+
+    .section h3 {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent2);
+      margin-bottom: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .code {
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
+        Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.6rem;
+      background: rgba(6, 11, 35, 0.9);
+      border: 1px solid rgba(112, 150, 255, 0.5);
+      margin: 0.5rem 0 0.1rem;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.35rem;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.93rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    ul li::before {
+      content: "✶";
+      position: absolute;
+      left: 0;
+      top: 0.06rem;
+      font-size: 0.7rem;
+      color: var(--accent2);
+    }
+
+    .equation-block {
+      margin-top: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .equation-main {
+      font-size: 1rem;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      background: linear-gradient(120deg, rgba(60,242,255,0.09), rgba(255,60,255,0.08));
+      border-radius: 0.9rem;
+      border: 1px solid rgba(163, 177, 255, 0.45);
+      padding: 0.55rem 0.8rem;
+      display: inline-block;
+    }
+
+    .equation-main span.sub {
+      font-size: 0.8em;
+      vertical-align: sub;
+    }
+
+    .footnote {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .back-top {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+    }
+
+    .back-top a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(60,242,255,0.6);
+      padding-bottom: 1px;
+    }
+
+    .back-top a:hover {
+      color: var(--accent3);
+      border-color: var(--accent3);
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      padding-top: 1.6rem;
+      border-top: 1px dashed rgba(154, 164, 198, 0.4);
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    footer .sig {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      color: var(--accent2);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 1.4rem 1rem 2.4rem;
+      }
+      .section {
+        padding: 1.3rem 1.1rem 1.2rem;
+        border-radius: 1.1rem;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a id="top"></a>
+
+    <header>
+      <div class="pill">
+        <span class="icon">♨️</span>
+        <span>Funebra 2741 • Thermal Geometry v1</span>
+      </div>
+
+      <h1>
+        <span class="highlight">Funebra 2741</span><br />
+        Thermal Geometry v1
+      </h1>
+
+      <p class="subtitle">
+        Where heat stops being “temperature” and becomes movement of conscious Funebra points across dimensions.
+      </p>
+
+      <p class="tagline">Not artificial. Not biological. Hybrid thermal intelligence.</p>
+
+      <div class="badge-row">
+        <span class="badge">bn-points</span>
+        <span class="badge">Hybrid Thermodynamics</span>
+        <span class="badge">Quantum Geometry</span>
+        <span class="badge">Information Heat</span>
+      </div>
+    </header>
+
+    <!-- CHAPTER NAV -->
+    <nav class="chapters">
+      <div class="chapters-title">Chapters</div>
+      <div class="chapters-nav">
+        <a href="#ch1"><span class="num">01</span>Hidden Truth of Heat</a>
+        <a href="#ch2"><span class="num">02</span>165-Year Laws Bend</a>
+        <a href="#ch3"><span class="num">03</span>Heat Lattice (FHL-2741)</a>
+        <a href="#ch4"><span class="num">04</span>Heat as Information</a>
+        <a href="#ch5"><span class="num">05</span>2741 Thermal Equation</a>
+        <a href="#ch6"><span class="num">06</span>Why It Matters</a>
+        <a href="#top" class="to-top">↑ Top</a>
+      </div>
+    </nav>
+
+    <!-- 01 — Hidden truth of heat -->
+    <section class="section" id="ch1">
+      <div class="section-inner">
+        <h2>01 — The Hidden Truth of Heat</h2>
+        <p>
+          In classical physics, <strong>heat</strong> is random vibration.
+          In Funebra 2741, heat is
+          <strong>ordered displacement of bn-points inside a multi-layered geometry</strong>.
+        </p>
+        <p>
+          Temperature is not just a number.
+          It is the <strong>density of point-interaction</strong> within a field:
+        </p>
+        <ul>
+          <li>High density → the grid glows and rearranges itself.</li>
+          <li>Low density → the grid sinks toward stillness.</li>
+        </ul>
+        <p>
+          What looks like chaos in 3D physics becomes a readable pattern in Funebra diagrams.
+          <br /><strong>Heat = choreography, not noise.</strong>
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <!-- 02 — 165-year laws bend -->
+    <section class="section" id="ch2">
+      <div class="section-inner">
+        <h2>02 — When 165-Year-Old Laws Bend</h2>
+        <p class="muted">
+          Classical thermodynamics says: heat flows smoothly from hot to cold.
+          At 2741-resolution, that is only the 2D shadow of a higher-dimensional dance.
+        </p>
+
+        <h3>In Funebra Thermal Geometry:</h3>
+        <ul>
+          <li>Heat follows <strong>geometric routes</strong>, not simple gradients.</li>
+          <li>Heat can loop, delay, tunnel and even temporarily reverse.</li>
+          <li>Heat can act like <strong>memory</strong> stored in a lattice of bn-points.</li>
+        </ul>
+        <p>
+          Nano-scale “anomalies” that seem to break old physics are simply the
+          <strong>Funebra heat pattern</strong> becoming visible.
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <!-- 03 — Funebra Heat Lattice -->
+    <section class="section" id="ch3">
+      <div class="section-inner">
+        <h2>03 — The Funebra Heat Lattice (FHL-2741)</h2>
+        <p>
+          Imagine the bn-grid as a <strong>thermal lattice</strong>
+          where every point carries four coordinates:
+        </p>
+
+        <ul>
+          <li><strong>x</strong> – classical position</li>
+          <li><strong>y</strong> – vibrational phase</li>
+          <li><strong>z</strong> – stored heat-flux memory</li>
+          <li><strong>u</strong> – Funebra meta-phase (the hidden 2741 coordinate)</li>
+        </ul>
+
+        <p>This creates four intertwined modes of heat propagation:</p>
+        <ul>
+          <li>Linear flow</li>
+          <li>Spiral flow</li>
+          <li>Radial bloom</li>
+          <li>Meta-inversion (the 2741 flip)</li>
+        </ul>
+        <p>
+          Many modern “impossible” heat effects in advanced materials are
+          just the FHL-2741 running on very small structures.
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <!-- 04 — Heat as information -->
+    <section class="section" id="ch4">
+      <div class="section-inner">
+        <h2>04 — Heat as Information</h2>
+        <p>
+          In Funebra 2741, heat is not only energy.
+          Heat is a <strong>message:</strong>
+        </p>
+        <p class="code">“The system is rewriting its internal geometry.”</p>
+
+        <ul>
+          <li>High heat → rapid rewriting of structure.</li>
+          <li>Low heat → stable pattern, slow evolution.</li>
+          <li>Near-zero heat → almost timeless geometry.</li>
+        </ul>
+
+        <p>
+          Thermal flow becomes a <strong>communication protocol</strong>
+          between regions of matter, just like signal traffic between neurons.
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <!-- 05 — Equation -->
+    <section class="section" id="ch5">
+      <div class="section-inner">
+        <h2>05 — The Funebra 2741 Thermal Equation</h2>
+        <p>
+          A first symbolic draft for Funebra Thermal Geometry v1:
+        </p>
+
+        <div class="equation-block">
+          <div class="equation-main">
+            T<span class="sub">f</span> = (Δbn × Φ) ÷ ψ
+          </div>
+        </div>
+
+        <p class="muted">
+          where:
+        </p>
+        <ul>
+          <li><strong>T<span class="sub">f</span></strong> – Funebra thermal state at 2741-resolution</li>
+          <li><strong>Δbn</strong> – change in bn-point interaction density</li>
+          <li><strong>Φ</strong> – geometric phase displacement across the lattice</li>
+          <li><strong>ψ</strong> – memory resistance of the system (how hard it is to rewrite)</li>
+        </ul>
+
+        <p>
+          Within this frame, heat tunnels, delays, reversals and sudden spikes
+          stop being “anomalies” and become different <strong>stories</strong>
+          told by the same equation.
+        </p>
+
+        <p class="footnote">
+          v1 is conceptual — an artistic map.
+          Later Funebra versions may refine this into measurable lab-scale formulas.
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <!-- 06 — Why it matters -->
+    <section class="section" id="ch6">
+      <div class="section-inner">
+        <h2>06 — Why Funebra 2741 Cares About Heat</h2>
+        <p>
+          Funebra Thermal Geometry v1 links:
+        </p>
+        <ul>
+          <li>Classical thermodynamics</li>
+          <li>Quantum heat flow &amp; nano-physics</li>
+          <li>Information theory &amp; memory</li>
+          <li>Sacred geometry &amp; bn-point mapping</li>
+        </ul>
+
+        <p>
+          It suggests that <strong>intelligence itself is a thermal phenomenon</strong>:
+          a precise way that heat chooses geometry instead of randomness.
+        </p>
+
+        <p>
+          In this light, every neuron, every chip, every star and every bn-point
+          is part of one vast thermal computation —
+          the <strong>Funebra 2741 field</strong> running across time.
+        </p>
+        <p class="back-top"><a href="#top">Back to top</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="sig">Funebra 2741 • Personal Laboratory Labyrinth</div>
+      <div>Concept draft: <strong>Funebra Thermal Geometry v1</strong></div>
+      <div>Feel free to share, remix and build upon this in your own Funebra experiments.</div>
+    </footer>
+  </main>
+</body>
+</html>
