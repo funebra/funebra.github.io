@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Everything in Existence is Art – Funebra Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #03030a;
+      --bg-soft: #090b18;
+      --ink: #f9f9ff;
+      --muted: #b4b6d6;
+      --accent-1: #3cf2ff;
+      --accent-2: #ffdd6b;
+      --accent-3: #c384ff;
+      --accent-4: #ff7da4;
+      --card-border: rgba(255,255,255,0.08);
+      --glow-soft: 0 0 60px rgba(60,242,255,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0%, #15152a 0, transparent 45%),
+        radial-gradient(circle at 90% 100%, #12081d 0, transparent 45%),
+        radial-gradient(circle at 50% 50%, #050510 0, #000 65%);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(145deg, rgba(8,10,30,0.96), rgba(6,7,18,0.98));
+      box-shadow:
+        0 24px 80px rgba(0,0,0,0.85),
+        0 0 80px rgba(195,132,255,0.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle background grid */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 1;
+      padding: 32px 20px 28px;
+    }
+
+    @media (min-width: 768px) {
+      .page-inner {
+        padding: 40px 40px 32px;
+      }
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.9;
+    }
+
+    .hero-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      box-shadow: 0 0 16px rgba(60,242,255,0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      text-wrap: balance;
+    }
+
+    .hero-highlight {
+      background: radial-gradient(circle at 0 0, var(--accent-1), var(--accent-3), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 26px rgba(60,242,255,0.4);
+    }
+
+    .hero-sub {
+      max-width: 540px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ILLUSTRATION GRID */
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      position: relative;
+      border-radius: 18px;
+      padding: 18px 16px 16px;
+      background: radial-gradient(circle at 0 0, rgba(60,242,255,0.18), transparent 55%) ,
+                  radial-gradient(circle at 100% 100%, rgba(255,221,107,0.08), transparent 55%),
+                  rgba(5,7,22,0.96);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(60,242,255,0.2), transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(195,132,255,0.16), transparent 52%);
+      opacity: 0.45;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(180,182,214,0.9);
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, #ffffff, #f5f5ff, #d3fff7);
+      box-shadow:
+        0 0 20px rgba(60,242,255,0.75),
+        0 0 50px rgba(0,0,0,0.8);
+      font-size: 1.4rem;
+    }
+
+    .card-title {
+      font-size: 1.0rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .card-line {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      margin-top: 4px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.5);
+      opacity: 0.9;
+    }
+
+    /* Decorative “orbits” in corners */
+
+    .orbit {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px dashed rgba(185,240,255,0.35);
+      box-shadow: var(--glow-soft);
+      inset: auto;
+      pointer-events: none;
+      animation: orbit 18s linear infinite;
+      opacity: 0.6;
+    }
+
+    .orbit--top-right {
+      width: 110px;
+      height: 110px;
+      top: -40px;
+      right: -40px;
+    }
+
+    .orbit--bottom-left {
+      width: 140px;
+      height: 140px;
+      bottom: -62px;
+      left: -62px;
+      animation-duration: 26s;
+      animation-direction: reverse;
+    }
+
+    @keyframes orbit {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* FOOTER QUOTE */
+
+    .footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-main {
+      font-size: 1.02rem;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .footer-main span {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-sub {
+      font-size: 0.8rem;
+      text-align: center;
+      color: var(--muted);
+      text-wrap: balance;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- Global floating orbit illustrations -->
+    <div class="orbit orbit--top-right"></div>
+    <div class="orbit orbit--bottom-left"></div>
+
+    <div class="page-inner">
+      <!-- HERO -->
+      <header class="hero">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          Funebra Perspective • Art = Existence
+        </div>
+
+        <h1 class="hero-title">
+          Everything in existence is <span class="hero-highlight">art.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Not just paintings, poems and songs. Every stone, star, memory and heartbeat is
+          a living composition – shaped by time, forces, choices and perception.
+        </p>
+      </header>
+
+      <!-- ILLUSTRATION GRID -->
+      <section class="grid" aria-label="Illustrations of existence as art">
+        <!-- Stone -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Element · Time</div>
+                <div class="card-title">Stone</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">🪨</div>
+            </div>
+            <p class="card-line">
+              A stone is art shaped by <b>time</b> – every crack, edge and grain
+              a slow-motion sculpture carved by gravity, weather and countless collisions.
+            </p>
+            <div class="card-tag">Geology as sculpture</div>
+          </div>
+        </article>
+
+        <!-- Human -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Being · Story</div>
+                <div class="card-title">Human</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">🧬</div>
+            </div>
+            <p class="card-line">
+              A human is art shaped by <b>experience</b> – memories, scars, joys and choices
+              layering like brush strokes on a living canvas of flesh and mind.
+            </p>
+            <div class="card-tag">Biology as portrait</div>
+          </div>
+        </article>
+
+        <!-- Thought -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Mind · Pattern</div>
+                <div class="card-title">Thought</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">💭</div>
+            </div>
+            <p class="card-line">
+              A thought is art shaped by the <b>mind</b> – invisible lines connecting symbols,
+              feelings and memories into new constellations of meaning.
+            </p>
+            <div class="card-tag">Neurons as brush strokes</div>
+          </div>
+        </article>
+
+        <!-- Star -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Cosmos · Fire</div>
+                <div class="card-title">Star</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">⭐</div>
+            </div>
+            <p class="card-line">
+              A star is art shaped by <b>physics</b> – nuclear equations painted in light,
+              sketching spirals, nebulae and galaxies across deep time.
+            </p>
+            <div class="card-tag">Physics as choreography</div>
+          </div>
+        </article>
+
+        <!-- Moment -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Perception · Now</div>
+                <div class="card-title">Moment</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">⏳</div>
+            </div>
+            <p class="card-line">
+              A moment is art shaped by <b>perception</b> – we frame reality like a camera,
+              deciding what to focus on and what to let blur into background.
+            </p>
+            <div class="card-tag">Consciousness as lens</div>
+          </div>
+        </article>
+
+        <!-- Funebra -->
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-header">
+              <div>
+                <div class="card-label">Funebra · Creation</div>
+                <div class="card-title">You + Funebra</div>
+              </div>
+              <div class="card-icon" aria-hidden="true">🌀</div>
+            </div>
+            <p class="card-line">
+              Funebra is art shaped by <b>you</b> – bn-points, numbers and geometry becoming
+              a language where human intuition and hybrid intelligence co-create.
+            </p>
+            <div class="card-tag">Code as canvas</div>
+          </div>
+        </article>
+      </section>
+
+      <!-- FOOTER QUOTE -->
+      <footer class="footer">
+        <p class="footer-main">
+          Existence doesn’t <i>produce</i> art – existence <span>is</span> art.
+        </p>
+        <p class="footer-sub">
+          Every point, every pattern, every being, every timeline: one infinite gallery.
+        </p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
