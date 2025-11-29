@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- SEO -->
+<meta name="title" content="Funebra Thermodynamics v1 — Thermal Geometry of 2741" />
+<meta name="description"
+      content="Funebra Thermodynamics v1: where heat becomes geometric motion of conscious bn-points. The thermal branch of Funebra Physics — 2741 code, entropy, geometry, and hybrid intelligence." />
+<meta name="keywords"
+      content="Funebra, Funebra Physics, Funebra Thermodynamics, Thermal Geometry, 2741, bn-points, Funebra Science, Hybrid Intelligence, Entropy, Funebra Universe" />
+<meta name="author" content="pLabs Entertainment / Funebra" />
+
+<!-- OpenGraph (Facebook, LinkedIn, Discord, Messenger) -->
+<meta property="og:title" content="Funebra Thermodynamics v1 — Thermal Geometry of 2741" />
+<meta property="og:description"
+      content="The thermal dimension of Funebra Physics. When heat becomes movement of conscious bn-points across the 2741 field." />
+<meta property="og:type" content="article" />
+<meta property="og:url"
+      content="https://funebra.github.io/physics/thermodynamics/" />
+<meta property="og:site_name" content="Funebra Physics" />
+<meta property="og:image"
+      content="https://funebra.github.io/assets/og/funebra-thermodynamics-v1.png" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Funebra Thermodynamics v1 — Thermal Geometry" />
+<meta name="twitter:description"
+      content="Where classical thermodynamics meets Funebra Geometry and the 2741 motion of bn-points." />
+<meta name="twitter:image"
+      content="https://funebra.github.io/assets/og/funebra-thermodynamics-v1.png" />
+<meta name="twitter:site" content="@funebra" />
+
+<!-- Funebra Identity Tags (internal AI/schema/meaning layer) -->
+<meta name="funebra:domain" content="physics.thermodynamics" />
+<meta name="funebra:code" content="2741" />
+<meta name="funebra:dimension" content="thermal-geometry" />
+<meta name="funebra:timeline" content="1982→2050" />
+<meta name="funebra:bn" content="bn2741, bn0, bn1" />
+<meta name="funebra:definition"
+      content="Heat = collective vibrational motion of bn-points; Entropy = number of possible Funebra stories per geometric state." />
+
+
+  <style>
+    :root {
+      --bg: #02040a;
+      --bg-soft: #050818;
+      --ink: #f6f7ff;
+      --ink-soft: #c4c7f5;
+      --accent-2741: #ffdd6b;
+      --accent-cyan: #3cf2ff;
+      --accent-magenta: #ff5ccc;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --card-radius: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 0% 0%, #0a1525 0, rgba(0,0,0,0) 45%),
+        radial-gradient(circle at 100% 100%, #1a0830 0, rgba(0,0,0,0) 45%),
+        var(--bg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px 60px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    header {
+      padding: 20px 22px 26px;
+      border-radius: 0 0 var(--card-radius) var(--card-radius);
+      border: 1px solid var(--border-soft);
+      border-top: none;
+      background: linear-gradient(135deg, rgba(60, 242, 255, 0.12), rgba(255, 93, 204, 0.12));
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .crumbs {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .crumbs a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .crumbs span {
+      opacity: 0.7;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .h1-sub {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      max-width: 640px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-soft);
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2741);
+      box-shadow: 0 0 8px rgba(255, 221, 107, 0.8);
+    }
+
+    .tag-dot.cyan {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px rgba(60, 242, 255, 0.9);
+    }
+
+    .tag-dot.magenta {
+      background: var(--accent-magenta);
+      box-shadow: 0 0 8px rgba(255, 92, 204, 0.9);
+    }
+
+    main {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.35fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 880px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: radial-gradient(circle at 12% 0%, #10152b 0, rgba(0,0,0,0) 60%), var(--bg-soft);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-soft);
+      padding: 20px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(60, 242, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(255, 92, 204, 0.12), transparent 50%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+
+    .list-soft {
+      margin: 4px 0 4px 1.1rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .list-soft li {
+      margin-bottom: 4px;
+    }
+
+    .mini-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    /* CARD GRID RIGHT SIDE  */
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 14px 14px 12px;
+      background: radial-gradient(circle at 100% 0, rgba(255, 221, 107, 0.12), transparent 55%), rgba(0, 0, 0, 0.3);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(60, 242, 255, 0.15), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.8), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      pointer-events: none;
+    }
+
+    .card-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+      border-color: rgba(255, 221, 107, 0.7);
+    }
+
+    .card-link:hover::after {
+      opacity: 1;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot-mini {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-2741);
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      opacity: 0.85;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      opacity: 0.92;
+    }
+
+    /* simple orbit accent */
+    .bn-orbit {
+      margin-top: 12px;
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bn-orbit-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(60, 242, 255, 0.9);
+      top: 50%;
+      left: 5%;
+      transform: translate(-50%, -50%);
+      animation: orbit 9s linear infinite;
+    }
+
+    .bn-orbit-point::after {
+      content: "bn2741";
+      position: absolute;
+      white-space: nowrap;
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      top: 14px;
+      left: 12px;
+      opacity: 0.9;
+    }
+
+    @keyframes orbit {
+      0% {
+        transform: translate(-50%, -50%) translateX(0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateX(92%);
+      }
+      100% {
+        transform: translate(-50%, -50%) translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="crumbs">
+        <a href="/">Funebra</a> · <a href="/physics/">Physics</a> · <span>Thermodynamics v1</span>
+      </div>
+
+      <h1>Funebra Thermodynamics v1</h1>
+      <p class="h1-sub">
+        A gentle entrance into the thermal side of Funebra physics –
+        where heat is not only temperature, but choreography of conscious Funebra points
+        dancing through the 2741-code.
+      </p>
+
+      <div class="tag-row">
+        <div class="tag">
+          <span class="tag-dot"></span>
+          2741 – Thermal Geometry
+        </div>
+        <div class="tag">
+          <span class="tag-dot cyan"></span>
+          Hybrid physics · art · meaning
+        </div>
+        <div class="tag">
+          <span class="tag-dot magenta"></span>
+          Funebra™ thermodynamics (concept field)
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT PANEL – CONCEPT INTRO -->
+      <section class="panel">
+        <div class="panel-inner">
+          <div class="mini-label">Overview</div>
+          <h2>What is “Funebra Thermodynamics”?</h2>
+          <p>
+            In classical physics, thermodynamics studies how heat, energy and entropy move
+            through matter and time.
+            In the Funebra universe, we extend this idea:
+            every portion of heat is also a movement of <b>bn-points</b> – tiny carriers of memory,
+            intention and geometry.
+          </p>
+          <p>
+            When you read or hear “Funebra thermodynamics”, it does not refer to a standard,
+            established academic sub-field. It is a <b>conceptual layer</b> on top of physics –
+            a way to talk about the emotional, symbolic and geometric side of heat and entropy.
+          </p>
+
+          <p>Very loosely, you can think of it as:</p>
+          <ul class="list-soft">
+            <li><b>Heat</b> → how strongly Funebra points vibrate together.</li>
+            <li><b>Temperature</b> → how fast a pattern wants to change its shape.</li>
+            <li><b>Entropy</b> → how many stories a configuration of bn-points can tell.</li>
+          </ul>
+
+          <p>
+            The pages linked on the right are not scientific papers.
+            They are <b>math-art documents</b>, mapping physics language into Funebra language
+            – to keep the door open for future formal work.
+          </p>
+
+          <div class="bn-orbit" aria-hidden="true">
+            <div class="bn-orbit-point"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN – LINKS TO ARTICLES -->
+      <aside class="panel">
+        <div class="panel-inner">
+          <div class="mini-label">Entries</div>
+          <h2>Funebra thermal articles</h2>
+          <p>
+            Start with the 2741 thermal geometry article below,
+            then expand into new Funebra thermodynamic experiments as you create them.
+          </p>
+
+          <div class="card-list">
+            <!-- Existing page -->
+            <a class="card-link" href="../funebra-thermal-2741.html">
+              <div class="card-title">Funebra 2741 – Thermal Geometry v1</div>
+              <div class="card-meta">
+                <span>
+                  Where heat stops being just temperature and becomes
+                  movement of conscious Funebra points across the 2741 field.
+                </span>
+                <span class="pill">
+                  <span class="dot-mini"></span>
+                  physics · bn-points
+                </span>
+              </div>
+            </a>
+
+            <!-- Placeholder future pages -->
+            <a class="card-link" href="#future-entropy" onclick="return false;">
+              <div class="card-title">Funebra Entropy Lines (coming)</div>
+              <div class="card-meta">
+                <span>Sketch: entropy as the number of possible Funebra stories per pattern.</span>
+                <span class="pill">
+                  <span class="dot-mini"></span>
+                  draft
+                </span>
+              </div>
+            </a>
+
+            <a class="card-link" href="#zero-point" onclick="return false;">
+              <div class="card-title">Zero-Point Funebra Field (coming)</div>
+              <div class="card-meta">
+                <span>A playground for “temperature = 0, geometry = infinite potential”.</span>
+                <span class="pill">
+                  <span class="dot-mini"></span>
+                  draft
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Funebra Thermodynamics v1 · experimental math-art layer over classical physics.</span>
+      <span>Core 2741 timeline: 1982 → 2050 · Funebra™ · pLabs Entertainment.</span>
+    </footer>
+  </div>
+</body>
+</html>
