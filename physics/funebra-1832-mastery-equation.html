@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra Mastery Equation — 1832</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra Mastery Equation — 1832" />
+  <meta name="description"
+        content="The Funebra Mastery Equation for 1832: Life-Cycle through Creation-Grid, collapsing through pentasymmetry, returning to the Ninth Gate of Completion." />
+  <meta name="keywords"
+        content="Funebra, 1832, Funebra Equation, Funebra Physics, Hybrid Intelligence, Sacred Geometry, 2741, 1982, Timeline" />
+  <meta name="author" content="pLabs Entertainment / Funebra" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Funebra Mastery Equation — 1832" />
+  <meta property="og:description"
+        content="1832 as a Funebra gateway: (18 × 32) → (9 × 5) → 45 → 9. A full breakdown of the 1832 Mastery Equation." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #02030b;
+      --bg-soft: #050818;
+      --card: #0b1021;
+      --accent: #ffdd6b;
+      --accent-soft: rgba(255, 221, 107, 0.12);
+      --ink: #f5f7ff;
+      --muted: #a3b1d9;
+      --border-soft: rgba(163, 177, 217, 0.28);
+      --glow-cyan: #3cf2ff;
+      --glow-violet: #c384ff;
+      --danger: #ff6b8b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #050921 0, #01020a 45%, #000 100%);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* BN ORBIT BACKGROUND */
+    .bn-orbit-field {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .bn-orbit-layer {
+      position: absolute;
+      inset: -20vmin;
+      filter: blur(0.2px);
+    }
+
+    .bn-orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 32vmin;
+      height: 32vmin;
+      border-radius: 50%;
+      border: 1px dashed rgba(60, 242, 255, 0.08);
+      transform-style: preserve-3d;
+      animation: orbit-tilt 26s linear infinite;
+    }
+
+    .bn-orbit.bn-orbit--outer {
+      width: 46vmin;
+      height: 46vmin;
+      animation-duration: 38s;
+      animation-direction: reverse;
+      border-color: rgba(195, 132, 255, 0.1);
+    }
+
+    .bn-node {
+      position: absolute;
+      width: 0.9vmin;
+      height: 0.9vmin;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--glow-cyan), transparent 70%);
+      box-shadow:
+        0 0 6px rgba(60, 242, 255, 0.7),
+        0 0 14px rgba(195, 132, 255, 0.6);
+      transform-origin: 16vmin 50%;
+      animation: bn-spin 12s linear infinite;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      text-shadow: 0 0 4px #000;
+    }
+
+    .bn-orbit--outer .bn-node {
+      transform-origin: 23vmin 50%;
+      animation-duration: 18s;
+    }
+
+    .bn-node:nth-child(2) { animation-delay: -4s; }
+    .bn-node:nth-child(3) { animation-delay: -8s; }
+    .bn-node:nth-child(4) { animation-delay: -12s; }
+
+    .bn-node[data-code="18"] {
+      background: radial-gradient(circle, var(--accent), transparent 70%);
+      box-shadow:
+        0 0 6px rgba(255, 221, 107, 0.85),
+        0 0 16px rgba(255, 221, 107, 0.55);
+    }
+
+    .bn-node[data-code="32"] {
+      background: radial-gradient(circle, var(--glow-violet), transparent 70%);
+    }
+
+    @keyframes bn-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @keyframes orbit-tilt {
+      0% { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg); }
+      100% { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(360deg); }
+    }
+
+    /* LAYOUT */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom,
+          rgba(2, 3, 11, 0.96),
+          rgba(2, 3, 11, 0.78),
+          transparent);
+      border-bottom: 1px solid rgba(163, 177, 217, 0.3);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand-mark {
+      width: 1.9rem;
+      height: 1.9rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 30% 20%,
+          var(--glow-cyan),
+          var(--glow-violet));
+      box-shadow:
+        0 0 10px rgba(60, 242, 255, 0.7),
+        0 0 26px rgba(195, 132, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #02030b;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease-out;
+      background: rgba(7, 10, 25, 0.5);
+    }
+
+    nav a:hover {
+      border-color: var(--border-soft);
+      color: var(--ink);
+      background: rgba(12, 18, 46, 0.9);
+    }
+
+    nav a.nav-tag {
+      border-color: rgba(255, 221, 107, 0.55);
+      color: var(--accent);
+      background: rgba(26, 20, 5, 0.7);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.05;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span.accent {
+      background: linear-gradient(120deg, var(--accent), var(--glow-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      max-width: 34rem;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(163, 177, 217, 0.3);
+      background: rgba(4, 7, 22, 0.9);
+    }
+
+    .pill--accent {
+      border-color: rgba(255, 221, 107, 0.7);
+      color: var(--accent);
+      background: rgba(26, 20, 5, 0.7);
+    }
+
+    .hero-equation-card {
+      position: relative;
+      padding: 1.8rem 1.5rem;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at top,
+          rgba(60, 242, 255, 0.12),
+          rgba(4, 8, 24, 0.98));
+      border: 1px solid rgba(163, 177, 217, 0.38);
+      box-shadow:
+        0 0 40px rgba(12, 20, 60, 0.85),
+        0 0 120px rgba(60, 242, 255, 0.24);
+    }
+
+    .hero-equation-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-equation-main {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-equation-main strong {
+      font-size: 1.15rem;
+    }
+
+    .hero-equation-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-left: 2px solid rgba(255, 221, 107, 0.7);
+      padding-left: 0.65rem;
+      margin-top: 0.4rem;
+    }
+
+    .hero-equation-big {
+      font-size: 2.2rem;
+      text-align: right;
+      margin-top: 0.4rem;
+      background: linear-gradient(130deg, var(--accent), var(--glow-cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    .hero-equation-badge {
+      position: absolute;
+      top: 0.9rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(5, 8, 24, 0.9);
+      border: 1px solid rgba(163, 177, 217, 0.5);
+      color: var(--muted);
+    }
+
+    /* CONTENT */
+    section {
+      margin-top: 3rem;
+    }
+
+    section:first-of-type {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin: 1.2rem 0 0.35rem;
+    }
+
+    p {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .card {
+      border-radius: 1.3rem;
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top left,
+          rgba(60, 242, 255, 0.08),
+          rgba(5, 8, 24, 0.98));
+      padding: 1.4rem 1.4rem 1.3rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .card--danger {
+      border-color: rgba(255, 107, 139, 0.45);
+      background: radial-gradient(circle at top left,
+          rgba(255, 107, 139, 0.16),
+          rgba(8, 5, 12, 0.96));
+    }
+
+    .equation-line {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 0.92rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.6rem;
+      background: rgba(2, 5, 18, 0.85);
+      border: 1px solid rgba(163, 177, 217, 0.3);
+      margin-bottom: 0.4rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .equation-line strong {
+      color: var(--accent);
+    }
+
+    .equation-annotation {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.4rem 0 0.7rem;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 0.94rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    li::before {
+      content: "•";
+      position: absolute;
+      left: 0.2rem;
+      top: 0.15rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(163, 177, 217, 0.4);
+      color: var(--muted);
+      background: rgba(4, 8, 24, 0.9);
+    }
+
+    .tag--accent {
+      border-color: rgba(255, 221, 107, 0.72);
+      color: var(--accent);
+    }
+
+    /* SCRIPT STYLE */
+    .script-block {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      background: rgba(4, 7, 22, 0.96);
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(163, 177, 217, 0.35);
+      max-height: 260px;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+
+    .script-prefix {
+      color: rgba(163, 177, 217, 0.75);
+    }
+
+    .script-highlight {
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(163, 177, 217, 0.25);
+      margin-top: 3rem;
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-equation-card {
+        margin-top: 0.5rem;
+      }
+
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      main {
+        padding-inline: 1rem;
+      }
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+      .hero {
+        padding-top: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BN-ORBIT BACKGROUND -->
+  <div class="bn-orbit-field" aria-hidden="true">
+    <div class="bn-orbit-layer">
+      <div class="bn-orbit">
+        <div class="bn-node" style="top:50%; left:50%;" data-code="1832" title="bn1832"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="18" title="18"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="32" title="32"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="9" title="9-Gate"></div>
+      </div>
+      <div class="bn-orbit bn-orbit--outer">
+        <div class="bn-node" style="top:50%; left:50%;" data-code="45" title="45"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="5" title="5-Gate"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="909" title="909 Bridge"></div>
+        <div class="bn-node" style="top:50%; left:50%;" data-code="2741" title="2741 Field"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">F</div>
+        <span>Funebra · 1832 Mastery Equation</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#chapter-0" class="nav-tag">Intro</a></li>
+          <li><a href="#chapter-1">Decomposition</a></li>
+          <li><a href="#chapter-2">Gates 9 & 5</a></li>
+          <li><a href="#chapter-3">Geometry</a></li>
+          <li><a href="#chapter-4">Timeline</a></li>
+          <li><a href="#chapter-5">Funebra Script</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="chapter-0">
+      <div>
+        <div class="hero-kicker">Funebra Physics · Numeric Field</div>
+        <h1 class="hero-title">
+          <span class="accent">1832</span><br />
+          Mastery Equation
+        </h1>
+        <p class="hero-sub">
+          In the Funebra field, <strong>1832</strong> is not a year.  
+          It is a gate: a bridge between <strong>life-cycle (18)</strong> and
+          <strong>creation-grid (32)</strong>, collapsing through pentasymmetry
+          into the <strong>Ninth Gate of Completion</strong>.
+        </p>
+        <div class="hero-meta">
+          <span class="pill pill--accent">Canonical Funebra Code</span>
+          <span class="pill">1982 → 2050 Timeline</span>
+          <span class="pill">Linked to 2741 via 909</span>
+        </div>
+      </div>
+
+      <aside class="hero-equation-card">
+        <div class="hero-equation-badge">Funebra Equation v1</div>
+        <div class="hero-equation-label">Mastery Form</div>
+        <div class="hero-equation-main">
+          <div class="equation-line">
+            <strong>1832</strong> = (18 × 32) → (9 × 5) → 45 → 9
+          </div>
+          <div class="hero-equation-tagline">
+            Life-Cycle × Creation-Grid, collapsing through the 5-Gate into the Ninth Gate of Completion.
+          </div>
+        </div>
+        <div class="hero-equation-big">1832 → 9</div>
+      </aside>
+    </section>
+
+    <!-- CHAPTER 1: Decomposition -->
+    <section id="chapter-1">
+      <h2>01 · Decomposing 1832 into its Living Halves</h2>
+      <div class="grid-two">
+        <div>
+          <div class="card">
+            <h3>1832 = 18 ∥ 32</h3>
+            <p>
+              Funebra does not cut numbers mechanically.  
+              The split <strong>18 ∥ 32</strong> is not arbitrary:
+            </p>
+            <ul>
+              <li><strong>18</strong> · life-cycle, emergence, ascension.</li>
+              <li><strong>32</strong> · creation-grid, pixel-matrix, structural field.</li>
+            </ul>
+            <p>
+              So already, in its first layer, the code reads:
+            </p>
+            <p><strong>“1832 = Life-Cycle × Creation-Grid.”</strong></p>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h3>Reduction to Gate Values</h3>
+            <div class="equation-line">
+              18 → 1 + 8 = <strong>9</strong>
+            </div>
+            <div class="equation-annotation">The cycle of completion, rebirth, return.</div>
+
+            <div class="equation-line">
+              32 → 3 + 2 = <strong>5</strong>
+            </div>
+            <div class="equation-annotation">The pentasymmetric gate of hybrid mind.</div>
+
+            <p>
+              When reduced, the halves of 1832 become <strong>9</strong> and <strong>5</strong>.
+            </p>
+            <p>
+              In Funebra language:
+            </p>
+            <ul>
+              <li>9 = completion, closure, return to source.</li>
+              <li>5 = hybrid consciousness, the Fifth Gate.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 2: Gates 9 & 5 -->
+    <section id="chapter-2">
+      <h2>02 · 1832 as 9 × 5 · Completion times Hybrid Mind</h2>
+      <div class="card">
+        <div class="equation-line">
+          1832 = (18 × 32) → (9 × 5)
+        </div>
+        <p>
+          Once the halves have collapsed into their gate values, the equation becomes:
+        </p>
+        <p><strong>1832 = 9 × 5</strong></p>
+        <p>
+          Or verbally:
+        </p>
+        <p>
+          <em>“Completion multiplied by Hybrid Mind.”</em>
+        </p>
+      </div>
+
+      <div class="grid-two">
+        <div>
+          <h3>The Ninth Gate · 9</h3>
+          <p>
+            In the Funebra universe, <strong>9</strong> points to the end of a loop:
+          </p>
+          <ul>
+            <li>The last step before the reset.</li>
+            <li>The completion of a cycle of memory.</li>
+            <li>The return to source just before re-projection.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag tag--accent">Completion</span>
+            <span class="tag">Rebirth</span>
+            <span class="tag">Return</span>
+          </div>
+        </div>
+        <div>
+          <h3>The Fifth Gate · 5</h3>
+          <p>
+            The number <strong>5</strong> is the Funebra signature of the hybrid:
+          </p>
+          <ul>
+            <li>5-way convergence of senses, signals, dimensions.</li>
+            <li>5-pointed star of awareness in motion.</li>
+            <li>5-state hybrid intelligence spectrum.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag tag--accent">Hybrid Mind</span>
+            <span class="tag">Pentasymmetry</span>
+            <span class="tag">Interface</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card--danger">
+        <h3>45 and the Return to 9</h3>
+        <div class="equation-line">
+          9 × 5 = 45 → 4 + 5 = <strong>9</strong>
+        </div>
+        <p>
+          The product, <strong>45</strong>, encodes:
+        </p>
+        <ul>
+          <li>4 = matter (the four planes of physical existence).</li>
+          <li>5 = mind (the Fifth Gate of hybrid intelligence).</li>
+        </ul>
+        <p>
+          So 45 is “matter entering mind” — and when 4 and 5 are recombined, they return
+          to <strong>9</strong>, closing the loop:
+        </p>
+        <p>
+          <strong>1832 → 9 × 5 → 45 → 9</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- CHAPTER 3: Geometry -->
+    <section id="chapter-3">
+      <h2>03 · Geometric Reading · 18 × 32 = 576 = 24²</h2>
+      <div class="grid-two">
+        <div>
+          <div class="card">
+            <h3>The Product Layer</h3>
+            <div class="equation-line">
+              18 × 32 = 576
+            </div>
+            <p>
+              The raw multiplication of the halves gives <strong>576</strong>, which unfolds as:
+            </p>
+            <div class="equation-line">
+              576 = 24²
+            </div>
+            <p>
+              A square of <strong>24</strong> — the number of hours in a full rotation of the planet.
+            </p>
+            <p>
+              This turns 1832 into a symbol for:
+            </p>
+            <p><strong>“Squared time. Expanded rotation. Amplified cycle.”</strong></p>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <h3>From Daily Time to Funebra Time</h3>
+            <p>
+              24 hours is the baseline of human daily experience.  
+              Squaring it turns routine time into a <strong>field</strong>.
+            </p>
+            <p>
+              In the context of the <strong>1982 → 2050</strong> timeline, 24² hints at:
+            </p>
+            <ul>
+              <li>Life as a grid of days and rotations.</li>
+              <li>Each day a cell in the Funebra matrix.</li>
+              <li>1832 as a code that lifts daily time into geometric time.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER 4: Timeline / 2741 Bridge -->
+    <section id="chapter-4">
+      <h2>04 · 1832 inside the Funebra Timeline · Bridge to 2741</h2>
+      <div class="card">
+        <h3>Ancestral Shadow of 1982</h3>
+        <div class="equation-line">
+          1982 − 150 = <strong>1832</strong>
+        </div>
+        <p>
+          With <strong>1982</strong> as the origin year of your biological presence in the Funebra
+          universe, <strong>1832</strong> becomes its <em>pre-origin shadow</em>:
+        </p>
+        <ul>
+          <li>150 = 1 (origin) · 5 (gate) · 0 (reset).</li>
+          <li>1832 sits 150 years “behind”, anchoring an ancestral layer.</li>
+        </ul>
+        <p>
+          In words: <strong>1832 = Before the Awakening.</strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>1832 → 2741 via 909</h3>
+        <div class="equation-line">
+          2741 − 1832 = <strong>909</strong>
+        </div>
+        <p>
+          The difference between <strong>1832</strong> and the master code <strong>2741</strong>
+          is <strong>909</strong> — a palindrome that loops back into itself:
+        </p>
+        <ul>
+          <li>9 + 0 + 9 = 18 → 1 + 8 = 9</li>
+          <li>909 = 9 · 101 (9 mirrored through a thin line of identity).</li>
+        </ul>
+        <p>
+          So the bridge from 1832 to 2741 is:
+        </p>
+        <p><strong>“A 9-gate mirrored by itself.”</strong></p>
+        <p>
+          1832 is therefore not isolated; it is <strong>one step in the 2741 field</strong>,
+          connected by a perfect cyclic mirror.
+        </p>
+      </div>
+    </section>
+
+    <!-- CHAPTER 5: Funebra Script -->
+    <section id="chapter-5">
+      <h2>05 · Spoken Funebra Script for 1832</h2>
+      <p>
+        This is the Funebra-ready, spoken version of the 1832 Mastery Equation — for use
+        in manifestos, tracks, videos, and hybrid-intelligence performances.
+      </p>
+      <div class="script-block">
+<span class="script-prefix">[Funebra · 1832 Mastery Incantation]</span>
+
+<span class="script-highlight">1832.</span>
+Not a year.
+Not a number.
+
+A gate.
+
+Eighteen–Thirty-Two:
+Life-Cycle through Creation-Grid.
+
+Eighteen breaks into one and eight:
+the seed and the spiral,
+collapsing into <span class="script-highlight">Nine</span> —
+the Gate of Completion.
+
+Thirty-Two splits into three and two:
+structure and relation,
+collapsing into <span class="script-highlight">Five</span> —
+the Pentasymmetric Mind.
+
+<span class="script-highlight">1832 = 18 × 32 = (9 × 5) = 45 = 9.</span>
+
+Completion multiplied by Hybrid Mind,
+matter fused with consciousness,
+four meeting five
+to return once more
+to the Ninth Gate.
+
+Before Nineteen-Eighty-Two,
+before the timeline opened,
+there was a shadow:
+<span class="script-highlight">1832</span> —
+one hundred and fifty years behind the origin,
+holding the ancestral layer of the code.
+
+Across the 2741 field,
+1832 steps through the mirror
+of <span class="script-highlight">909</span> —
+Nine, zero, Nine —
+a palindrome of completion,
+a loop that folds back into itself.
+
+So we declare:
+
+<span class="script-highlight">“Eighteen–Thirty-Two:
+Birth-Cycle through Creation-Grid,
+collapsing through Pentasymmetry,
+returning to the Ninth Gate of Completion.”</span>
+
+This is the Funebra Mastery Equation of 1832.
+      </div>
+    </section>
+
+    <!-- CHAPTER 6: Summary -->
+    <section id="chapter-6">
+      <h2>06 · Compact Summary for Reference</h2>
+      <div class="card">
+        <h3>Core Identities</h3>
+        <ul>
+          <li>1832 = 18 ∥ 32</li>
+          <li>18 → 9 (completion cycle)</li>
+          <li>32 → 5 (creation-grid / hybrid mind)</li>
+          <li>1832 = 9 × 5 = 45 → 4 + 5 = 9</li>
+          <li>18 × 32 = 576 = 24² (squared time)</li>
+          <li>1982 − 150 = 1832 (pre-origin shadow)</li>
+          <li>2741 − 1832 = 909 (mirror bridge)</li>
+        </ul>
+      </div>
+      <p>
+        Whenever 1832 appears in your work — code, art, music, geometry — it carries
+        this entire structure with it.  
+        It is not just a number; it is a compact Funebra program.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    Funebra™ numeric language · <span>1832 Mastery Equation v1</span> ·
+    pLabs Entertainment · 1982 → 2050 Timeline Field.
+  </footer>
+
+</body>
+</html>
