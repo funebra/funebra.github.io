@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra × String Theory v1 — From 1D Strings to bn-Points</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra × String Theory v1 — From 1D Strings to bn-Points" />
+  <meta name="description"
+        content="Funebra × String Theory v1: a hybrid manifesto where 1D strings meet bn-points, identity geometry, and the 2741 code. From background dependence to Funebra-born spacetime." />
+  <meta name="keywords"
+        content="Funebra, String Theory, bn-points, 2741, sacred geometry, hybrid intelligence, quantum gravity, multidimensional geometry" />
+  <meta name="author" content="pLabs Entertainment / Funebra" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Funebra × String Theory v1 — From 1D Strings to bn-Points" />
+  <meta property="og:description"
+        content="What if strings were only the shadows of deeper Funebra bn-points? A visual manifesto uniting string theory, geometry and identity." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://funebra.github.io/physics/stringtheory/index.htm" />
+  <meta property="og:image" content="https://funebra.github.io/assets/funebra-string-theory-og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Funebra × String Theory v1 — From 1D Strings to bn-Points" />
+  <meta name="twitter:description"
+        content="What if strings were only the shadows of deeper Funebra bn-points? A visual manifesto uniting string theory, geometry and identity." />
+  <meta name="twitter:image" content="https://funebra.github.io/assets/funebra-string-theory-og.png" />
+
+
+  <style>
+    :root {
+      --bg: #020308;
+      --bg-soft: #070b16;
+      --bg-panel: #0b0f1f;
+      --accent: #ff3c7f;
+      --accent-soft: #ffb3d2;
+      --accent-blue: #3cf2ff;
+      --accent-purple: #b28cff;
+      --border: #262b42;
+      --border-soft: rgba(255, 255, 255, 0.05);
+      --text: #f5f5ff;
+      --muted: #9da1c8;
+      --good: #6dffb3;
+      --shadow-strong: 0 0 40px rgba(255, 60, 127, 0.35);
+      --shadow-soft: 0 0 35px rgba(60, 242, 255, 0.25);
+      --radius-xl: 1.6rem;
+      --radius-lg: 1.2rem;
+      --radius-md: 0.9rem;
+      --glass: rgba(11, 15, 31, 0.82);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #171c3a 0%, #020308 55%, #000000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1120px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ambient stars / dust */
+    .page::before,
+    .page::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.65;
+      background-image:
+        radial-gradient(circle at 5% 10%, rgba(255, 255, 255, 0.18) 0, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 60, 127, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 70% 15%, rgba(60, 242, 255, 0.18) 0, transparent 55%);
+      mix-blend-mode: screen;
+      z-index: -2;
+    }
+
+    .page::after {
+      opacity: 0.25;
+      filter: blur(10px);
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: linear-gradient(135deg, rgba(11, 15, 31, 0.92), rgba(7, 11, 22, 0.95));
+      border-radius: 2rem;
+      padding: 1.6rem 1.8rem 1.8rem;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 16px 40px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(178, 140, 255, 0.35);
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.4rem 1.4rem 1.6rem;
+      }
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background:
+        conic-gradient(from 210deg, rgba(255, 60, 127, 0.13), transparent 30%, rgba(60, 242, 255, 0.18), transparent 70%);
+      filter: blur(8px);
+      opacity: 0.8;
+      right: -160px;
+      top: -120px;
+      pointer-events: none;
+      z-index: -1;
+      animation: orbitGlow 36s linear infinite;
+    }
+
+    @keyframes orbitGlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .hero-main h1 {
+      font-size: clamp(1.9rem, 2.4rem, 2.6rem);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .hero-main h1 span.brand {
+      background: linear-gradient(120deg, #ffb3d2, #ff3c7f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 25px rgba(255, 60, 127, 0.6);
+    }
+
+    .hero-main h1 span.x {
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    .hero-main h1 span.theory {
+      background: linear-gradient(120deg, #3cf2ff, #b28cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 25px rgba(60, 242, 255, 0.6);
+    }
+
+    .hero-subtitle {
+      font-size: 0.94rem;
+      color: var(--muted);
+      max-width: 34rem;
+      line-height: 1.6;
+    }
+
+    .hero-subtitle strong {
+      color: var(--accent-soft);
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.9rem 0 1.1rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), rgba(13, 18, 40, 0.6));
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 60, 127, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top left, rgba(255, 60, 127, 0.18), rgba(11, 14, 28, 0.9));
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .btn.primary {
+      border-color: rgba(255, 60, 127, 0.75);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .btn.secondary {
+      background: radial-gradient(circle at top left, rgba(60, 242, 255, 0.16), rgba(11, 14, 28, 0.95));
+      border-color: rgba(60, 242, 255, 0.6);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn span.icon {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    .hero-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .orbit-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.07), rgba(11, 15, 35, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 0 45px rgba(255, 60, 127, 0.35),
+        0 0 70px rgba(60, 242, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+    }
+
+    /* central core = Funebra field */
+    .orbit-core {
+      position: relative;
+      width: 34%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.7), rgba(255, 179, 210, 0.12)),
+        radial-gradient(circle at 80% 70%, rgba(60, 242, 255, 0.4), rgba(2, 3, 8, 1));
+      box-shadow:
+        0 0 25px rgba(255, 179, 210, 0.9),
+        0 0 50px rgba(178, 140, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .orbit-core span {
+      text-align: center;
+    }
+
+    /* outer ring = string space */
+    .orbit-ring {
+      position: absolute;
+      width: 84%;
+      height: 84%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 40px rgba(60, 242, 255, 0.35);
+      animation: orbitSpin 26s linear infinite;
+    }
+
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .orbit-ring::before,
+    .orbit-ring::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffb3d2 0%, #ff3c7f 60%, #260313 100%);
+      box-shadow:
+        0 0 16px rgba(255, 179, 210, 0.9),
+        0 0 30px rgba(255, 60, 127, 0.8);
+    }
+
+    .orbit-ring::before {
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .orbit-ring::after {
+      bottom: -7px;
+      left: 7%;
+    }
+
+    /* inner orbit of bn-points */
+    .orbit-bn {
+      position: absolute;
+      width: 63%;
+      height: 63%;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      animation: orbitSpinReverse 18s linear infinite;
+    }
+
+    @keyframes orbitSpinReverse {
+      from { transform: rotate(360deg); }
+      to   { transform: rotate(0deg); }
+    }
+
+    .bn-point {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #3cf2ff 0%, #0f2429 90%);
+      box-shadow:
+        0 0 12px rgba(60, 242, 255, 0.9),
+        0 0 24px rgba(60, 242, 255, 0.7);
+    }
+
+    .bn-point:nth-child(1) { top: 4%; left: 50%; transform: translateX(-50%); }
+    .bn-point:nth-child(2) { top: 25%; right: 3%; }
+    .bn-point:nth-child(3) { bottom: 12%; right: 18%; }
+    .bn-point:nth-child(4) { bottom: 7%; left: 40%; }
+    .bn-point:nth-child(5) { top: 40%; left: 5%; }
+
+    .orbit-caption {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      opacity: 0.9;
+    }
+
+    /* CONTENT LAYOUT */
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.8fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .content-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* TOC */
+
+    .toc {
+      position: sticky;
+      top: 1.4rem;
+      background: var(--glass);
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(14px);
+    }
+
+    .toc-title {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .toc-title span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 12px rgba(60, 242, 255, 0.9);
+    }
+
+    .toc ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+    }
+
+    .toc li a {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+    }
+
+    .toc li a span.index {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .toc li a:hover {
+      background: radial-gradient(circle at left, rgba(255, 60, 127, 0.14), transparent 60%);
+      border-color: rgba(255, 60, 127, 0.45);
+      color: var(--text);
+      transform: translateX(2px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-bottom: 1.4rem;
+      background: rgba(4, 6, 14, 0.88);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1.1rem 1.2rem 1.2rem;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: attr(data-tag);
+      position: absolute;
+      top: 0.75rem;
+      right: 1.2rem;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(157, 161, 200, 0.5);
+    }
+
+    section header {
+      margin-bottom: 0.6rem;
+    }
+
+    section header h2 {
+      font-size: 1.06rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.22rem;
+    }
+
+    section header h2 span.num {
+      color: var(--accent-soft);
+    }
+
+    section header p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    section p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0.32rem 0;
+    }
+
+    section p strong {
+      color: var(--accent-soft);
+      font-weight: 600;
+    }
+
+    section .note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      border-left: 2px solid rgba(60, 242, 255, 0.5);
+      padding-left: 0.55rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.26rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--muted);
+      background: rgba(10, 14, 30, 0.9);
+    }
+
+    /* EQUATION CARD */
+
+    .equation-card {
+      margin-top: 0.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: radial-gradient(circle at top, rgba(255, 60, 127, 0.13), rgba(5, 9, 20, 0.96));
+      padding: 0.75rem 0.8rem;
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .equation-card::before {
+      content: "Funebra String Field v1";
+      position: absolute;
+      top: 0.45rem;
+      right: 0.7rem;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(245, 245, 255, 0.45);
+    }
+
+    /* TWO-COLUMN inner */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(0, 0.9fr);
+      gap: 1.1rem;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 720px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .pill-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .list {
+      font-size: 0.9rem;
+      color: var(--text);
+      list-style: none;
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .list li {
+      display: flex;
+      gap: 0.35rem;
+      align-items: flex-start;
+    }
+
+    .list li span.bullet {
+      margin-top: 0.31rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff3c7f, #3cf2ff);
+      box-shadow: 0 0 12px rgba(255, 60, 127, 0.8);
+      flex-shrink: 0;
+    }
+
+    /* TIMELINE */
+
+    .timeline {
+      margin-top: 0.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: radial-gradient(circle at left, rgba(60, 242, 255, 0.13), rgba(5, 9, 20, 0.96));
+      padding: 0.7rem 0.85rem;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 0.45rem;
+      align-items: baseline;
+    }
+
+    @media (max-width: 520px) {
+      .timeline-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .timeline-year {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.19em;
+      color: var(--accent-blue);
+    }
+
+    .timeline-text {
+      color: var(--text);
+    }
+
+    .timeline-text strong {
+      color: var(--accent-soft);
+    }
+
+    /* CTA */
+
+    .cta {
+      margin-top: 0.4rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      padding: 0.7rem 0.8rem;
+      font-size: 0.88rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.78rem;
+      align-items: center;
+      justify-content: space-between;
+      background: radial-gradient(circle at right, rgba(255, 60, 127, 0.18), rgba(3, 5, 12, 0.96));
+    }
+
+    .cta-main {
+      max-width: 420px;
+    }
+
+    .cta-main strong {
+      color: var(--accent-soft);
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cta-btn {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(2, 3, 9, 0.9);
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    .footer {
+      margin-top: 0.8rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .footer span.code {
+      color: var(--accent-blue);
+    }
+  </style>
+</head>
+<body>
+  <main class="page" data-funebra="string-theory-v1">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-main">
+        <h1>
+          <span class="brand">Funebra™</span>
+          <span class="x">×</span>
+          <span class="theory">String Theory</span>
+        </h1>
+        <p class="hero-subtitle">
+          From <strong>1D strings</strong> to <strong>identity-encoded bn-points</strong>:
+          a Funebra manifesto where spacetime is not assumed —
+          it is <strong>grown</strong> from relations, memory, and the 2741 field.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag">
+            <span class="tag-dot"></span>
+            11D Strings → 2741D Funebra
+          </span>
+          <span class="tag">
+            ⌬ Hybrid Geometry
+          </span>
+          <span class="tag">
+            Ψ bn-Points as Meta-Strings
+          </span>
+        </div>
+
+        <div class="hero-actions">
+          <div class="btn primary">
+            <span class="icon">⚛️</span>
+            <span>Read the Funebra × String Field</span>
+          </div>
+          <div class="btn secondary">
+            <span class="icon">🌀</span>
+            <span>Follow the 1982 → 2050 Timeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="orbit-card">
+          <div class="orbit-ring"></div>
+          <div class="orbit-bn">
+            <div class="bn-point"></div>
+            <div class="bn-point"></div>
+            <div class="bn-point"></div>
+            <div class="bn-point"></div>
+            <div class="bn-point"></div>
+          </div>
+          <div class="orbit-core">
+            <span>2741<br />Field</span>
+          </div>
+          <div class="orbit-caption">
+            strings orbit<br />bn-identity
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-layout">
+
+      <!-- LEFT: CHAPTERS -->
+      <div class="content">
+
+        <!-- 1. String theory in Funebra language -->
+        <section id="c1" data-tag="Chapter 01">
+          <header>
+            <h2><span class="num">01.</span> String Theory, Translated to Funebra</h2>
+            <p>How the classic 11D string landscape looks when viewed through bn-eyes.</p>
+          </header>
+
+          <p>
+            In standard <strong>String Theory</strong>, reality is built from tiny
+            <strong>1-dimensional strings</strong> vibrating inside a
+            <strong>pre-given spacetime</strong> with 10 or 11 dimensions.
+            Geometry comes first, vibration second, matter third.
+          </p>
+
+          <p>
+            Funebra flips this order. The fundamental object is not a string,
+            but a <strong>bn-point</strong> — a 0D node carrying
+            <strong>identity, memory, and intention</strong>.
+            Strings become <em>traces</em> of how bn-points choose to relate.
+          </p>
+
+          <div class="two-col">
+            <div>
+              <div class="pill-label">Standard View</div>
+              <ul class="list">
+                <li>
+                  <span class="bullet"></span>
+                  <span>Spacetime = fixed background.</span>
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  <span>Strings vibrate inside that geometry.</span>
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  <span>Different vibrations = particles and forces.</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="pill-label">Funebra View</div>
+              <ul class="list">
+                <li>
+                  <span class="bullet"></span>
+                  <span>bn-points = seeds of identity and relation.</span>
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  <span>Relations between bn-points <strong>generate geometry</strong>.</span>
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  <span>Vibration is a <em>story</em> geometry tells about itself.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="note">
+            Where String Theory asks: “<em>Which geometry do strings live in?</em>”
+            Funebra asks: “<strong>Which identities decide to exist together?</strong>”
+          </p>
+        </section>
+
+        <!-- 2. Background independence -->
+        <section id="c2" data-tag="Chapter 02">
+          <header>
+            <h2><span class="num">02.</span> Background Dependence vs Funebra-Born Spacetime</h2>
+            <p>When the canvas itself becomes a character in the story.</p>
+          </header>
+
+          <p>
+            One of String Theory’s hardest problems is
+            <strong>background dependence</strong>.
+            It assumes a spacetime backdrop first — then paints strings inside it.
+          </p>
+
+          <p>
+            Funebra removes the backdrop completely.
+            The “background” is just the <strong>collective orbit</strong>
+            of all bn-points in the 2741 field.
+            Spacetime is no longer a stage — it is a <strong>moving summary</strong>
+            of every relation that exists.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Background-dependent: ST</span>
+            <span class="chip">Background-free: Funebra</span>
+            <span class="chip">bn-Orbit Geometry</span>
+          </div>
+
+          <p class="note">
+            In practical Funebra math-art: every <code>bn*</code> element you draw
+            (bn0, bn1, bn2…) is not “inside” space. Space is inside their orbit map.
+          </p>
+        </section>
+
+        <!-- 3. bn-points as meta-strings -->
+        <section id="c3" data-tag="Chapter 03">
+          <header>
+            <h2><span class="num">03.</span> bn-Points as Meta-Strings</h2>
+            <p>From 1D vibration to 0D identity that spawns dimensions on demand.</p>
+          </header>
+
+          <p>
+            Imagine a normal string as a line drawn on paper.
+            A Funebra <strong>bn-point</strong> is the pen tip,
+            holding all possible lines it <em>could</em> draw.
+          </p>
+
+          <p>
+            Formally, you can treat each bn-point as a
+            <strong>meta-string</strong>:
+            not a single vibration mode, but a <em>library</em> of
+            possible world-lines through the 2741 field.
+          </p>
+
+          <div class="equation-card">
+            <!-- purely symbolic / conceptual -->
+            Φ_F( bnᵢ ) = { all string histories γ(t) such that  
+            γ(0) = bnᵢ.identity  and  γ respects 2741-symmetry }
+          </div>
+
+          <p class="note">
+            In this view, strings are <strong>projections</strong> of Far-richer
+            bn-identities — shadows on the wall of a higher Funebra cave.
+          </p>
+        </section>
+
+        <!-- 4. 2741 & resonance set -->
+        <section id="c4" data-tag="Chapter 04">
+          <header>
+            <h2><span class="num">04.</span> The 2741 Resonance Set</h2>
+            <p>Why some universes “lock in” and others stay hypothetical.</p>
+          </header>
+
+          <p>
+            String Theory famously has an enormous
+            <strong>“landscape” of solutions</strong> — an absurd number of
+            possible universes. But it doesn’t explain why our specific
+            spectrum of vibrations is selected.
+          </p>
+
+          <p>
+            Funebra responds with the <strong>2741 resonance set</strong>:  
+            numbers like <strong>27, 36, 72, 96, 2741, 1832, 2050</strong>
+            act as <strong>identity locks</strong>.
+            Only universes whose vibration patterns respect these Funebra codes
+            can crystallize into a stable field.
+          </p>
+
+          <div class="two-col">
+            <div>
+              <div class="pill-label">String Landscape Question</div>
+              <ul class="list">
+                <li><span class="bullet"></span><span>Why <em>this</em> set of constants?</span></li>
+                <li><span class="bullet"></span><span>Why these particle masses and couplings?</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="pill-label">Funebra Answer</div>
+              <ul class="list">
+                <li>
+                  <span class="bullet"></span>
+                  <span>
+                    bn-identity + 2741 symmetry <strong>prunes</strong>
+                    almost all possible universes.
+                  </span>
+                </li>
+                <li>
+                  <span class="bullet"></span>
+                  <span>
+                    Only patterns that “sing in 2741” become physically allowed.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="note">
+            In Funebra art terms:
+            2741 is not a random number —
+            it’s the <strong>master key</strong> telling the universe  
+            “these shapes belong to the story, those do not.”
+          </p>
+        </section>
+
+        <!-- 5. String field equation v1 -->
+        <section id="c5" data-tag="Chapter 05">
+          <header>
+            <h2><span class="num">05.</span> Funebra String Field Equation v1</h2>
+            <p>A symbolic bridge between strings, bn-orbits and identity geometry.</p>
+          </header>
+
+          <p>
+            Here is a <strong>conceptual</strong> equation:
+            not a final physics formula, but a Funebra-style map
+            you can evolve inside your engine:
+          </p>
+
+          <div class="equation-card">
+            S_F = ∑<sub>i,j</sub> ∫ dτ  
+            ⟨ bnᵢ, bnⱼ ⟩<sub>2741</sub> ·
+            exp( i · ω<sub>ij</sub>(τ) ) ·
+            G( xᵢ(τ), xⱼ(τ) )
+          </div>
+
+          <p>
+            Read it like this:
+          </p>
+
+          <ul class="list" style="margin-top:0.4rem;">
+            <li>
+              <span class="bullet"></span>
+              <span>
+                <strong>⟨ bnᵢ, bnⱼ ⟩<sub>2741</sub></strong> =
+                identity overlap between two bn-points in the 2741 field.
+              </span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span>
+                <strong>ω<sub>ij</sub>(τ)</strong> =
+                relative vibration between their world-lines (string-like).
+              </span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span>
+                <strong>G( xᵢ, xⱼ )</strong> =
+                emergent geometry that they collectively create.
+              </span>
+            </li>
+          </ul>
+
+          <p class="note">
+            If ordinary String Theory is “<em>sum over vibrating shapes</em>”,
+            Funebra is “<strong>sum over shared identities and their stories</strong>”.
+          </p>
+        </section>
+
+        <!-- 6. Timelines -->
+        <section id="c6" data-tag="Chapter 06">
+          <header>
+            <h2><span class="num">06.</span> 1905 → 1982 → 2050</h2>
+            <p>A Funebra time-bridge over Einstein and the string era.</p>
+          </header>
+
+          <p>
+            Every physical theory lives in a timeline.  
+            Funebra makes that timeline <strong>part of the geometry</strong>,
+            not just a historical footnote.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-row">
+              <div class="timeline-year">1905</div>
+              <div class="timeline-text">
+                Einstein writes <strong>E = mc²</strong>.
+                Energy, mass and light become one equation.
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="timeline-year">∼1970s</div>
+              <div class="timeline-text">
+                <strong>String Theory</strong> emerges:
+                particles become tiny vibrating strings.
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="timeline-year">1982</div>
+              <div class="timeline-text">
+                Funebra timeline anchor:
+                your personal 2741 code enters the story.
+                Identity joins geometry.
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="timeline-year">2050</div>
+              <div class="timeline-text">
+                Projected Funebra horizon:
+                <strong>hybrid intelligence</strong>,
+                bn-orbits fully simulated,
+                string theory treated as a visible sub-layer  
+                of the Funebra field.
+              </div>
+            </div>
+          </div>
+
+          <p class="note">
+            You are not “after” string theory.  
+            You are sitting on the timeline where its
+            <strong>next layer</strong> is allowed to appear.
+          </p>
+        </section>
+
+        <!-- 7. Application to the Funebra Engine -->
+        <section id="c7" data-tag="Chapter 07">
+          <header>
+            <h2><span class="num">07.</span> How to Encode This in the Funebra Engine</h2>
+            <p>Practical hooks for 64×64 matrices, bn-arrays and sprite orbits.</p>
+          </header>
+
+          <p>
+            In your existing Funebra Math-Art Engine,
+            every <code>bn*</code> point can be upgraded to a
+            <strong>“meta-string node”</strong>.
+            You don’t have to change the visuals — only the meaning behind them.
+          </p>
+
+          <ul class="list" style="margin-top:0.4rem;">
+            <li>
+              <span class="bullet"></span>
+              <span>
+                Treat each bn-id (bn0, bn1, …) as a <strong>source of possible paths</strong>,
+                not just a pixel.
+              </span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span>
+                When you animate orbits, say:
+                “this curve = one possible string history projected from that bn-pair”.
+              </span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span>
+                Use your sacred numbers (2741, 27, 36, 72, 96, 1832, 2050…)
+                as <strong>allowed resonance values</strong>:
+                only those frequencies get full brightness / stability.
+              </span>
+            </li>
+          </ul>
+
+          <div class="cta">
+            <div class="cta-main">
+              <strong>Next step:</strong>  
+              build a <em>Funebra String Mode</em> in the engine, where
+              each animation pass displays not just geometry,  
+              but the “identity link” between bn-points that generated it.
+            </div>
+            <div class="cta-buttons">
+              <div class="cta-btn">Mode: 2741-Resonance</div>
+              <div class="cta-btn">View: bn-Orbit Strings</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: TOC -->
+      <aside class="toc" aria-label="Chapters navigation">
+        <div class="toc-title">
+          <span class="dot"></span>
+          <span>Funebra × String Theory Map</span>
+        </div>
+        <ul>
+          <li><a href="#c1"><span class="index">01</span> String Theory, Funebra-style</a></li>
+          <li><a href="#c2"><span class="index">02</span> Background-Free Geometry</a></li>
+          <li><a href="#c3"><span class="index">03</span> bn-Points as Meta-Strings</a></li>
+          <li><a href="#c4"><span class="index">04</span> 2741 Resonance Set</a></li>
+          <li><a href="#c5"><span class="index">05</span> Funebra String Field v1</a></li>
+          <li><a href="#c6"><span class="index">06</span> 1905 → 1982 → 2050</a></li>
+          <li><a href="#c7"><span class="index">07</span> Engine Implementation</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer class="footer">
+      Funebra × String Theory v1 ·
+      <span class="code">E = mc²</span> rewritten as  
+      <span class="code">Identity → Orbit → Geometry → Energy</span>.
+    </footer>
+  </main>
+</body>
+</html>
