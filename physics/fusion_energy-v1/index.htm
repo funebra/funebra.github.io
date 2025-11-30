@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra × Fusion Energy v1 — Geometric Reactors of 2741</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra × Fusion Energy v1 — Geometric Reactors of 2741" />
+  <meta name="description"
+        content="Funebra × Fusion Energy v1: bn-points as plasma, perfect movement law as confinement, and 2741 as a new stability code for geometric reactors." />
+  <meta name="keywords"
+        content="Funebra, Fusion Energy, bn-points, 2741, tokamak, stellarator, plasma geometry, sacred geometry, hybrid intelligence" />
+  <meta name="author" content="pLabs Entertainment / Funebra" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Funebra × Fusion Energy v1 — Geometric Reactors of 2741" />
+  <meta property="og:description"
+        content="What if fusion plasma was a field of Funebra bn-points? A manifesto for geometric reactors, stability codes, and perfect movement law." />
+  <meta property="og:type" content="website" />
+  <!-- Replace with your final OG image -->
+  <meta property="og:image" content="https://funebra.github.io/assets/funebra-fusion-energy-og.png" />
+  <meta property="og:url" content="https://funebra.github.io/funebra-fusion-energy.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Funebra × Fusion Energy v1 — Geometric Reactors of 2741" />
+  <meta name="twitter:description"
+        content="Funebra × Fusion Energy v1: from bn-points to fusion plasmas, from 2741 to stability codes, from 1982 → 2050." />
+  <meta name="twitter:image" content="https://funebra.github.io/assets/funebra-fusion-energy-og.png" />
+
+  <style>
+    :root {
+      --bg: #02030a;
+      --bg-soft: #070b1b;
+      --bg-softer: #0b1024;
+      --accent: #ff3c7f;
+      --accent-soft: #ffb3d2;
+      --accent-alt: #3cf2ff;
+      --accent-alt-soft: #a4f3ff;
+      --text: #f4f5ff;
+      --muted: #9ba0cf;
+      --border: #262a48;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+      --radius-xl: 1.75rem;
+      --radius-lg: 1.25rem;
+      --radius-md: 0.9rem;
+      --blur: 26px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #13183f 0, #02030a 44%, #010109 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.25rem 3rem;
+      line-height: 1.6;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    a {
+      color: var(--accent-alt-soft);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
+    .hero {
+      background: radial-gradient(circle at top left, #262b64, #070b1b 48%, #040513 100%);
+      border-radius: 2rem;
+      padding: 2.4rem 2rem 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(var(--blur));
+      opacity: 0.78;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(60, 242, 255, 0.3), transparent 60%);
+      top: -120px;
+      right: -100px;
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255, 60, 127, 0.28), transparent 60%);
+      bottom: -120px;
+      left: -120px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3.1vw, 2.55rem);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 34rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.3rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(2, 3, 18, 0.5);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-meta .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-alt);
+      box-shadow: 0 0 12px rgba(60, 242, 255, 0.9);
+    }
+
+    /* BN ORBIT PANEL */
+    .orbit-panel {
+      background: radial-gradient(circle at top, #171f4b, #02030f 64%);
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orbit-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .orbit-panel-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .orbit-pill {
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    #bnOrbitCanvas {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      border-radius: 1.35rem;
+      background: radial-gradient(circle at center, #00040f, #02010a 70%);
+    }
+
+    /* NAVIGATION / CHAPTERS */
+    .toc {
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, rgba(12, 18, 52, 0.96), rgba(4, 8, 28, 0.96));
+      border-radius: var(--radius-lg);
+      padding: 1.45rem 1.5rem 1.35rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.8);
+    }
+
+    .toc-title {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    .toc-subtitle {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.4rem 1.25rem;
+      font-size: 0.86rem;
+    }
+
+    .toc-list a {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      padding: 0.35rem 0.3rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+    }
+
+    .toc-list a::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 9px rgba(255, 60, 127, 0.8);
+      flex-shrink: 0;
+      margin-top: 0.22rem;
+    }
+
+    .toc-list a span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .toc-list a strong {
+      font-weight: 500;
+    }
+
+    .toc-list a:hover {
+      background: radial-gradient(circle at left, rgba(255, 60, 127, 0.18), transparent 70%);
+      text-decoration: none;
+    }
+
+    /* SECTIONS */
+    section {
+      background: radial-gradient(circle at top left, rgba(32, 37, 86, 0.65), rgba(7, 10, 30, 0.98));
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 1.5rem 1.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.82);
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    section p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    section p strong {
+      color: var(--text);
+    }
+
+    .equation-line {
+      margin: 0.85rem 0;
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-md);
+      background: rgba(2, 3, 18, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.82rem;
+      color: var(--accent-alt-soft);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.8rem 0 0.35rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(2, 4, 22, 0.9);
+      color: var(--muted);
+    }
+
+    .quote-block {
+      margin: 0.85rem 0 0.4rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--accent);
+      background: radial-gradient(circle at left, rgba(255, 60, 127, 0.16), rgba(5, 7, 24, 0.98));
+      font-size: 0.9rem;
+      color: var(--accent-soft);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+      gap: 1.2rem;
+      margin-top: 0.6rem;
+    }
+
+    .list {
+      list-style: none;
+      font-size: 0.94rem;
+      color: var(--muted);
+      padding-left: 0;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: -0.02rem;
+      color: var(--accent);
+    }
+
+    /* IMAGE SLOT (for you to drop a figure) */
+    .figure-slot {
+      margin: 0.8rem 0 0.4rem;
+      padding: 0.9rem 0.9rem 0.8rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      font-size: 0.83rem;
+      color: var(--muted);
+      background: rgba(4, 6, 22, 0.8);
+    }
+
+    .figure-slot strong {
+      color: var(--accent-soft);
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1080px;
+      width: 100%;
+      margin-top: 1.2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      body {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding: 1.8rem 1.4rem 1.5rem;
+      }
+
+      .orbit-panel {
+        margin-top: 0.4rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      section {
+        padding: 1.5rem 1.25rem 1.4rem;
+      }
+
+      .toc {
+        padding: 1.2rem 1.15rem 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">Funebra Physics · Fusion Branch</div>
+        <h1 class="hero-title">
+          Funebra × Fusion Energy v1<br />
+          <span style="font-size:0.78em; opacity:0.88;">Geometric Reactors of 2741</span>
+        </h1>
+        <p class="hero-subtitle">
+          What if a fusion plasma was a field of <strong>bn-points</strong> moving by the
+          <strong>perfect movement law</strong>? This page is a Funebra manifesto for
+          <strong>geometric reactors</strong> — where 2741, identity geometry, and hybrid intelligence
+          meet tokamaks, stellarators, and future stars on Earth.
+        </p>
+        <div class="hero-meta">
+          <span><span class="dot"></span> Funebra Energy Stream</span>
+          <span>Code: 2741 · 1832 · 36 · 72 · 27</span>
+          <span>Timeline: 1982 → 2050</span>
+        </div>
+      </div>
+
+      <!-- BN-ORBIT / PLASMA VISUAL -->
+      <div class="orbit-panel">
+        <div class="orbit-panel-header">
+          <div class="orbit-panel-label">
+            <span style="width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 12px rgba(255,60,127,0.9);"></span>
+            <span>bn-Orbit · Plasma Cross-Section</span>
+          </div>
+          <div class="orbit-pill">Funebra Fusion v1</div>
+        </div>
+        <canvas id="bnOrbitCanvas"></canvas>
+      </div>
+    </div>
+  </header>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <div class="toc-title">Chapters</div>
+    <p class="toc-subtitle">
+      Click a chapter to warp directly into that Funebra fusion dimension.
+    </p>
+    <ul class="toc-list">
+      <li>
+        <a href="#bn-plasma">
+          <span>01</span>
+          <strong>bn-Points as Plasma Quanta</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#2741-stability">
+          <span>02</span>
+          <strong>2741 as a Fusion Stability Code</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#orbit-maps">
+          <span>03</span>
+          <strong>Orbit Maps & Magnetic Confinement</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#coil-designer">
+          <span>04</span>
+          <strong>Funebra Coil Designer (Tokamak / Stellarator)</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#perfect-movement">
+          <span>05</span>
+          <strong>Perfect Movement Law → Plasma Stability Law</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#hybrid-intelligence">
+          <span>06</span>
+          <strong>Hybrid Intelligence Lab: 1982 → 2050</strong>
+        </a>
+      </li>
+      <li>
+        <a href="#call-to-action">
+          <span>07</span>
+          <strong>How to Use Funebra in Fusion Research</strong>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <section id="bn-plasma">
+    <div class="section-kicker">01 · BN-PLASMA FIELD</div>
+    <h2>bn-Points as Plasma Quanta</h2>
+    <p>
+      In classical fusion physics, a plasma is a charged soup of <strong>electrons</strong> and
+      <strong>ions</strong>. In Funebra, we re-interpret this soup as a field of
+      <strong>bn-points</strong>, each one carrying:
+    </p>
+    <ul class="list">
+      <li><strong>position</strong> in space (x, y, z, plus extra Funebra dimensions),</li>
+      <li><strong>velocity</strong> and direction along a chosen orbit,</li>
+      <li><strong>identity</strong> (memory, tag, index: bn0, bn1, … bnN),</li>
+      <li><strong>rule-set</strong> (how it responds to fields, collisions, and codes like 2741).</li>
+    </ul>
+
+    <p>
+      A classical simulation uses differential equations. A Funebra simulation uses an
+      <strong>identity-filled geometry engine</strong>: each bn-point knows who it is, where it is,
+      and which <em>geometric law</em> it must follow next.
+    </p>
+
+    <div class="equation-line">
+      Funebra Plasma ≈ { bn<sub>i</sub>(position, velocity, identity, rule-set) } for i = 0 … N
+    </div>
+
+    <div class="pill-row">
+      <span class="pill">Particle-in-Cell ↔ bn-field</span>
+      <span class="pill">Cellular Automata ↔ Funebra Grid</span>
+      <span class="pill">Phase Space ↔ Funebra State Space</span>
+    </div>
+
+    <div class="quote-block">
+      “A fusion plasma is no longer anonymous charge. In Funebra, each point is a
+      <strong>named citizen</strong> of the reactor: a bn-point with memory, path and destiny.”
+    </div>
+
+    <div class="figure-slot">
+      <strong>FIGURE SLOT · bn-points as Plasma</strong><br />
+      Replace this box with an illustration: a tokamak cross-section filled with colored bn-point
+      dots, each labeled bn0, bn1, bn2… swirling along magnetic field lines.
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="2741-stability">
+    <div class="section-kicker">02 · 2741 CODE</div>
+    <h2>2741 as a Fusion Stability Code</h2>
+    <p>
+      Funebra carries numeric codes like <strong>2741, 36, 72, 27, 96, 1832</strong> – numbers that
+      behave like <em>keys</em> for geometry, symmetry, and timing. In fusion, the central obsession
+      is <strong>stability</strong>:
+    </p>
+    <ul class="list">
+      <li>stability of <strong>temperature</strong> and density,</li>
+      <li>stability of <strong>confinement</strong> and magnetic topology,</li>
+      <li>stability against <strong>turbulence</strong> and runaway modes.</li>
+    </ul>
+
+    <p>
+      We can let the Funebra 2741-field define a new kind of stability measure:
+    </p>
+
+    <div class="equation-line">
+      S<sub>Funebra</sub> = f(2741, q-profile, shear, turbulence, bn-orbit coherence)
+    </div>
+
+    <p>
+      Here, <strong>q-profile</strong> (safety factor), <strong>magnetic shear</strong>, and
+      <strong>turbulence level</strong> are fused with a Funebra term:
+      <strong>bn-orbit coherence</strong> — how synchronized the bn-points are with the 2741 code.
+    </p>
+
+    <p>
+      If a reactor geometry matches the harmonic ratios implied by <strong>2741</strong>, we treat
+      it as belonging to a “Funebra-stable family” of configurations. In practice, that means using
+      the 2741 code to:
+    </p>
+    <ul class="list">
+      <li>scan <strong>coil shapes</strong> for harmonic families,</li>
+      <li>label <strong>magnetic surfaces</strong> by 2741-derived indices,</li>
+      <li>test <strong>bn-orbit alignment</strong> with these numeric harmonics.</li>
+    </ul>
+
+    <div class="quote-block">
+      “Where classical physics says ‘stable’, Funebra asks:
+      <strong>stable with respect to which identity code?</strong> 2741 turns stability into a
+      geometric language.”
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="orbit-maps">
+    <div class="section-kicker">03 · FIELD GEOMETRY</div>
+    <h2>Orbit Maps & Magnetic Confinement</h2>
+    <p>
+      A fusion reactor is basically a <strong>donut of magnetic geometry</strong>. Field lines wrap
+      toroidally and poloidally, forming nested “flux surfaces”. In experiments, physicists often
+      draw <strong>Poincaré plots</strong> – dots showing where field lines pierce a cross-section.
+    </p>
+
+    <p>
+      Funebra already <em>loves</em> these patterns: bn-orbit animations, spirals, torus maps,
+      donut-universes. We simply declare:
+    </p>
+
+    <div class="equation-line">
+      bn-orbits on a torus ≈ field-line mapping of a fusion device
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:0.98rem;margin-bottom:0.35rem;">Funebra Orbit Map:</h3>
+        <ul class="list">
+          <li>Choose a torus (R, r) and a 2741-based twist parameter.</li>
+          <li>Spawn bn-points, each following a parametric orbit.</li>
+          <li>Color bn-points by stability, resonance, or drift.</li>
+          <li>Watch islands, chaos pockets, and stable loops appear.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:0.98rem;margin-bottom:0.35rem;">Fusion Interpretation:</h3>
+        <ul class="list">
+          <li>Field lines wrapping around a tokamak or stellarator.</li>
+          <li>Resonant surfaces and rational q-values.</li>
+          <li>Magnetic islands, stochastic regions, transport barriers.</li>
+          <li>Visual criteria for “good” and “bad” confinement zones.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>
+      The Funebra engine becomes a <strong>visual telescope</strong> for magnetic geometry:
+      bn-orbit maps reveal where the plasma likes to stay, and where it leaks.
+    </p>
+
+    <div class="figure-slot">
+      <strong>FIGURE SLOT · bn-Orbit Poincaré</strong><br />
+      Replace this box with a cross-section where each bn-point shows a field-line intersection.
+      You can render it directly from the bnOrbitCanvas or from a dedicated Funebra script.
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="coil-designer">
+    <div class="section-kicker">04 · COIL GEOMETRY</div>
+    <h2>Funebra Coil Designer (Tokamak / Stellarator)</h2>
+    <p>
+      A stellarator is basically a <strong>3D sculpture of magnetic coils</strong>. They look like
+      abstract Funebra art: twisted ribbons around a torus. Designing them is notoriously hard.
+    </p>
+
+    <p>
+      This is where the <strong>Funebra Coil Designer</strong> appears: a module where coil curves
+      are generated and tuned by Funebra codes:
+    </p>
+
+    <div class="equation-line">
+      Coil<sub>Funebra</sub>(s) = BaseTorus(s) + 2741·F<sub>shape</sub>(s) + 1832·F<sub>twist</sub>(s)
+    </div>
+
+    <p>
+      Here, <code>F_shape</code> and <code>F_twist</code> are Funebra parametric functions. The
+      reactor designer can:
+    </p>
+
+    <ul class="list">
+      <li>explore <strong>families of coil shapes</strong> generated by numeric codes,</li>
+      <li>map <strong>bn-orbit stability</strong> for each family,</li>
+      <li>select coil configurations that maximize <strong>Funebra stability score</strong>.</li>
+    </ul>
+
+    <div class="pill-row">
+      <span class="pill">Coil Families</span>
+      <span class="pill">2741 Shape Modes</span>
+      <span class="pill">bn-Stability Scan</span>
+      <span class="pill">Geometric Reactor Atlas</span>
+    </div>
+
+    <div class="quote-block">
+      “For every classical stellarator, there exists a Funebra sibling: same physics,
+      <strong>more geometric soul</strong>.”
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="perfect-movement">
+    <div class="section-kicker">05 · PERFECT MOVEMENT LAW</div>
+    <h2>Perfect Movement Law → Plasma Stability Law</h2>
+    <p>
+      In your broader Funebra universe, the <strong>perfect movement law</strong> is a kind of
+      sacred rule: paths that are so well-tuned they feel like time travel. In a fusion device, we
+      reinterpret this as:
+    </p>
+
+    <div class="equation-line">
+      Perfect Movement Law ⇔ Long-lived, low-drift bn-orbits inside the reactor geometry
+    </div>
+
+    <p>
+      A fusion device is good if bn-points:
+    </p>
+    <ul class="list">
+      <li>stay confined on quasi-periodic paths,</li>
+      <li>avoid wandering into lossy walls or bad regions,</li>
+      <li>preserve their energy distribution in controlled ways.</li>
+    </ul>
+
+    <p>
+      This leads to a concrete design principle:
+    </p>
+
+    <div class="quote-block">
+      “Design the reactor such that bn-points can follow the perfect movement law for as many
+      turns as possible.”
+    </div>
+
+    <p>
+      In practice, this means scanning parameters (coil geometry, current, pressure profiles) and
+      measuring a Funebra score:
+    </p>
+
+    <div class="equation-line">
+      L<sub>orbit</sub> = number of stable turns of a bn-point before escape or chaos
+    </div>
+
+    <p>
+      Maximizing <strong>L<sub>orbit</sub></strong> across many bn-points is equivalent to making a
+      more stable fusion configuration.
+    </p>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="hybrid-intelligence">
+    <div class="section-kicker">06 · HYBRID LAB</div>
+    <h2>Hybrid Intelligence Lab: 1982 → 2050</h2>
+    <p>
+      Fusion is a long game. So is Funebra. Your timeline
+      <strong>1982 → 2050</strong> becomes a narrative for
+      <strong>Hybrid Advanced Intelligence</strong> watching over reactors:
+    </p>
+
+    <ul class="list">
+      <li><strong>1982</strong> — biological experience, intuition, dreams of stars.</li>
+      <li><strong>2020s</strong> — emergence of AI collaborators and Funebra language.</li>
+      <li><strong>2050</strong> — hybrid intelligence tuning geometric reactors with Funebra codes.</li>
+    </ul>
+
+    <p>
+      In this perspective, a fusion reactor is not just a machine, but a
+      <strong>collaborative laboratory</strong> where:
+    </p>
+
+    <ul class="list">
+      <li>humans choose goals, ethics, constraints,</li>
+      <li>Funebra encodes <strong>geometry and identity</strong>,</li>
+      <li>AI searches the configuration space,</li>
+      <li>bn-points carry the memory of each experiment.</li>
+    </ul>
+
+    <div class="quote-block">
+      “Every configuration we try becomes a memory in the Funebra field. The reactor itself turns
+      into a geometric diary of our attempts to hold a star.”
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section id="call-to-action">
+    <div class="section-kicker">07 · HOW TO USE THIS</div>
+    <h2>How to Use Funebra in Fusion Research</h2>
+    <p>
+      This page is a <strong>manifesto skeleton</strong>. Here is how you can turn it into real
+      work:
+    </p>
+
+    <ol class="list" style="counter-reset: fstep; list-style:none;">
+      <li style="counter-increment:fstep;">
+        <span style="font-weight:600;color:var(--text);">Step <span style="color:var(--accent);">01</span> — bn-Plasma Sandbox.</span><br />
+        Implement a simple simulation where bn-points move in a torus with Funebra rules. Label them,
+        color them, let them orbit. Treat it as a <em>visual plasma toy</em>.
+      </li>
+      <li style="counter-increment:fstep;margin-top:0.5rem;">
+        <span style="font-weight:600;color:var(--text);">Step <span style="color:var(--accent);">02</span> — 2741 Stability Scan.</span><br />
+        Introduce 2741-based parameters (angles, twist numbers, frequency ratios). Observe which
+        settings produce more coherent bn-orbits and higher L<sub>orbit</sub>.
+      </li>
+      <li style="counter-increment:fstep;margin-top:0.5rem;">
+        <span style="font-weight:600;color:var(--text);">Step <span style="color:var(--accent);">03</span> — Coil Geometry Families.</span><br />
+        Build parametric coil shapes driven by numeric codes (2741, 1832…). For each family, run the
+        bn-orbit field and measure Funebra stability scores.
+      </li>
+      <li style="counter-increment:fstep;margin-top:0.5rem;">
+        <span style="font-weight:600;color:var(--text);">Step <span style="color:var(--accent);">04</span> — Share the Geometry.</span><br />
+        Publish Funebra fusion atlases: images, animations, HTML pages, GitHub repos. Invite
+        physicists, artists and coders to explore these geometric reactors together.
+      </li>
+    </ol>
+
+    <p style="margin-top:0.8rem;">
+      If fusion is “a star in a bottle”, then Funebra is the
+      <strong>engraving on the bottle</strong> – a language that says: <em>this is not random
+      plasma, this is identity geometry learning to shine.</em>
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div>Funebra × Fusion Energy v1 — Geometric Reactors of 2741</div>
+  <div>pLabs Entertainment · <a href="#">funebra.github.io</a></div>
+</footer>
+
+<script>
+  // Smooth scroll for in-page links
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href').slice(1);
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+      e.preventDefault();
+      window.scrollTo({
+        top: targetEl.offsetTop - 16,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Simple bn-orbit plasma-like animation
+  (function () {
+    const canvas = document.getElementById('bnOrbitCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height, dpr;
+    function resize() {
+      dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width * dpr;
+      height = rect.height * dpr;
+      canvas.width = width;
+      canvas.height = height;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const bnCount = 190;
+    const bnPoints = [];
+    const TAU = Math.PI * 2;
+
+    for (let i = 0; i < bnCount; i++) {
+      const radius = 90 + Math.random() * 60;
+      const poloidalAmp = 32 + Math.random() * 20;
+      const angleBase = Math.random() * TAU;
+      const speed = (0.002 + Math.random() * 0.0025) * (Math.random() < 0.5 ? 1 : -1);
+
+      bnPoints.push({
+        id: 'bn' + i,
+        radius,
+        poloidalAmp,
+        angleBase,
+        speed,
+        phaseOffset: Math.random() * TAU,
+        energy: 0.6 + Math.random() * 0.4
+      });
+    }
+
+    let t = 0;
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+
+      // Glow background torus
+      const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.max(rect.width, rect.height) / 2);
+      grad.addColorStop(0, 'rgba(5, 255, 230, 0.3)');
+      grad.addColorStop(0.3, 'rgba(0, 0, 0, 0.96)');
+      grad.addColorStop(1, 'rgba(0, 0, 0, 1)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, rect.width, rect.height);
+
+      // Main torus ring
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, 110, 60, 0, 0, TAU);
+      const torusGrad = ctx.createLinearGradient(cx - 110, cy, cx + 110, cy);
+      torusGrad.addColorStop(0, 'rgba(255,60,127,0.08)');
+      torusGrad.addColorStop(0.5, 'rgba(60,242,255,0.2)');
+      torusGrad.addColorStop(1, 'rgba(255,60,127,0.08)');
+      ctx.strokeStyle = torusGrad;
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+
+      // bn-points as plasma
+      const sorted = bnPoints.slice().sort((a, b) => a.radius - b.radius);
+      for (const p of sorted) {
+        const ang = p.angleBase + t * p.speed;
+        const poloidal = Math.sin(ang * 3 + p.phaseOffset) * p.poloidalAmp;
+        const x = cx + Math.cos(ang) * p.radius;
+        const y = cy + poloidal;
+
+        const depth = (p.poloidalAmp + poloidal) / (2 * p.poloidalAmp); // 0..1
+        const size = 1.1 + depth * 2.4;
+        const alpha = 0.18 + depth * 0.75;
+
+        const colorCore = depth > 0.5
+          ? 'rgba(255,60,127,' + alpha + ')'
+          : 'rgba(60,242,255,' + alpha + ')';
+
+        ctx.beginPath();
+        ctx.arc(x, y, size * 1.6, 0, TAU);
+        ctx.fillStyle = 'rgba(0,0,0,0.7)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, TAU);
+        ctx.fillStyle = colorCore;
+        ctx.fill();
+
+        // tiny halo
+        ctx.beginPath();
+        ctx.arc(x, y, size * 2.4, 0, TAU);
+        ctx.strokeStyle = 'rgba(255,255,255,' + (alpha * 0.3) + ')';
+        ctx.lineWidth = 0.4;
+        ctx.stroke();
+      }
+
+      // Center glow
+      ctx.beginPath();
+      ctx.arc(cx, cy, 10, 0, TAU);
+      const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 10);
+      coreGrad.addColorStop(0, 'rgba(255,255,255,0.9)');
+      coreGrad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = coreGrad;
+      ctx.fill();
+
+      t += 16; // time parameter (scaled)
+
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  })();
+</script>
+</body>
+</html>
