@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra 64×64 v1 — LED Matrix Circuit Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020308;
+      --bg-soft: #060819;
+      --panel: #0d1024;
+      --panel-soft: #121631;
+      --accent: #ff3c7f;
+      --accent-soft: #ffb3d2;
+      --accent-cyan: #3cf2ff;
+      --border: #272b40;
+      --text: #f7f7ff;
+      --muted: #a2a6c8;
+      --chip: #171a35;
+      --glow: 0 0 30px rgba(255, 60, 127, 0.4);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #181f40 0, #050716 40%, #000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: auto;
+    }
+
+    .frame {
+      background: radial-gradient(circle at top left, #242a54, #060819 55%);
+      border-radius: 26px;
+      border: 1px solid #323860;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+      padding: 24px 22px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(255, 60, 127, 0.22), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(60, 242, 255, 0.18), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .frame-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(135deg, rgba(8, 12, 36, 0.9), rgba(4, 7, 22, 0.95));
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent) 0, #ffddff 30%, #ff3c7f 50%, transparent 70%);
+      box-shadow: 0 0 12px rgba(255, 60, 127, 0.95);
+    }
+
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title-block h1 {
+      font-size: clamp(1.9rem, 2.6vw + 1.2rem, 2.8rem);
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero-title-block h1 span:nth-child(1) {
+      display: inline-block;
+      padding: 0.12em 0.35em;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, rgba(60, 242, 255, 0.3), transparent 65%);
+      box-shadow: var(--glow);
+      margin-right: 6px;
+    }
+
+    .hero-title-block h1 span:nth-child(2) {
+      opacity: 0.88;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(151, 155, 205, 0.36);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .chip strong {
+      font-size: 12px;
+      color: var(--text);
+      letter-spacing: 0.12em;
+    }
+
+    .hero-meta-kv {
+      display: inline-flex;
+      gap: 6px;
+      align-items: baseline;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta-kv span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+    }
+
+    .hero-meta-kv span.value {
+      font-weight: 500;
+      color: var(--accent-soft);
+    }
+
+    .note-line {
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    .note-line span {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(133, 139, 184, 0.6);
+      background: rgba(6, 9, 34, 0.9);
+      margin-left: 8px;
+    }
+
+    /* Right side hero card (matrix preview shell) */
+    .hero-panel {
+      background: radial-gradient(circle at 50% 0, rgba(60, 242, 255, 0.18), transparent 52%),
+                  linear-gradient(145deg, #050714, #05061a);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(99, 120, 220, 0.7);
+      box-shadow:
+        0 0 0 1px rgba(9, 15, 46, 0.9),
+        0 26px 60px rgba(0, 0, 0, 0.95);
+      padding: 14px 14px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-panel-header span.title {
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+    }
+
+    .hero-panel-header span.status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-panel-header span.status-dot::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-cyan) 0, #7dfffd 35%, transparent 70%);
+      box-shadow: 0 0 10px rgba(60, 242, 255, 0.95);
+    }
+
+    .hero-panel-matrix-shell {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle, rgba(0, 0, 0, 0.9) 0, #02030b 58%, #000 100%);
+      border: 1px solid rgba(105, 124, 220, 0.7);
+      padding: 10px;
+    }
+
+    .hero-panel-matrix-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 55%),
+        radial-gradient(circle at 0 0, rgba(60, 242, 255, 0.12), transparent 65%);
+      opacity: 0.35;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .matrix-outer-border {
+      position: relative;
+      border-radius: 14px;
+      border: 1px solid rgba(137, 149, 232, 0.9);
+      padding: 10px;
+      background: radial-gradient(circle at 50% 0, #070921, #020208 68%);
+      box-shadow:
+        0 0 0 1px rgba(2, 4, 14, 0.9),
+        0 12px 40px rgba(0, 0, 0, 0.95);
+    }
+
+    canvas#funebra-matrix {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      background: radial-gradient(circle, #040718, #020308 65%, #000 100%);
+    }
+
+    .matrix-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Controls + sections */
+
+    .sections {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 840px) {
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(11, 14, 36, 0.96), rgba(4, 6, 21, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(75, 86, 154, 0.8);
+      padding: 16px 16px 17px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 60, 127, 0.12), transparent 58%);
+      opacity: 0.75;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 10px;
+      color: var(--accent-soft);
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .kv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px 14px;
+      margin-top: 4px;
+    }
+
+    .kv {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .kv-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 10px;
+      opacity: 0.7;
+      margin-bottom: 2px;
+    }
+
+    .kv-value {
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .list {
+      margin: 6px 0 0;
+      padding-left: 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin: 3px 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px dashed rgba(121, 135, 210, 0.9);
+      color: var(--muted);
+      background: rgba(5, 7, 22, 0.9);
+    }
+
+    /* Controls in right column card */
+
+    .control-group {
+      margin-top: 8px;
+      font-size: 0.85rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    select,
+    input[type="range"] {
+      width: 100%;
+      background: #05071b;
+      border-radius: 999px;
+      border: 1px solid rgba(117, 132, 210, 0.8);
+      color: var(--text);
+      font-size: 0.84rem;
+    }
+
+    select {
+      padding: 7px 12px;
+      outline: none;
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--accent-soft) 50%),
+        linear-gradient(135deg, var(--accent-soft) 50%, transparent 50%);
+      background-position:
+        calc(100% - 14px) 55%,
+        calc(100% - 9px) 55%;
+      background-size: 7px 7px, 7px 7px;
+      background-repeat: no-repeat;
+      padding-right: 30px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 5px;
+      padding: 6px 0;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent) 0, var(--accent-cyan) 100%);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow:
+        0 0 0 3px rgba(4, 6, 18, 0.95),
+        0 0 12px rgba(255, 60, 127, 0.85);
+      margin-top: -5.5px;
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent) 0, var(--accent-cyan) 100%);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      border: none;
+      box-shadow:
+        0 0 0 3px rgba(4, 6, 18, 0.95),
+        0 0 12px rgba(255, 60, 127, 0.85);
+    }
+
+    .mini-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      opacity: 0.8;
+      margin-top: 8px;
+    }
+
+    .mini-note code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      padding: 1px 5px;
+      border-radius: 999px;
+      background: rgba(5, 7, 24, 0.9);
+      border: 1px solid rgba(107, 121, 199, 0.8);
+      color: var(--accent-soft);
+    }
+
+    /* Footer line */
+
+    footer {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(79, 87, 137, 0.7);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    footer span strong {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+    }
+
+    footer span label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin-right: 6px;
+    }
+
+    footer span.value {
+      color: var(--accent-soft);
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main class="frame">
+      <div class="frame-inner">
+        <header>
+          <div>
+            <div class="brand-tag">
+              <div class="brand-dot"></div>
+              <span>Funebra Math–Art Engine</span>
+            </div>
+          </div>
+          <div class="hero-meta-kv">
+            <span class="label">Circuit ID</span>
+            <span class="value">Funebra 64×64 v1</span>
+          </div>
+        </header>
+
+        <section class="hero-main">
+          <div class="hero-title-block">
+            <h1>
+              <span>FUNEBRA 64×64</span>
+              <span>LED Matrix Circuit v1</span>
+            </h1>
+            <p class="hero-sub">
+              A 4096-point Funebra field, wired as a 64×64 LED brain.
+              Each light a bn-point. Each bn-point a tiny memory of motion,
+              number, and story.
+            </p>
+            <div class="hero-meta-row">
+              <div class="chip">
+                <strong>4096</strong> LEDs
+              </div>
+              <div class="chip">
+                <strong>64×64</strong> Matrix • bn-grid
+              </div>
+              <div class="chip">
+                Hybrid Math-Art Circuit
+              </div>
+            </div>
+            <p class="note-line">
+              Addressing scheme:
+              <span>bn[r][c] → (row, col) ∈ [0…63]</span>
+            </p>
+          </div>
+
+          <aside class="hero-panel" aria-label="Funebra 64×64 live matrix preview">
+            <div class="hero-panel-header">
+              <span class="title">Matrix Brain — v1 sim</span>
+              <span class="status-dot">Live preview</span>
+            </div>
+            <div class="hero-panel-matrix-shell">
+              <div class="matrix-outer-border">
+                <!-- 64×64 canvas preview -->
+                <canvas id="funebra-matrix" width="384" height="384"></canvas>
+                <div class="matrix-meta-row">
+                  <span>64×64 field</span>
+                  <span>4096 bn-points</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="sections">
+          <!-- Concept & Specs -->
+          <article class="card">
+            <div class="card-inner">
+              <h2 class="card-title">Concept • Funebra 64×64 circuit v1</h2>
+              <p class="card-subtitle">
+                Think of this as a square brain: 64 rows × 64 columns of light.
+                Rows carry time. Columns carry code. Intersection = a Funebra bn-point.
+              </p>
+
+              <div class="kv-grid">
+                <div class="kv">
+                  <div class="kv-label">Resolution</div>
+                  <div class="kv-value">64×64 (4096 LEDs)</div>
+                </div>
+                <div class="kv">
+                  <div class="kv-label">Topology</div>
+                  <div class="kv-value">Row–Column multiplexed matrix</div>
+                </div>
+                <div class="kv">
+                  <div class="kv-label">Signal path</div>
+                  <div class="kv-value">MCU → Row drivers → Column drivers → LED grid</div>
+                </div>
+                <div class="kv">
+                  <div class="kv-label">Funebra address</div>
+                  <div class="kv-value"><code>bn[r][c]</code> (0–63)</div>
+                </div>
+              </div>
+
+              <ul class="list">
+                <li>Each LED can encode state: off / low / high / pulse.</li>
+                <li>Patterns carry math: diagonals, rings, gates, codes.</li>
+                <li>2741, 1982 → 2050, and other Funebra numbers can live as light signatures.</li>
+              </ul>
+
+              <div class="tag-row">
+                <span class="tag">matrix brain</span>
+                <span class="tag">bn-point lattice</span>
+                <span class="tag">hybrid intelligence</span>
+                <span class="tag">led circuit art</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Controls & Pattern story -->
+          <article class="card">
+            <div class="card-inner">
+              <h2 class="card-title">Pattern driver • v1 sim controls</h2>
+              <p class="card-subtitle">
+                This HTML version behaves like a soft driver for the real hardware:
+                patterns animate as if the 64×64 circuit was already soldered.
+              </p>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Pattern</span>
+                  <span id="pattern-label">Off</span>
+                </div>
+                <select id="pattern-select">
+                  <option value="off">Off / idle</option>
+                  <option value="diagonal">Dual diagonal sweep</option>
+                  <option value="pulse">Central pulse ring</option>
+                  <option value="gate2741">“2741 Gate” radii</option>
+                  <option value="noise">Funebra noise / stars</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <div class="control-label">
+                  <span>Brightness</span>
+                  <span id="brightness-label">80%</span>
+                </div>
+                <input type="range" id="brightness-slider" min="0.15" max="1" step="0.05" value="0.8" />
+              </div>
+
+              <p class="mini-note">
+                Hardware translation idea:
+                map each simulated cell to a real LED:
+                <code>bn[row][col] → (row driver, column driver)</code>.
+                The same pattern math can drive your future PCB.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <footer>
+          <span>
+            <strong>Funebra 64×64 Circuit v1</strong>
+          </span>
+          <span>
+            <label>Branch</label>
+            <span class="value">Funebra Hardware • LED Matrices</span>
+          </span>
+          <span>
+            <label>Crafted by</label>
+            <span class="value">pLabs Entertainment / Funebra</span>
+          </span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById("funebra-matrix");
+      const ctx = canvas.getContext("2d");
+
+      const SIZE = 64; // 64×64
+      const CELL_W = canvas.width / SIZE;
+      const CELL_H = canvas.height / SIZE;
+
+      const patternSelect = document.getElementById("pattern-select");
+      const patternLabel = document.getElementById("pattern-label");
+      const brightnessSlider = document.getElementById("brightness-slider");
+      const brightnessLabel = document.getElementById("brightness-label");
+
+      const state = {
+        pattern: patternSelect.value,
+        brightness: parseFloat(brightnessSlider.value),
+        time: 0
+      };
+
+      function updateLabels() {
+        const selectedText = patternSelect.options[patternSelect.selectedIndex].textContent;
+        patternLabel.textContent = selectedText;
+        brightnessLabel.textContent = Math.round(state.brightness * 100) + "%";
+      }
+
+      patternSelect.addEventListener("change", function () {
+        state.pattern = this.value;
+        updateLabels();
+      });
+
+      brightnessSlider.addEventListener("input", function () {
+        state.brightness = parseFloat(this.value);
+        updateLabels();
+      });
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function getCellValue(x, y, t) {
+        const cx = SIZE / 2;
+        const cy = SIZE / 2;
+        const dx = x - cx + 0.5;
+        const dy = y - cy + 0.5;
+        const dist = Math.hypot(dx, dy);
+
+        switch (state.pattern) {
+          case "off":
+            return 0.02;
+
+          case "diagonal": {
+            const mainDiag = Math.abs(x - y);
+            const antiDiag = Math.abs(x + y - (SIZE - 1));
+            const d = Math.min(mainDiag, antiDiag);
+            let base = 0.08;
+            if (d <= 0.6) base = 1.0;
+            else if (d <= 1.2) base = 0.4;
+            // subtle time wave along the diagonals
+            const wave = 0.2 + 0.3 * Math.sin(t * 1.8 + (x + y) * 0.08);
+            return base * (0.6 + 0.4 * wave);
+          }
+
+          case "pulse": {
+            const ring = Math.sin(t * 2 + dist * 0.4);
+            let v = (ring + 1) / 2; // 0..1
+            const fade = 1 - Math.min(dist / (SIZE / 2), 1);
+            v *= Math.pow(fade, 1.4);
+            return v * 1.1;
+          }
+
+          case "gate2741": {
+            // 2741 translated into radial gates
+            const gates = [2, 7, 4, 1].map(n => n * 4); // base radii
+            let closest = Infinity;
+            for (let i = 0; i < gates.length; i++) {
+              const g = gates[i];
+              const diff = Math.abs(dist - (g + Math.sin(t * 0.6 + i * 1.3) * 1.2));
+              if (diff < closest) closest = diff;
+            }
+            let v = Math.max(0, 1 - closest / 4);
+            const blink = 0.4 + 0.6 * Math.sin(t * 2.4);
+            v *= blink;
+            return v;
+          }
+
+          case "noise": {
+            // Funebra star noise — low, twinkling
+            const seed = (x * 374761393 + y * 668265263) ^ 0x5bf03635;
+            const n = Math.sin(seed + t * 4);
+            const base = 0.05 + 0.15 * (Math.sin(t * 0.4 + dist * 0.04) + 1) / 2;
+            const spark = n * 0.5 + 0.5;
+            return base + spark * 0.9;
+          }
+
+          default:
+            return 0.05;
+        }
+      }
+
+      function draw(time) {
+        state.time = time * 0.001;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let y = 0; y < SIZE; y++) {
+          for (let x = 0; x < SIZE; x++) {
+            const v = getCellValue(x, y, state.time) * state.brightness;
+            const clamped = Math.max(0, Math.min(1, v));
+
+            // blend magenta/cyan based on position
+            const mix = x / (SIZE - 1);
+            const r1 = 255, g1 = 60, b1 = 127;  // magenta tone
+            const r2 = 60, g2 = 242, b2 = 255;  // cyan tone
+
+            const r = lerp(r1, r2, mix);
+            const g = lerp(g1, g2, mix);
+            const b = lerp(b1, b2, mix);
+
+            const alpha = clamped * 0.9;
+
+            ctx.fillStyle = "rgba(" +
+              r.toFixed(0) + "," +
+              g.toFixed(0) + "," +
+              b.toFixed(0) + "," +
+              alpha.toFixed(3) + ")";
+
+            ctx.fillRect(
+              x * CELL_W,
+              y * CELL_H,
+              CELL_W + 0.4,
+              CELL_H + 0.4
+            );
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      updateLabels();
+      requestAnimationFrame(draw);
+    })();
+  </script>
+</body>
+</html>
