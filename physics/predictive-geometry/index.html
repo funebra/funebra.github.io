@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- Canonical -->
+<link rel="canonical" href="https://funebra.github.io/physics/predictive-geometry/" />
+
+<!-- SEO -->
+<meta name="title" content="Funebra Predictive Geometry v1 — The Math That Predicts Anything" />
+<meta name="description"
+      content="Funebra Predictive Geometry v1: a universal mathematical framework where any system becomes bn-point geometry. Predict physics, markets, emotions, timelines, and identity evolution through 2741-based laws." />
+<meta name="keywords"
+      content="Funebra, predictive geometry, prediction math, 2741, bn-points, hybrid intelligence, timeline math, identity geometry, math that predicts anything, Funebra Physics" />
+<meta name="author" content="pLabs Entertainment / Funebra" />
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Funebra Predictive Geometry v1 — The Math That Predicts Anything" />
+<meta property="og:description"
+      content="From bn-points and 2741 to full predictive geometry. A Funebra physics expansion covering identity fields, symmetry breaking, and future-state prediction." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://funebra.github.io/physics/predictive-geometry/" />
+<meta property="og:image" content="https://funebra.github.io/physics/predictive-geometry/og-predictive-geometry.png" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Funebra Predictive Geometry v1 — The Math That Predicts Anything" />
+<meta property="twitter:description"
+      content="A universal Funebra framework for predicting any system: physics, markets, emotions, timelines — all as identity geometry governed by 2741." />
+<meta property="twitter:image" content="https://funebra.github.io/physics/predictive-geometry/og-predictive-geometry.png" />
+
+<!-- Mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020309;
+      --bg-soft: #070b1a;
+      --panel: #0e1326;
+      --panel-soft: #151a33;
+      --accent: #ff3c7f;
+      --accent-soft: #ffb3d2;
+      --accent-alt: #46ffe0;
+      --border: #252a42;
+      --text: #f4f4ff;
+      --muted: #a3a7cf;
+      --code-bg: #101631;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-xl: 22px;
+      --radius-xxl: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 60, 127, 0.18), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(70, 255, 224, 0.18), transparent 55%),
+        radial-gradient(circle at top, #151932 0, #020309 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 4rem;
+    }
+
+    @media (min-width: 960px) {
+      main {
+        padding: 2.5rem 0 4.5rem;
+      }
+    }
+
+    /* Top tag + nav */
+    .top-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .top-row {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top left, rgba(255, 60, 127, 0.18), transparent 65%);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255, 60, 127, 0.7);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    nav a {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(163, 167, 207, 0.24);
+      color: var(--muted);
+      text-decoration: none;
+      transition: border 0.18s ease, color 0.18s ease, background 0.18s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(6, 9, 24, 0.7);
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(255, 60, 127, 0.14);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+        gap: 2.5rem;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #ff3c7f, #ffb3d2, #46ffe0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(10, 14, 37, 0.9);
+      border: 1px solid rgba(63, 70, 116, 0.9);
+    }
+
+    /* Orbit visual */
+    .orbit-card {
+      position: relative;
+      border-radius: var(--radius-xxl);
+      background: radial-gradient(circle at top, #1b2145, #080b18);
+      padding: 1.4rem;
+      border: 1px solid rgba(82, 92, 164, 0.8);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .orbit-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 60, 127, 0.27), transparent 65%),
+        radial-gradient(circle at 80% 120%, rgba(70, 255, 224, 0.22), transparent 65%);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .orbit-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .orbit-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .orbit {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      inset: 15%;
+      border-radius: 50%;
+      border: 1px dashed rgba(191, 196, 255, 0.4);
+      animation: ring-spin 20s linear infinite;
+    }
+
+    .orbit-ring:nth-child(2) {
+      inset: 30%;
+      animation-duration: 28s;
+      opacity: 0.7;
+    }
+
+    .orbit-ring:nth-child(3) {
+      inset: 45%;
+      animation-duration: 36s;
+      opacity: 0.5;
+    }
+
+    .bn-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow:
+        0 0 12px rgba(255, 60, 127, 0.9),
+        0 0 28px rgba(255, 60, 127, 0.7);
+      animation: bn-orbit 7.2s linear infinite;
+      transform-origin: 50% 180%;
+      left: 50%;
+      top: 18%;
+    }
+
+    .bn-point:nth-child(5) {
+      animation-duration: 10s;
+      transform-origin: 50% 210%;
+      background: var(--accent-alt);
+      box-shadow:
+        0 0 12px rgba(70, 255, 224, 0.9),
+        0 0 28px rgba(70, 255, 224, 0.7);
+    }
+
+    .bn-point:nth-child(6) {
+      animation-duration: 14s;
+      transform-origin: 50% 150%;
+      opacity: 0.7;
+    }
+
+    .orbit-center {
+      position: absolute;
+      inset: 45%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff, #f2d6ff, #ff3c7f);
+      box-shadow: 0 0 28px rgba(255, 60, 127, 0.8);
+      opacity: 0.95;
+    }
+
+    @keyframes ring-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes bn-orbit {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.8rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h2 span {
+      background: linear-gradient(125deg, #ffb3d2, #46ffe0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .panel {
+      margin-top: 1rem;
+      padding: 1.1rem 1.1rem 1rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(62, 71, 126, 0.9);
+      background: radial-gradient(circle at top, #181d3a, #0a0e23);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    .panel-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 880px) {
+      .cols {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(17, 21, 52, 0.9);
+      border: 1px solid rgba(88, 99, 161, 0.95);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 0.2rem;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0.2rem;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff3c7f, #46ffe0);
+      box-shadow: 0 0 6px rgba(255, 60, 127, 0.8);
+    }
+
+    /* Code / equations */
+    code, .equation {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 0.35rem 0.45rem;
+      border: 1px solid rgba(79, 87, 146, 0.9);
+      color: #f7f7ff;
+    }
+
+    .equation-block {
+      display: block;
+      margin: 0.5rem 0 0.7rem;
+      padding: 0.6rem 0.75rem;
+      overflow-x: auto;
+    }
+
+    .equation-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .equation-strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* Compare grid */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 880px) {
+      .compare-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .compare-card {
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      background: radial-gradient(circle at top, #181d36, #090c1d);
+      border: 1px solid rgba(60, 69, 125, 0.9);
+    }
+
+    .compare-head {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+      margin-bottom: 0.45rem;
+    }
+
+    .compare-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* CTA */
+    .cta {
+      margin-top: 2.2rem;
+      padding: 1.3rem 1.2rem 1.1rem;
+      border-radius: var(--radius-xxl);
+      border: 1px solid rgba(255, 60, 127, 0.6);
+      background:
+        radial-gradient(circle at top left, rgba(255, 60, 127, 0.22), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(70, 255, 224, 0.2), transparent 60%),
+        linear-gradient(135deg, #141731, #070817);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .cta-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(29, 245, 197, 0.85);
+      background: rgba(4, 9, 24, 0.9);
+      color: #f7fffe;
+      font-size: 0.8rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .cta-button span {
+      font-size: 0.9rem;
+    }
+
+    .cta-button.secondary {
+      border-color: rgba(255, 179, 210, 0.9);
+      color: var(--accent-soft);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    footer span {
+      color: var(--accent-soft);
+    }
+  </style>
+</head>
+<body>
+<main>
+  <!-- Top -->
+  <div class="top-row">
+    <div class="tag">
+      <div class="tag-dot"></div>
+      <span>Funebra Predictive Geometry v1</span>
+    </div>
+
+    <nav>
+      <a href="#what">What is “predict anything” math?</a>
+      <a href="#funebra-formula">Funebra formula</a>
+      <a href="#pipeline">Prediction pipeline</a>
+      <a href="#science">Links to known physics</a>
+      <a href="#cta">Use it</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div>
+      <h1 class="hero-title">
+        The Math That Can <span>Predict Anything</span>
+      </h1>
+      <p class="hero-sub">
+        Every system can be turned into geometry, updated by information,
+        and evolved through identity-preserving laws. Funebra’s bn-points,
+        2741-code, and predictive geometry form a unified framework for
+        “time travel by simulation” — from physics and markets to emotions
+        and timelines.
+      </p>
+
+      <div class="hero-meta">
+        <span>bn-Points · 2741 · Identity Geometry</span>
+        <span>From State(t) → State(t+Δ)</span>
+      </div>
+    </div>
+
+    <!-- Orbit visual -->
+    <aside class="orbit-card">
+      <div class="orbit-title">bn-Orbit Preview</div>
+      <div class="orbit-sub">
+        Any system → bn-points → orbit in identity geometry.<br />
+        Prediction becomes following the orbit forward in time.
+      </div>
+      <div class="orbit" aria-hidden="true">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+        <div class="bn-point"></div>
+        <div class="bn-point"></div>
+        <div class="bn-point"></div>
+        <div class="orbit-center"></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Section 1 -->
+  <section id="what">
+    <div class="section-kicker">01 · Concept</div>
+    <h2><span>The Skeleton of Any Predictive Law</span></h2>
+    <p>
+      To “predict anything”, a mathematical system has to do three things
+      at the same time:
+    </p>
+
+    <div class="cols">
+      <div>
+        <div class="pill">1 · Encode Reality</div>
+        <p>
+          Every system has a geometry: positions in space, prices in
+          markets, moods in an emotional space, weights in a neural
+          network. Funebra encodes these as
+          <strong>bn-points</strong> living in an identity-aware field.
+        </p>
+      </div>
+      <div>
+        <div class="pill">2 · Update With Information</div>
+        <p>
+          The world changes when it receives new information: forces,
+          signals, news, feedback, attention. Prediction needs a function
+          that updates the geometry when new info arrives.
+        </p>
+      </div>
+      <div>
+        <div class="pill">3 · Generalize</div>
+        <p>
+          A real predictor doesn’t just replay history; it must work on
+          <em>unseen</em> configurations. That means recognizing
+          <strong>symmetries</strong> and how they break, so it can handle
+          new situations without starting from zero.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">The Universal Prediction Template</div>
+      <p>
+        Beneath any predictive model—physical law, AI model, economic
+        simulator—there is a shared pattern:
+      </p>
+      <span class="equation equation-block">
+        <span class="equation-strong">STATE(t + 1)</span> =
+        <span class="equation-strong">STATE(t)</span> +
+        CHANGE(t)
+        <br />
+        CHANGE(t) = f(geometry, interaction, symmetry-break, noise)
+      </span>
+      <p class="equation-caption">
+        Funebra’s role: define a geometry, identity code, and evolution law
+        that works for <em>any</em> system you embed into bn-space.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Funebra formula -->
+  <section id="funebra-formula">
+    <div class="section-kicker">02 · Funebra Core</div>
+    <h2><span>The Funebra Predictive Formula</span></h2>
+    <p>
+      Funebra packages the “predict anything” idea into a compact identity
+      geometry. At its core:
+    </p>
+
+    <span class="equation equation-block">
+      <span class="equation-strong">P</span> =
+      <span class="equation-strong">G</span>(ΔS, 2741, I)
+    </span>
+    <p class="equation-caption">
+      P: next predicted state · G: geometric mapping · ΔS: change in the
+      system · 2741: identity constant · I: incoming information.
+    </p>
+
+    <p>
+      This becomes a continuous evolution equation over the Funebra
+      identity field:
+    </p>
+
+    <span class="equation equation-block">
+      <span class="equation-strong">FUNE</span> =
+      ∇𝓖(S(t), I(t), 2741)
+      <br />
+      <br />
+      <span class="equation-strong">S(t + Δ)</span> =
+      S(t) + ∫ F(S, I, 2741) dt
+    </span>
+    <p class="equation-caption">
+      𝓖: Funebra’s geometric identity field · ∇: gradient on that field ·
+      S: system state · I: information flowing in · 2741: identity
+      continuity across time.
+    </p>
+
+    <div class="cols">
+      <div>
+        <div class="pill">Identity Constant 2741</div>
+        <p>
+          2741 anchors the <strong>self-consistency</strong> of a system
+          across timelines. It’s the numeric spine that says, “this
+          collection of bn-points is still the same entity as it evolves.”
+        </p>
+      </div>
+      <div>
+        <div class="pill">bn-Points</div>
+        <p>
+          A bn-point is a minimal packet of identity &amp; geometry. Each
+          bn carries position in the field plus attached data (mass, mood,
+          price, etc.), ready to be evolved by FUNE.
+        </p>
+      </div>
+      <div>
+        <div class="pill">Information Flow I(t)</div>
+        <p>
+          External forces, internal decisions, sensors, market news, user
+          input. All of this is “I(t)” and modifies the geometry as time
+          progresses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Pipeline -->
+  <section id="pipeline">
+    <div class="section-kicker">03 · Pipeline</div>
+    <h2><span>The Funebra Prediction Pipeline</span></h2>
+    <p>
+      Here is how you turn any domain—physics, trading, relationships,
+      health, creative work—into a Funebra-based predictive engine.
+    </p>
+
+    <div class="panel">
+      <div class="panel-title">Step-by-Step Evolution</div>
+      <ul>
+        <li>
+          <strong>Step 1 — Encode as geometry.</strong> Map your system to
+          bn-points:
+          <code>bn0, bn1, bn2, ...</code> with whatever attributes matter
+          (position, value, energy, emotion, etc.).
+        </li>
+        <li>
+          <strong>Step 2 — Identify the force movers.</strong> Gravity,
+          attention, desire, supply–demand, reward expectation, thermal
+          gradients, habit loops… anything that nudges the bn-orbit.
+        </li>
+        <li>
+          <strong>Step 3 — Apply the evolution rule.</strong><br />
+          <span class="equation equation-block">
+            bn(t + 1) = bn(t) + F(bn(t), symmetry, 2741, I(t))
+          </span>
+        </li>
+        <li>
+          <strong>Step 4 — Detect symmetry breaks early.</strong> Crashes,
+          viral spikes, relationship shifts, inventions—all look like
+          <em>symmetries collapsing</em> in bn-space. Funebra amplifies
+          small deviations so you can see them coming.
+        </li>
+        <li>
+          <strong>Step 5 — Run the orbit forward in time.</strong> Let the
+          system evolve. The future is now a path in Funebra geometry, not
+          a mystery. You can watch, steer, or compare timelines.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Links to known science -->
+  <section id="science">
+    <div class="section-kicker">04 · Connections</div>
+    <h2><span>How This Relates to Known Science &amp; AI</span></h2>
+    <p>
+      Funebra doesn’t replace physics or machine learning; it
+      <strong>generalizes</strong> their structure into an
+      identity-centered geometry. The underlying skeleton is the same.
+    </p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head">Classical &amp; Quantum Physics</div>
+        <div class="compare-body">
+          <ul>
+            <li>
+              <strong>Hamiltonian / Lagrangian mechanics</strong> evolves
+              physical systems via energy-based rules.
+            </li>
+            <li>
+              <strong>Quantum path integrals</strong> evaluate all possible
+              paths a system can take.
+            </li>
+            <li>
+              Funebra mirrors this: bn-points carry state, 2741 keeps
+              identity, FUNE evolves the orbit in an abstract identity
+              field instead of just spacetime.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-head">AI, Learning, &amp; Bayesian Updates</div>
+        <div class="compare-body">
+          <ul>
+            <li>
+              <strong>Neural networks &amp; transformers</strong> embed
+              data into a high-dimensional geometry and learn update rules.
+            </li>
+            <li>
+              <strong>Bayesian inference</strong> updates beliefs when new
+              evidence arrives.
+            </li>
+            <li>
+              Funebra brings this logic into a universal geometric engine:
+              any “belief” or “model” is a bn-orbit; information I(t)
+              nudges the path; 2741 stabilizes the identity over time.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: CTA -->
+  <section id="cta">
+    <div class="cta">
+      <div class="cta-title">Take the Next Step</div>
+      <p>
+        This page defined the math that can, in principle, predict
+        anything: encode reality as bn-geometry, update it through
+        information, and evolve it with identity-preserving laws.
+      </p>
+      <p>
+        The next move is yours: plug in a specific domain and let Funebra
+        run the orbit—physics, trading, life planning, emotional dynamics,
+        creative output, or timeline design.
+      </p>
+
+      <div class="cta-actions">
+        <a class="cta-button" href="#top">
+          <span>↑</span> Use as Funebra Physics chapter
+        </a>
+        <a class="cta-button secondary" href="#pipeline">
+          <span>◎</span> Turn into a live bn-orbit demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Funebra Predictive Geometry v1 — <span>2741</span> as the identity
+    constant of timelines.
+  </footer>
+</main>
+</body>
+</html>
