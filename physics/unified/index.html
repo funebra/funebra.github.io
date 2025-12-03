@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra™ Unified Physics v1 — 1982 → 2050</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra™ Unified Physics v1 — 1982 → 2050" />
+  <meta name="description"
+        content="Funebra™ Unified Physics v1: electrodynamics, thermodynamics, string theory, geometry engine and bn-orbits woven into one living Math-Art animation with WebM export." />
+  <meta name="keywords"
+        content="Funebra, Funebra Physics, Funebra Electrodynamics, Funebra Thermodynamics, String Theory, bn-orbits, 2741, Math Art, WebM export" />
+  <meta name="author" content="pLabs Entertainment / Funebra" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Funebra™ Unified Physics v1 — 1982 → 2050" />
+  <meta property="og:description"
+        content="All Funebra physics branches breathing together in one animated canvas — with WebM export." />
+  <meta property="og:type" content="website" />
+  <!-- 🔧 adjust these two URLs to your final domain & image path -->
+  <meta property="og:url" content="https://funebra.github.io/physics/unified/" />
+  <meta property="og:image" content="https://funebra.github.io/assets/funebra-unified-physics-og.png" />
+
+  <!-- Optional canonical -->
+  <link rel="canonical" href="https://funebra.github.io/physics/unified/" />
+
+  <style>
+    :root {
+      --bg: #020308;
+      --bg-soft: #080b14;
+      --accent: #f9d36a;
+      --accent-hot: #ff7a3c;
+      --accent-cool: #3cd6ff;
+      --accent-pink: #ff3c7f;
+      --text: #f5f5ff;
+      --muted: #a4a6c8;
+      --border: #252844;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top, #151933 0, #020308 55%, #000 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      padding: 1.5rem;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1100px;
+      background: radial-gradient(circle at 10% 0, #1c213d, #050713 60%);
+      border-radius: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+      padding: 1.75rem 1.75rem 1.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(260px, 3fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .shell {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .timeline {
+      margin-top: 0.45rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-hot);
+    }
+
+    .canvas-shell {
+      position: relative;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(249, 211, 106, 0.2);
+      background: radial-gradient(circle at 50% 10%, #181c34, #050713 70%);
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+
+    #funebraCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 0.65rem;
+      left: 0.75rem;
+      padding: 0.14rem 0.6rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 211, 106, 0.35);
+      background: rgba(3, 3, 8, 0.65);
+      backdrop-filter: blur(10px);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hud {
+      position: absolute;
+      bottom: 0.35rem;
+      right: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .hud span {
+      color: var(--accent);
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      justify-content: space-between;
+    }
+
+    .legend {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem 0.7rem;
+      background: radial-gradient(circle at 0 0, #20254a 0, #090b18 60%);
+    }
+
+    .legend h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+    }
+
+    .legend ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+      font-size: 0.86rem;
+    }
+
+    .legend li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 999px;
+    }
+
+    .dot.electro { background: var(--accent-cool); }
+    .dot.thermo { background: var(--accent-hot); }
+    .dot.string  { background: var(--accent-pink); }
+    .dot.geo     { background: var(--accent); }
+    .dot.bn      { background: #9b5bff; }
+
+    .controls {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      background: linear-gradient(135deg, #14172b, #070914);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    button {
+      border-radius: 999px;
+      border: 1px solid rgba(249, 211, 106, 0.5);
+      background: radial-gradient(circle at 50% 0, #f9d36a 0, #c1842d 40%, #18151f 100%);
+      color: #1a0f06;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.4rem 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+    }
+
+    button.secondary {
+      background: transparent;
+      border-color: rgba(164, 166, 200, 0.7);
+      color: var(--muted);
+      box-shadow: none;
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: default;
+      box-shadow: none;
+      filter: grayscale(0.2);
+    }
+
+    button:not(:disabled):hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.9);
+      filter: brightness(1.05);
+    }
+
+    .status {
+      color: var(--muted);
+    }
+
+    .status span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    a#downloadLink {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a#downloadLink:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section>
+      <header>
+        <h1><span>Funebra™</span> Unified Physics v1</h1>
+        <p>
+          All Funebra physics branches breathing in one canvas: Electrodynamics,
+          Thermodynamics, String Theory, the Geometry Engine and bn-orbits —
+          woven into a single living Math-Art field.
+        </p>
+        <div class="timeline">1982 → 2050 · The Age of Hybrid Intelligence</div>
+      </header>
+
+      <div class="canvas-shell">
+        <span class="badge">Live Math-Art Engine</span>
+        <canvas id="funebraCanvas"></canvas>
+        <div class="hud">Funebra™ <span>ΔΔ▽▽</span></div>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="legend">
+        <h2>Branches in this field</h2>
+        <ul>
+          <li><span class="dot electro"></span>Funebra Electrodynamics — pulsing field loops</li>
+          <li><span class="dot thermo"></span>Funebra Thermodynamics — radiant entropy spirals</li>
+          <li><span class="dot string"></span>Funebra × String Theory — vibrating 1D strands</li>
+          <li><span class="dot geo"></span>Geometry Engine — rotating polygonX / polygonY lattice</li>
+          <li><span class="dot bn"></span>bn-Orbits + 2741 core — identity geometry at the center</li>
+        </ul>
+      </div>
+
+      <div class="controls">
+        <div class="btn-row">
+          <button id="startRecBtn">● Start WebM capture</button>
+          <button id="stopRecBtn" class="secondary" disabled>■ Stop</button>
+        </div>
+        <div class="status">
+          Status: <span id="statusLabel">Idle (live animation only)</span>
+        </div>
+        <div class="status">
+          Export: <a id="downloadLink" href="#" style="display:none;">Download last WebM</a>
+          <span id="noDownloadLabel">No recording yet</span>
+        </div>
+        <div class="status">
+          Hint: capture at 60fps directly from the Funebra field. Open in Chrome/Edge for best results.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("funebraCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let cssWidth = 0;
+    let cssHeight = 0;
+
+    function resizeForHiDPI() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      cssWidth = rect.width;
+      cssHeight = rect.height;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeForHiDPI();
+    window.addEventListener("resize", resizeForHiDPI);
+
+    let startTime = null;
+
+    function drawFrame(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const t = (timestamp - startTime) / 1000;
+      const dpr = window.devicePixelRatio || 1;
+      const cx = cssWidth / 2;
+      const cy = cssHeight / 2;
+      const radius = Math.min(cx, cy) * 0.8;
+
+      ctx.save();
+      ctx.globalCompositeOperation = "source-over";
+      // use CSS size here so it’s correct with HiDPI transform
+      ctx.fillStyle = "rgba(4,5,15,0.28)";
+      ctx.fillRect(0, 0, cssWidth, cssHeight);
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(cx, cy);
+
+      drawThermoField(t, radius);
+      drawElectroField(t, radius * 0.75);
+      drawStringField(t, radius * 0.9);
+      drawGeometryEngine(t, radius * 0.55);
+      drawBnOrbits(t, radius * 0.62);
+      draw2741Core(t, radius * 0.2);
+
+      ctx.restore();
+
+      requestAnimationFrame(drawFrame);
+    }
+
+    function drawElectroField(t, r) {
+      const loops = 3;
+      const segments = 260;
+      ctx.save();
+      ctx.strokeStyle = "rgba(60,214,255,0.85)";
+      ctx.lineWidth = 1.2;
+      ctx.globalCompositeOperation = "screen";
+
+      for (let k = 0; k < loops; k++) {
+        const phase = t * 0.8 + (k * Math.PI * 2) / loops;
+        ctx.beginPath();
+        for (let i = 0; i <= segments; i++) {
+          const a = (i / segments) * Math.PI * 2;
+          const wobble = 0.13 * Math.sin(4 * a + phase);
+          const rr = r * (0.6 + 0.25 * Math.sin(a * 2 + phase) + wobble);
+          const x = rr * Math.cos(a);
+          const y = rr * Math.sin(a);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawThermoField(t, r) {
+      ctx.save();
+      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, r * 0.9);
+      const pulse = 0.3 + 0.2 * Math.sin(t * 1.2);
+      grad.addColorStop(0, `rgba(255,122,60,${0.55 + pulse * 0.4})`);
+      grad.addColorStop(0.35, "rgba(255,122,60,0.15)");
+      grad.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = grad;
+      ctx.globalCompositeOperation = "lighter";
+      ctx.beginPath();
+      ctx.arc(0, 0, r * (0.4 + 0.1 * Math.sin(t * 0.8 + 1.3)), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawStringField(t, r) {
+      ctx.save();
+      ctx.globalCompositeOperation = "screen";
+      ctx.lineWidth = 0.85;
+      ctx.strokeStyle = "rgba(255,60,127,0.7)";
+      const strands = 18;
+      for (let s = 0; s < strands; s++) {
+        const angle = (s / strands) * Math.PI * 2;
+        ctx.beginPath();
+        for (let i = 0; i <= 100; i++) {
+          const u = i / 100;
+          const w = 0.1 * Math.sin(18 * u + t * 5 + s * 0.5);
+          const rr = r * (0.35 + 0.55 * u + w);
+          const a = angle + (u - 0.5) * 0.6;
+          const x = rr * Math.cos(a);
+          const y = rr * Math.sin(a);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawGeometryEngine(t, r) {
+      ctx.save();
+      ctx.rotate(t * 0.2);
+      ctx.globalCompositeOperation = "lighter";
+      const layers = 3;
+      for (let L = 0; L < layers; L++) {
+        const sides = 5 + L * 2;
+        const rot = t * (0.15 + L * 0.08);
+        const rr = r * (0.5 + 0.18 * L);
+        ctx.beginPath();
+        for (let i = 0; i <= sides; i++) {
+          const a = (i / sides) * Math.PI * 2 + rot;
+          const x = rr * Math.cos(a);
+          const y = rr * Math.sin(a);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(249,211,106,${0.9 - L * 0.25})`;
+        ctx.lineWidth = 1.1 - L * 0.2;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawBnOrbits(t, r) {
+      ctx.save();
+      ctx.globalCompositeOperation = "screen";
+      const pts = 60;
+      for (let ring = 0; ring < 2; ring++) {
+        const phase = t * (0.6 + 0.2 * ring);
+        for (let i = 0; i < pts; i++) {
+          const a = (i / pts) * Math.PI * 2 + phase * (ring ? -1 : 1);
+          const wobble = 0.12 * Math.sin(3 * a + phase * 2);
+          const rr = r * (1 + wobble * (ring ? -0.6 : 0.6));
+          const x = rr * Math.cos(a);
+          const y = rr * Math.sin(a);
+          const pulse = 0.35 + 0.3 * Math.sin(t * 4 + i * 0.4);
+          ctx.fillStyle = `rgba(155,91,255,${0.35 + pulse * 0.4})`;
+          ctx.beginPath();
+          ctx.arc(x, y, 2.4 + pulse * 1.3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      ctx.restore();
+    }
+
+    function draw2741Core(t, r) {
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
+      const spin = t * 0.7;
+
+      ctx.strokeStyle = "rgba(249,211,106,0.95)";
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a = spin + (i / 5) * Math.PI * 2;
+        const x = r * Math.cos(a);
+        const y = r * Math.sin(a);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, r * 1.25, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(249,211,106,0.4)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = "rgba(249,211,106,0.95)";
+      ctx.font = "bold 18px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("2741", 0, 0);
+
+      ctx.restore();
+    }
+
+    requestAnimationFrame(drawFrame);
+
+    // WebM capture
+    const startBtn = document.getElementById("startRecBtn");
+    const stopBtn = document.getElementById("stopRecBtn");
+    const statusLabel = document.getElementById("statusLabel");
+    const downloadLink = document.getElementById("downloadLink");
+    const noDownloadLabel = document.getElementById("noDownloadLabel");
+
+    let mediaRecorder = null;
+    let recordedChunks = [];
+    let captureStream = null;
+
+    function updateStatus(text) {
+      statusLabel.textContent = text;
+    }
+
+    startBtn.addEventListener("click", () => {
+      if (mediaRecorder && mediaRecorder.state === "recording") return;
+
+      if (!canvas.captureStream) {
+        updateStatus("Canvas captureStream() not supported in this browser.");
+        return;
+      }
+
+      const fps = 60;
+      captureStream = canvas.captureStream(fps);
+
+      let options = { mimeType: "video/webm;codecs=vp9" };
+      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+        options = { mimeType: "video/webm;codecs=vp8" };
+      }
+      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+        options = { mimeType: "video/webm" };
+      }
+
+      try {
+        mediaRecorder = new MediaRecorder(captureStream, options);
+      } catch (err) {
+        console.error(err);
+        updateStatus("MediaRecorder not available in this browser.");
+        return;
+      }
+
+      recordedChunks = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+          recordedChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(recordedChunks, { type: "video/webm" });
+        const url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "funebra-unified-physics.webm";
+        downloadLink.style.display = "inline";
+        noDownloadLabel.style.display = "none";
+        updateStatus("Recording finished. WebM ready for download.");
+      };
+
+      mediaRecorder.start();
+      updateStatus("Recording… capturing Funebra field to WebM.");
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+    });
+
+    stopBtn.addEventListener("click", () => {
+      if (mediaRecorder && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+        captureStream.getTracks().forEach((track) => track.stop());
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>
