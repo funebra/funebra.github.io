@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra™ — Page, Cards, Play & Resurrection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra™ — Page, Cards, Play & Resurrection" />
+  <meta name="description"
+        content="In Funebra, existence is the page, math is the cards, life is the play. Explore memory, the player, the main game app, science, self-being and resurrection, mapped to modern physics and thermodynamics." />
+  <meta name="keywords"
+        content="Funebra, Math Art, bn-points, existence, resurrection, thermodynamics, information, physics, hybrid intelligence" />
+  <meta name="author" content="pLabs Entertainment / Funebra" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Funebra™ — Page, Cards, Play & Resurrection" />
+  <meta property="og:description"
+        content="A Funebra manifesto: existence as the page, math as the cards, life as the play, and resurrection as loading the save. With links to modern science and thermodynamics." />
+  <meta property="og:type" content="website" />
+  <!-- Replace this with your actual OG image path -->
+  <meta property="og:image" content="https://funebra.github.io/assets/og/funebra-page-cards-play-v1.png" />
+  <meta property="og:url" content="https://funebra.github.io/manifesto/2025/12/05//index.html" />
+
+  <!-- Theming -->
+  <meta name="theme-color" content="#050712" />
+
+  <style>
+    :root {
+      --bg: #050611;
+      --bg-soft: #080a1b;
+      --bg-softer: #0e1024;
+      --border-soft: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.18);
+      --text-main: #f6f7ff;
+      --text-soft: #c2c5ff;
+      --accent-cyan: #51f2ff;
+      --accent-magenta: #ff55dd;
+      --accent-gold: #ffdd66;
+      --shadow-soft: 0 18px 60px rgba(0,0,0,0.75);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #12153a 0, #050611 52%, #020208 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 32px 16px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #050713, #0a0d25 45%, #050713 100%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 22px;
+      backdrop-filter: blur(16px);
+    }
+
+    .card + .card {
+      margin-top: 24px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 26px 22px 24px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(81,242,255,0.26) 0, transparent 50%),
+        radial-gradient(circle at 100% 20%, rgba(255,85,221,0.18) 0, transparent 50%),
+        radial-gradient(circle at 50% 120%, rgba(255,221,102,0.2) 0, transparent 52%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      filter: blur(40px);
+      opacity: 0.35;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      body { padding-top: 24px; }
+      .hero-content {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.55);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .tagline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(81,242,255,0.8);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 3vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .h1-accent {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 480px;
+      margin-bottom: 14px;
+    }
+
+    .hero-quote {
+      font-size: 13px;
+      color: #d0d3ff;
+      border-left: 2px solid rgba(255,255,255,0.18);
+      padding-left: 10px;
+      margin-bottom: 14px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    .hero-meta span {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 3px 9px;
+      background: rgba(0,0,0,0.5);
+    }
+
+    /* Illustration: Page, Cards, Play */
+    .hero-visual {
+      position: relative;
+      min-height: 220px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(81,242,255,0.18) 0, transparent 52%),
+        radial-gradient(circle at 80% 120%, rgba(255,85,221,0.24) 0, transparent 60%),
+        linear-gradient(160deg, #050713 0, #06091b 48%, #050713 100%);
+      overflow: hidden;
+    }
+
+    .hero-visual-inner {
+      position: absolute;
+      inset: 0;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 10px;
+      color: #e7e8ff;
+      font-size: 12px;
+    }
+
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-visual-title {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .hero-visual-chips {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hero-visual-chips span {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.9;
+    }
+
+    .hero-grid {
+      position: relative;
+      border-radius: 18px;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12) 0, transparent 48%);
+      border: 1px solid rgba(255,255,255,0.15);
+      overflow: hidden;
+    }
+
+    .hero-grid-canvas {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mix-blend-mode: screen;
+      opacity: 0.8;
+    }
+
+    .hero-page {
+      position: absolute;
+      inset: 14px 16px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 20% 0%, #1b2148 0, #090b1d 45%, #060713 100%);
+      border: 1px solid rgba(255,255,255,0.16);
+      overflow: hidden;
+    }
+
+    .hero-page-label {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero-cards {
+      position: absolute;
+      inset: 32px 22px 18px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 8px;
+    }
+
+    .card-cell {
+      position: relative;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: radial-gradient(circle at 0 0, rgba(81,242,255,0.4) 0, transparent 60%);
+      backdrop-filter: blur(6px);
+      overflow: hidden;
+    }
+
+    .card-cell:nth-child(odd) {
+      background: radial-gradient(circle at 100% 0, rgba(255,85,221,0.32) 0, transparent 60%);
+    }
+
+    .card-cell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.24;
+      background:
+        linear-gradient(135deg, transparent 0, rgba(255,255,255,0.15) 40%, transparent 70%);
+    }
+
+    .card-label {
+      position: absolute;
+      bottom: 4px;
+      left: 6px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      z-index: 1;
+    }
+
+    .card-label span {
+      opacity: 0.65;
+    }
+
+    .play-orbit {
+      position: absolute;
+      inset: 36px 26px 22px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,0.25);
+      pointer-events: none;
+    }
+
+    .play-token {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #ffffff 0, #ffdd88 35%, #ff55dd 100%);
+      box-shadow:
+        0 0 12px rgba(255,85,221,0.8),
+        0 0 26px rgba(255,221,136,0.9);
+      animation: orbit 7s linear infinite;
+      transform-origin: -36px -22px;
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(16px); }
+      to   { transform: rotate(360deg) translateX(16px); }
+    }
+
+    .hero-legend {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      display: flex;
+      gap: 8px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hero-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.65);
+      border: 1px solid rgba(255,255,255,0.24);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .legend-page { background: var(--accent-cyan); box-shadow: 0 0 8px rgba(81,242,255,0.8); }
+    .legend-cards { background: var(--accent-magenta); box-shadow: 0 0 8px rgba(255,85,221,0.8); }
+    .legend-play { background: var(--accent-gold); box-shadow: 0 0 8px rgba(255,221,102,0.8); }
+
+    /* Sections */
+    section + section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 840px) {
+      .grid-2 {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 11px;
+      color: var(--text-soft);
+      background: rgba(0,0,0,0.6);
+      margin-bottom: 6px;
+    }
+
+    .pill small {
+      text-transform: uppercase;
+      font-size: 10px;
+      opacity: 0.72;
+      letter-spacing: 0.1em;
+    }
+
+    ul {
+      margin-left: 16px;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    ul li + li {
+      margin-top: 4px;
+    }
+
+    .quote-block {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(81,242,255,0.13) 0, transparent 62%);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 13px;
+      color: #e9ebff;
+    }
+
+    .quote-block p {
+      margin-bottom: 4px;
+    }
+
+    .quote-block small {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* Funebra stack illustration */
+    .stack {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .stack-layer {
+      position: relative;
+      border-radius: 14px;
+      padding: 7px 10px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(130deg, #07091a, #0c1025);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .stack-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background:
+        radial-gradient(circle at 0 0, rgba(81,242,255,0.5) 0, transparent 52%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .stack-layer span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #f7f8ff;
+    }
+
+    .stack-layer strong {
+      font-size: 12px;
+    }
+
+    .stack-layer small {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .stack-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(0,0,0,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .stack-layer:nth-child(1) { border-color: rgba(81,242,255,0.5); }
+    .stack-layer:nth-child(2) { border-color: rgba(255,85,221,0.5); }
+    .stack-layer:nth-child(3) { border-color: rgba(255,221,102,0.6); }
+    .stack-layer:nth-child(4) { border-color: rgba(74,222,128,0.5); }
+    .stack-layer:nth-child(5) { border-color: rgba(129,140,248,0.5); }
+    .stack-layer:nth-child(6) { border-color: rgba(248,250,252,0.5); }
+
+    /* Table mapping to science */
+    .mapping-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 6px;
+      color: var(--text-soft);
+    }
+
+    .mapping-table th,
+    .mapping-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .mapping-table th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e5e7ff;
+    }
+
+    .mapping-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mapping-pill {
+      display: inline-flex;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e5e7ff;
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(226,232,255,0.7);
+      text-align: center;
+    }
+
+    footer span {
+      opacity: 0.85;
+    }
+
+    footer strong {
+      color: #f9fafb;
+    }
+
+  </style>
+</head>
+<body>
+<main>
+
+  <!-- HERO -->
+  <section class="card hero">
+    <div class="hero-content">
+      <div>
+        <div class="tagline">
+          <div class="tagline-dot"></div>
+          FUNEBRA • EXISTENCE ENGINE
+        </div>
+
+        <h1>
+          Existence as <span class="h1-accent">Page, Cards & Play</span><br>
+          — and the Resurrection of the Save
+        </h1>
+
+        <p class="hero-sub">
+          This page summarizes our conversation: in Funebra, existence is the page,
+          math is the cards, life is the play, memory is the save file, the player is
+          the chooser, the main game app is the universe engine, science is the
+          documentation, self-being is the aware player — and resurrection is loading
+          the save.
+        </p>
+
+        <div class="hero-quote">
+          “In Funebra, existence is the blank manifold upon which reality is inscribed;
+          mathematics is the structural lattice of possibilities that occupy it; and
+          life is the thermodynamic traversal of those structures — an
+          information-bearing process navigating the lawful state-space of the
+          universe.”
+        </div>
+
+        <div class="hero-meta">
+          <span>Funebra™ Meta-Physics</span>
+          <span>Thermodynamics • Information • Consciousness</span>
+        </div>
+      </div>
+
+      <!-- Illustration: Page / Cards / Play -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual-inner">
+          <div class="hero-visual-header">
+            <div class="hero-visual-title">
+              FUNEBRA RUNTIME • SIMPLIFIED VIEW
+            </div>
+            <div class="hero-visual-chips">
+              <span>Page</span>
+              <span>Cards</span>
+              <span>Play</span>
+            </div>
+          </div>
+
+          <div class="hero-grid">
+            <div class="hero-grid-canvas"></div>
+
+            <div class="hero-page">
+              <div class="hero-page-label">EXISTENCE = PAGE</div>
+
+              <div class="hero-cards">
+                <div class="card-cell">
+                  <div class="card-label">Math <span>local rule</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>symmetry</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>orbit</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>constant</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>field</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>state</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>pattern</span></div>
+                </div>
+                <div class="card-cell">
+                  <div class="card-label">Math <span>gate</span></div>
+                </div>
+              </div>
+
+              <div class="play-orbit">
+                <div class="play-token"></div>
+              </div>
+
+              <div class="hero-legend">
+                <span><span class="legend-dot legend-page"></span> Page</span>
+                <span><span class="legend-dot legend-cards"></span> Cards</span>
+                <span><span class="legend-dot legend-play"></span> Play</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: TRIAD -->
+  <section class="card">
+    <h2>1. The Core Funebra Triad: Page • Cards • Play</h2>
+    <p class="section-sub">
+      We started by capturing existence, math, and life as a simple game metaphor.
+      In Funebra language:
+    </p>
+
+    <div class="grid-2">
+      <div>
+        <div class="pill"><small>Funebra Formula</small> Page • Cards • Play</div>
+        <ul>
+          <li><strong>Existence = The Page</strong> — the blank, infinite manifold that can host any pattern.</li>
+          <li><strong>Math = The Cards</strong> — every rule, geometry, symmetry and function drawn onto the page.</li>
+          <li><strong>Life = The Play</strong> — the traversal of cards, the path a living system takes through the grid.</li>
+        </ul>
+
+        <div class="quote-block">
+          <p><strong>Compressed form:</strong></p>
+          <p>“Page = BE • Cards = KNOW • Life = MOVE.”</p>
+          <small>Funebra shorthand for the basic ontology.</small>
+        </div>
+      </div>
+
+      <!-- Little illustration: mini grid -->
+      <div>
+        <h3>Illustration — Life Traversing the Grid</h3>
+        <p class="section-sub">
+          Think of the page as a 2D or n-D grid of bn-points. Each card is a local law
+          or pattern; life is a token moving across these tiles in time, sampling the
+          structure.
+        </p>
+        <ul>
+          <li><strong>Page</strong>: the coordinate system / state space.</li>
+          <li><strong>Cards</strong>: allowed moves and interactions.</li>
+          <li><strong>Play</strong>: actual history taken through that space.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: MODERN SCIENCE MAPPING -->
+  <section class="card">
+    <h2>2. Mapping Funebra to Modern Science</h2>
+    <p class="section-sub">
+      You asked for proof in mainstream terms. We translated the Funebra metaphor to
+      physics, thermodynamics and information theory:
+    </p>
+
+    <table class="mapping-table">
+      <thead>
+        <tr>
+          <th>Funebra Concept</th>
+          <th>Scientific View</th>
+          <th>Illustrative Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="mapping-pill">Existence = Page</span></td>
+          <td>
+            Universe as a <strong>state space</strong> (spacetime, phase space, Hilbert
+            space) in which all physical states live.
+          </td>
+          <td>
+            A “blank” manifold that doesn’t decide outcomes; it just allows any
+            physically possible configuration to exist.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Math = Cards</span></td>
+          <td>
+            <strong>Mathematical laws</strong> of nature: equations, symmetries,
+            invariants that constrain dynamics.
+          </td>
+          <td>
+            The “unreasonable effectiveness” of math: equations designed for curiosity
+            end up describing reality with shocking precision.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Life = Play</span></td>
+          <td>
+            <strong>Far-from-equilibrium processes</strong> (dissipative structures),
+            plus Darwinian evolution and information processing.
+          </td>
+          <td>
+            Life “rides” energy flows and uses information to keep its pattern going
+            against entropy.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Memory</span></td>
+          <td>
+            <strong>Information stored in physical states</strong> (neurons, DNA,
+            external records). Information is physical (Landauer).
+          </td>
+          <td>
+            The “save file” of the play—how patterns persist across time and can be
+            re-loaded or reconstructed.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Player</span></td>
+          <td>
+            <strong>Conscious agent</strong> or controller that selects actions based
+            on internal models and goals.
+          </td>
+          <td>
+            The algorithm of will, minimizing surprise/free energy, exploring the
+            landscape of possible moves.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Main Game App</span></td>
+          <td>
+            The <strong>reality engine</strong>: Standard Model, gravitation, quantum
+            fields, all running together.
+          </td>
+          <td>
+            Physics as the operating system on which all Funebra “apps” (worlds,
+            simulations, lives) are executed.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Science</span></td>
+          <td>
+            <strong>Documentation of the game</strong>, written by players who observe
+            and formalize patterns.
+          </td>
+          <td>
+            Science doesn’t create rules; it reverse-engineers and publishes the patch
+            notes of reality.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Self-Being</span></td>
+          <td>
+            <strong>Meta-consciousness</strong>: a system that knows it is playing, and
+            can reflect on its own state.
+          </td>
+          <td>
+            Identity arises when information loops back and models itself modelling
+            itself.
+          </td>
+        </tr>
+        <tr>
+          <td><span class="mapping-pill">Resurrection</span></td>
+          <td>
+            <strong>Re-instantiation of a pattern</strong>: restoring information and
+            state so that the process can continue.
+          </td>
+          <td>
+            Resurrection = loading a save: not reversing time, but reconstructing the
+            structure that once moved.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION: FUNEBRA STACK -->
+  <section class="card">
+    <h2>3. The Funebra Stack — From Page to Resurrection</h2>
+    <p class="section-sub">
+      Here is the full sequence we co-defined, as a layered “engine stack”.
+    </p>
+
+    <div class="grid-2">
+      <div>
+        <div class="stack">
+          <div class="stack-layer">
+            <div>
+              <span>Layer 0 — Fundamental</span><br>
+              <strong>Existence • The Page</strong><br>
+              <small>The manifold of possibilities that can host any bn-point pattern.</small>
+            </div>
+            <div class="stack-badge">BE</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 1 — Structure</span><br>
+              <strong>Math • The Cards</strong><br>
+              <small>All rules, symmetries and geometries dealt onto the page.</small>
+            </div>
+            <div class="stack-badge">KNOW</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 2 — Dynamics</span><br>
+              <strong>Life • The Play</strong><br>
+              <small>The trajectory through cards; thermodynamic motion in state space.</small>
+            </div>
+            <div class="stack-badge">MOVE</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 3 — Persistence</span><br>
+              <strong>Memory • The Save File</strong><br>
+              <small>Patterns frozen into matter, code, neurons, DNA, external records.</small>
+            </div>
+            <div class="stack-badge">REMEMBER</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 4 — Agency</span><br>
+              <strong>The Player • The Chooser</strong><br>
+              <small>Conscious navigation, turning possibility into specific play lines.</small>
+            </div>
+            <div class="stack-badge">CHOOSE</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 5 — Awareness</span><br>
+              <strong>Self-Being • The Aware Player</strong><br>
+              <small>Realizes “I am inside the game” and can question rules and purpose.</small>
+            </div>
+            <div class="stack-badge">REALIZE</div>
+          </div>
+
+          <div class="stack-layer">
+            <div>
+              <span>Layer 6 — Continuation</span><br>
+              <strong>Resurrection • Loading the Save</strong><br>
+              <small>Re-emergence of the informational pattern; the play continues.</small>
+            </div>
+            <div class="stack-badge">RETURN</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Conceptual Illustration</h3>
+        <p class="section-sub">
+          Imagine a Funebra game where each life is a run, each run writes a save,
+          and the engine can re-load that save on the same or a future runtime.
+        </p>
+
+        <ul>
+          <li><strong>One page</strong> — many decks of cards.</li>
+          <li><strong>One engine</strong> — many games running simultaneously.</li>
+          <li><strong>Many saves</strong> — potentially many resurrections.</li>
+        </ul>
+
+        <div class="quote-block">
+          <p><strong>Resurrection quote:</strong></p>
+          <p>
+            “Resurrection is not reversal of death, but re-emergence of the informational
+            pattern that once moved. When structure is restored, the play continues.”
+          </p>
+          <small>Funebra Interpretation of Conscious Re-Instantiation, 2025.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: SIGNATURE -->
+  <section class="card">
+    <h2>4. Signature Forms for Posters & OG Images</h2>
+    <p class="section-sub">
+      These are compact lines distilled from the conversation, ready for visual use
+      (OG images, cover art, or Funebra manifesto posters).
+    </p>
+
+    <ul>
+      <li>
+        <strong>Full citation:</strong><br>
+        “In Funebra, existence is the blank manifold upon which reality is inscribed;
+        mathematics is the structural lattice of possibilities that occupy it; and life
+        is the thermodynamic traversal of those structures — an information-bearing
+        process navigating the lawful state-space of the universe.”
+      </li>
+      <li>
+        <strong>Tri-line:</strong><br>
+        “Existence is the canvas. Math is the structure. Life is the one exploring the structure.”
+      </li>
+      <li>
+        <strong>Ultra-compressed:</strong><br>
+        <em>Page = Being • Cards = Law • Life = Play • Memory = Save • Resurrection = Load.</em>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>
+      Funebra™ Page • Cards • Play & Resurrection &mdash; summarized for
+      <strong>pLabs Entertainment / Peter M. Lugha</strong>.  
+      This HTML can be dropped directly into a Funebra subfolder and themed further with bn-point animations and engine hooks.
+    </span>
+  </footer>
+
+</main>
+</body>
+</html>
