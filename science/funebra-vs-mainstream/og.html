@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OG Render — Funebra Science vs Mainstream</title>
+<style>
+body {
+  margin: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 640px;
+  overflow: hidden;
+}
+canvas {
+  background: #050712;
+  box-shadow: 0 0 50px #000 inset;
+}
+</style>
+</head>
+<body>
+
+<canvas id="og" width="1200" height="630"></canvas>
+
+<script>
+const c = og.getContext("2d");
+
+// BG gradient
+let g = c.createLinearGradient(0,0,1200,630);
+g.addColorStop(0,"#0b0f2d");
+g.addColorStop(0.48,"#11173a");
+g.addColorStop(0.52,"#080b20");
+g.addColorStop(1,"#050712");
+c.fillStyle = g;
+c.fillRect(0,0,1200,630);
+
+// FUNEBRA GRID (left half)
+c.strokeStyle="rgba(80,120,255,0.35)";
+for(let x=60;x<560;x+=40){ c.beginPath(); c.moveTo(x,60); c.lineTo(x,570); c.stroke(); }
+for(let y=60;y<570;y+=40){ c.beginPath(); c.moveTo(60,y); c.lineTo(560,y); c.stroke(); }
+
+// bn-points
+const pts=[[140,200],[260,340],[310,160],[430,460],[500,280]];
+c.fillStyle="#35f1ff";
+pts.forEach(p=>{ c.beginPath(); c.arc(p[0],p[1],8,0,9); c.fill(); });
+
+// bn-connection path
+c.strokeStyle="#ff3fb8";
+c.lineWidth=4;
+c.beginPath();
+c.moveTo(140,200);
+c.quadraticCurveTo(210,120,310,160);
+c.quadraticCurveTo(380,240,500,280);
+c.stroke();
+
+// SPACETIME CURVE (right)
+c.strokeStyle="rgba(255,200,87,0.85)";
+c.lineWidth=3;
+c.beginPath();
+c.moveTo(700,180);
+c.bezierCurveTo(900,80,1080,80,1150,180);
+c.bezierCurveTo(1180,320,1180,420,1100,500);
+c.bezierCurveTo(950,600,780,600,700,480);
+c.bezierCurveTo(640,380,640,310,700,180);
+c.stroke();
+
+// MASS WARP CORE
+c.beginPath();
+c.arc(920,350,45,0,7);
+c.fillStyle="#ffc857";
+c.fill();
+
+// TEXT — Title
+c.fillStyle="#fff";
+c.font="bold 50px Segoe UI";
+c.fillText("Funebra™ Science", 80,100);
+c.fillText("vs Mainstream Physics", 80,160);
+
+// Tagline
+c.font="24px Segoe UI";
+c.fillStyle="#a9b5ff";
+c.fillText("Two views of Reality — Canvas vs Continuum", 80,210);
+
+// 2741 Mark
+c.font="700 40px Consolas";
+c.fillStyle="#ff3fb8";
+c.fillText("2741",80,565);
+
+</script>
+</body>
+</html>
