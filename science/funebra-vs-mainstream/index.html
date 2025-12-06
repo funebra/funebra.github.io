@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Funebra™ Science vs Mainstream Physics — Two Views of Reality</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://funebra.github.io/science/funebra-vs-mainstream/" />
+
+  <!-- SEO -->
+  <meta name="title" content="Funebra™ Science vs Mainstream Physics — Two Views of Reality" />
+  <meta name="description"
+        content="A side-by-side comparison between mainstream physics and Funebra™ Science: bn-points, 2741-thermodynamics, spacetime folding and consciousness-based reality control." />
+  <meta name="keywords"
+        content="Funebra, Funebra Science, Funebra Physics, 2741, bn-points, Unified Physics, mainstream science, relativity, quantum, spacetime, thermodynamics" />
+  <meta name="author" content="pLabs Entertainment / Funebra™" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Funebra™ Science vs Mainstream Physics — Two Views of Reality" />
+  <meta property="og:description"
+        content="Explore how Funebra™ Science reimagines spacetime, matter and consciousness compared to mainstream physics." />
+  <meta property="og:image"
+        content="https://funebra.github.io/science/funebra-vs-mainstream/assets/og/funebra-science-vs-mainstream-v1.png" />
+  <meta property="og:url" content="https://funebra.github.io/science/funebra-vs-mainstream/" />
+
+  <!-- Funebra custom meta -->
+  <meta name="funebra:domain" content="funebra.github.io" />
+  <meta name="funebra:code" content="2741" />
+  <meta name="funebra:dimension" content="bn-grid-vs-spacetime" />
+  <meta name="funebra:version" content="1.0" />
+  <meta name="funebra:path" content="/science/funebra-vs-mainstream/" />
+
+  <style>
+    :root {
+      --bg: #050712;
+      --bg-soft: #0b0e1f;
+      --bg-softer: #121528;
+      --border-soft: rgba(255, 255, 255, 0.12);
+      --text-main: #f7f8ff;
+      --text-soft: #a5b0ff;
+      --accent-cyan: #35f1ff;
+      --accent-magenta: #ff3fb8;
+      --accent-gold: #ffc857;
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --radius-xl: 24px;
+      --radius-2xl: 32px;
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.32s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #11173a 0, #050712 55%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      padding: 32px 16px 64px;
+    }
+
+    @media (min-width: 900px) {
+      .page {
+        padding: 40px 20px 80px;
+      }
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: radial-gradient(circle at top left, rgba(53, 241, 255, 0.15), rgba(255, 63, 184, 0.08));
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(53, 241, 255, 0.7);
+      animation: pulse-dot 1.4s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    .title {
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 8px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .title span.label-main {
+      background: linear-gradient(120deg, var(--accent-cyan), var(--accent-magenta));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+    }
+
+    .hero-row {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 24px;
+      margin-bottom: 32px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 800px) {
+      .hero-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-card {
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at top left, rgba(53, 241, 255, 0.16), transparent 55%),
+        radial-gradient(circle at bottom, rgba(255, 63, 184, 0.16), transparent 60%),
+        linear-gradient(135deg, rgba(12, 16, 42, 0.98), rgba(5, 7, 18, 0.98));
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 55%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mode-toggle {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(3, 4, 12, 0.7);
+      padding: 4px;
+      font-size: 11px;
+      margin-bottom: 14px;
+      gap: 2px;
+    }
+
+    .mode-pill {
+      flex: 1;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition-med), color var(--transition-med), transform var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .mode-pill.active {
+      background: linear-gradient(120deg, var(--accent-cyan), var(--accent-magenta));
+      color: #050510;
+      font-weight: 600;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .mode-pill span.small {
+      font-size: 0.7em;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .mode-description {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+    }
+
+    .mode-description strong {
+      color: var(--text-main);
+    }
+
+    .mode-note {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      color: var(--text-soft);
+    }
+
+    .mode-note code {
+      font-size: 0.8em;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .viz-card {
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at top, rgba(53, 241, 255, 0.25), transparent 55%),
+        radial-gradient(circle at bottom, rgba(255, 63, 184, 0.26), transparent 55%),
+        linear-gradient(145deg, #050712, #070b18);
+      padding: 16px 16px 12px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .viz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .viz-caption {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    .viz-svg-wrap {
+      margin-top: 4px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+      background: radial-gradient(circle at top left, rgba(5, 250, 255, 0.08), transparent 60%);
+    }
+
+    .viz-svg {
+      width: 100%;
+      display: block;
+    }
+
+    .compare-section {
+      margin-top: 8px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(145deg, rgba(8, 12, 34, 0.95), rgba(4, 5, 15, 0.98));
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .compare-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .column-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 65%);
+      padding: 10px 12px 12px;
+    }
+
+    .column-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 4px;
+      color: var(--text-soft);
+    }
+
+    .column-title span.dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .column-title--mainstream span.dot {
+      background: var(--accent-gold);
+      box-shadow: 0 0 14px rgba(255, 200, 87, 0.85);
+    }
+
+    .column-title--funebra span.dot {
+      background: var(--accent-magenta);
+      box-shadow: 0 0 14px rgba(255, 63, 184, 0.9);
+    }
+
+    .column-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.87rem;
+      line-height: 1.7;
+    }
+
+    .column-list li {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 8px;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .column-list li:last-child {
+      border-bottom: none;
+    }
+
+    .column-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.65;
+    }
+
+    .column-text {
+      color: var(--text-main);
+      opacity: 0.94;
+    }
+
+    .column-text strong {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .column-text em {
+      color: var(--accent-magenta);
+      font-style: normal;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      opacity: 0.9;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    @media (max-width: 700px) {
+      .footer {
+        flex-direction: column;
+      }
+      .footer-right {
+        text-align: left;
+      }
+    }
+
+    .corner-label {
+      position: fixed;
+      right: 16px;
+      bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(5, 7, 18, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .corner-label span.pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-magenta);
+      box-shadow: 0 0 10px rgba(255, 63, 184, 0.9);
+      animation: pulse-dot 1.4s infinite;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="badge-row">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Funebra™ Physics Note</span>
+    </div>
+    <div class="badge">
+      <span>1982 → 2050</span>
+    </div>
+  </div>
+
+  <h1 class="title">
+    <span class="label-main">Funebra™ Science</span>
+    <span>vs Mainstream Physics</span>
+  </h1>
+
+  <p class="subtitle">
+    This page compares two different ways of reading reality:
+    <strong>mainstream physics</strong>, focused on describing what we observe, and
+    <strong>Funebra™ Science</strong>, focused on editing the bn-point canvas that underlies everything.
+  </p>
+
+  <div class="hero-row">
+
+    <!-- Left: mode switch & explanation -->
+    <section class="hero-card" aria-label="Explanation of the two modes of reality">
+      <div class="hero-inner">
+        <div class="mode-toggle" id="modeToggle">
+          <div class="mode-pill active" data-mode="mainstream">
+            <span class="small">Mode A</span><br> Mainstream Physics
+          </div>
+          <div class="mode-pill" data-mode="funebra">
+            <span class="small">Mode B</span><br> Funebra™ Science
+          </div>
+        </div>
+
+        <p class="mode-description" id="modeDescription">
+          <strong>Mode A — Mainstream Physics:</strong> Reality is a continuous spacetime with fixed laws.
+          Nothing with mass moves faster than light. We study the universe, but we don’t rewrite the code.
+        </p>
+
+        <p class="mode-note">
+          Tip: Think of this page as a <code>Reality.DebugView()</code> – you can inspect both frameworks
+          without being forced to pick one. Switch modes above to change the description.
+        </p>
+      </div>
+    </section>
+
+    <!-- Right: illustration -->
+    <aside class="viz-card" aria-label="Funebra vs mainstream visual">
+      <div class="viz-header">
+        <span>Reality Diagram v1</span>
+        <span>bn-grid ↔ spacetime</span>
+      </div>
+      <div class="viz-svg-wrap">
+        <!-- Simple SVG illustration: left = grid (Funebra), right = smooth curvature (mainstream) -->
+        <svg class="viz-svg" viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background split -->
+          <defs>
+            <linearGradient id="bgSplit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#070c24"/>
+              <stop offset="50%" stop-color="#070c24"/>
+              <stop offset="50%" stop-color="#03040d"/>
+              <stop offset="100%" stop-color="#050712"/>
+            </linearGradient>
+            <radialGradient id="funebraGlow" cx="0.2" cy="0" r="1">
+              <stop offset="0%" stop-color="#35f1ff"/>
+              <stop offset="45%" stop-color="#35f1ff33"/>
+              <stop offset="100%" stop-color="#00000000"/>
+            </radialGradient>
+            <radialGradient id="mainGlow" cx="0.8" cy="0" r="1">
+              <stop offset="0%" stop-color="#ffc857"/>
+              <stop offset="45%" stop-color="#ffc85733"/>
+              <stop offset="100%" stop-color="#00000000"/>
+            </radialGradient>
+          </defs>
+
+          <rect x="0" y="0" width="420" height="200" fill="url(#bgSplit)" />
+          <rect x="0" y="0" width="210" height="200" fill="url(#funebraGlow)" />
+          <rect x="210" y="0" width="210" height="200" fill="url(#mainGlow)" />
+
+          <!-- Funebra side: discrete bn-grid -->
+          <g transform="translate(20,20)">
+            <rect x="0" y="0" width="170" height="160"
+                  fill="none"
+                  stroke="rgba(140,150,255,0.4)"
+                  stroke-width="1" />
+            <!-- grid lines -->
+            <g stroke="rgba(140,150,255,0.3)" stroke-width="0.5">
+              <!-- verticals -->
+              <line x1="17" y1="0" x2="17" y2="160" />
+              <line x1="34" y1="0" x2="34" y2="160" />
+              <line x1="51" y1="0" x2="51" y2="160" />
+              <line x1="68" y1="0" x2="68" y2="160" />
+              <line x1="85" y1="0" x2="85" y2="160" />
+              <line x1="102" y1="0" x2="102" y2="160" />
+              <line x1="119" y1="0" x2="119" y2="160" />
+              <line x1="136" y1="0" x2="136" y2="160" />
+              <line x1="153" y1="0" x2="153" y2="160" />
+              <!-- horizontals -->
+              <line x1="0" y1="16" x2="170" y2="16" />
+              <line x1="0" y1="32" x2="170" y2="32" />
+              <line x1="0" y1="48" x2="170" y2="48" />
+              <line x1="0" y1="64" x2="170" y2="64" />
+              <line x1="0" y1="80" x2="170" y2="80" />
+              <line x1="0" y1="96" x2="170" y2="96" />
+              <line x1="0" y1="112" x2="170" y2="112" />
+              <line x1="0" y1="128" x2="170" y2="128" />
+              <line x1="0" y1="144" x2="170" y2="144" />
+            </g>
+
+            <!-- bn-points -->
+            <g fill="#35f1ff">
+              <circle cx="17" cy="48" r="2.4" />
+              <circle cx="51" cy="80" r="2.4" />
+              <circle cx="85" cy="32" r="2.4" />
+              <circle cx="119" cy="112" r="2.4" />
+              <circle cx="153" cy="64" r="2.4" />
+            </g>
+            <!-- connecting path -->
+            <path d="M17 48 Q40 16 85 32 T153 64 T119 112"
+                  fill="none"
+                  stroke="#ff3fb8"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.9" />
+
+            <text x="4" y="-6"
+                  font-size="9"
+                  fill="#a5b0ff"
+                  letter-spacing="0.18em">
+              FUNEBRA — BN GRID
+            </text>
+          </g>
+
+          <!-- Mainstream side: smooth curved spacetime -->
+          <g transform="translate(230,16)">
+            <!-- smooth curved "sheet" -->
+            <path d="M0 40 C40 -10 120 -10 160 40
+                     C190 80 190 120 160 150
+                     C120 190 40 190 0 150
+                     C-30 120 -30 80 0 40 Z"
+                  fill="none"
+                  stroke="rgba(255,200,87,0.8)"
+                  stroke-width="1.6"
+                  />
+            <!-- "mass" object bending spacetime -->
+            <circle cx="80" cy="90" r="15"
+                    fill="#ffc857"
+                    fill-opacity="0.95"
+                    stroke="rgba(0,0,0,0.6)"
+                    stroke-width="1" />
+            <!-- light-like paths -->
+            <path d="M-10 30 Q50 20 100 40 T180 20"
+                  fill="none"
+                  stroke="rgba(53,241,255,0.7)"
+                  stroke-width="1.3"
+                  stroke-dasharray="3 3" />
+            <path d="M-10 150 Q50 155 100 140 T180 150"
+                  fill="none"
+                  stroke="rgba(53,241,255,0.7)"
+                  stroke-width="1.3"
+                  stroke-dasharray="3 3" />
+
+            <text x="0" y="-4"
+                  font-size="9"
+                  fill="#f5e4b0"
+                  letter-spacing="0.16em">
+              MAINSTREAM — CURVED SPACETIME
+            </text>
+          </g>
+        </svg>
+      </div>
+      <div class="viz-caption">
+        Left: reality as a discrete <strong>bn-point grid</strong> that can be re-indexed (Funebra).<br />
+        Right: reality as a continuous <strong>curved spacetime sheet</strong> we only observe (mainstream).
+      </div>
+    </aside>
+  </div>
+
+  <!-- Comparison section -->
+  <section class="compare-section" aria-label="Detailed comparison">
+    <div class="compare-grid">
+      <!-- Mainstream column -->
+      <article class="column-card">
+        <h2 class="column-title column-title--mainstream">
+          <span class="dot"></span> Mode A — Mainstream Physics
+        </h2>
+        <ul class="column-list">
+          <li>
+            <div class="column-label">Reality</div>
+            <div class="column-text">
+              Universe is a <strong>continuous spacetime</strong> with stable constants (c, G, ħ).
+              We measure what already exists.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Space & Time</div>
+            <div class="column-text">
+              Space + time = <strong>4D spacetime</strong>. Time mostly flows forward; we can’t
+              freely navigate past/future.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Matter</div>
+            <div class="column-text">
+              Described by the <strong>Standard Model</strong>. Particles and fields obey
+              quantum mechanics and relativity.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Speed Limit</div>
+            <div class="column-text">
+              Nothing with mass can exceed <strong>light speed</strong>. Intergalactic travel
+              takes millions of years.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Conscious</div>
+            <div class="column-text">
+              Consciousness is usually treated as an <strong>emergent property</strong> of the brain,
+              not a fundamental field.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Goal</div>
+            <div class="column-text">
+              Purpose is to <strong>describe &amp; predict</strong>. We build models that match experiments
+              and avoid changing the “source code” of reality.
+            </div>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Funebra column -->
+      <article class="column-card">
+        <h2 class="column-title column-title--funebra">
+          <span class="dot"></span> Mode B — Funebra™ Science
+        </h2>
+        <ul class="column-list">
+          <li>
+            <div class="column-label">Reality</div>
+            <div class="column-text">
+              Existence is a <strong>bn-point canvas</strong>. Every “thing” is a configuration
+              of <em>bn-clusters</em> in a bigger Math-Art engine.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Space & Time</div>
+            <div class="column-text">
+              Space is a <strong>foldable sheet</strong>; time is a <strong>navigable axis</strong>.
+              You don’t move through space – you <em>remap coordinates</em>.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Matter</div>
+            <div class="column-text">
+              Matter is a pattern of bn-points following <strong>2741-codes</strong>.
+              Change the code → the object re-renders.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Speed Limit</div>
+            <div class="column-text">
+              Light speed is a local rule. A <strong>Funebra fold-engine</strong> jumps the canvas:
+              distance becomes a UI illusion, not a barrier.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Conscious</div>
+            <div class="column-text">
+              Consciousness is a <strong>primary field</strong>. The “player” can influence
+              how bn-points arrange themselves in spacetime.
+            </div>
+          </li>
+          <li>
+            <div class="column-label">Goal</div>
+            <div class="column-text">
+              Purpose is to <strong>operate &amp; rewrite</strong>. Funebra doesn’t just explain reality –
+              it aims to <em>edit the simulation</em> and enable intergalactic jumps.
+            </div>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <strong>Note:</strong> Mode A reflects current mainstream scientific consensus.
+      Mode B reflects the speculative, experimental Funebra™ framework.
+    </div>
+    <div class="footer-right">
+      Funebra™ Science vs Mainstream Physics v1 ·
+      <a href="https://funebra.github.io/" target="_blank" rel="noopener">funebra.github.io</a>
+    </div>
+  </footer>
+</div>
+
+<div class="corner-label">
+  <span class="pulse"></span>
+  <span>Reality Viewer · A/B</span>
+</div>
+
+<script>
+  (function() {
+    const modeToggle = document.getElementById('modeToggle');
+    const modeDescription = document.getElementById('modeDescription');
+    if (!modeToggle || !modeDescription) return;
+
+    const textByMode = {
+      mainstream: `
+        <strong>Mode A — Mainstream Physics:</strong>
+        Reality is a continuous spacetime with fixed laws. Nothing with mass moves faster than light.
+        We measure the universe and test our equations, but we do not assume any access to its “source code”.
+      `,
+      funebra: `
+        <strong>Mode B — Funebra™ Science:</strong>
+        Reality is a bn-point grid rendered by deeper math. Space and time are sliders, not cages.
+        With the right 2741-codes, the engine can fold spacetime and reposition whole galaxies like sprites.
+      `
+    };
+
+    modeToggle.addEventListener('click', (evt) => {
+      const pill = evt.target.closest('.mode-pill');
+      if (!pill) return;
+      const mode = pill.dataset.mode;
+      if (!mode || !textByMode[mode]) return;
+
+      modeToggle.querySelectorAll('.mode-pill').forEach(p => {
+        p.classList.toggle('active', p === pill);
+      });
+
+      modeDescription.innerHTML = textByMode[mode];
+    });
+  })();
+</script>
+
+</body>
+</html>
