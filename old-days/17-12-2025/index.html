@@ -891,7 +891,7 @@ function stopAnimate(){
         ojy.style.position = 'absolute';
         ojy.id = 'bn'+h;
         ojy.onclick = function() {
-          mPosition.value = this.id.substring(2);
+          mPosition.value = (this.id.match(/\d+$/) || [""])[0];
           try{ oDef.innerText = (window['bn'+this.id.substring(2)]||{}).innerHTML || ''; }catch(_){ }
         };
         ojy.onmouseover = function() {
@@ -900,7 +900,7 @@ function stopAnimate(){
           abou.id=this.id+"abou";
           abou.innerText = "Step: "+o+"\nstepStart: "+stpStart.value+"\nstepEnd: "+stpEnd.value+"\nsSpeed : "+dta.value+"\nscodeX : "+scodeX.value+"\nscodeY : "+scodeY.value+"\nsColor : "+clor.value+"\nsCode : "+itext.value;
           this.appendChild(abou);
-          mPosition.value = this.id.substring(2);
+          mPosition.value = (this.id.match(/\d+$/) || [""])[0];
           try{ oDef.innerText = (window['bn'+this.id.substring(2)]||{}).innerHTML || ''; }catch(_){ }
           this.onmouseout = function() {
             const div = this.querySelector('div');
@@ -990,7 +990,7 @@ function stopAnimate(){
         nodo.style.position = "absolute";
         nodo.id = shape+_o;
         nodo.onclick = function() {
-          mPosition.value = this.id.substring(this.id.length, this.id.length-2);
+          mPosition.value = (this.id.match(/\d+$/) || [""])[0];
           try{ oDef.innerText = (window[shape+this.id.substring(2)]||{}).innerHTML || ''; }catch(_){ }
         };
         nodo.onmouseover = function() {
@@ -999,7 +999,7 @@ function stopAnimate(){
           abou.id=this.id+"abou";
           abou.innerText = "Step: "+this.id+" of "+ofcircle+"\nstepStart: "+stpStart.value+"\nstepEnd: "+stpEnd.value+"\nsSpeed : "+dta.value+"\nscodeX : "+scodeX.value+"\nscodeY : "+scodeY.value+"\nsColor : "+clor.value+"\nsCode : "+itext.value;
           this.appendChild(abou);
-          mPosition.value = this.id.substring(this.id.length, this.id.length-2);
+          mPosition.value = (this.id.match(/\d+$/) || [""])[0];
           try{ oDef.innerText = (window[shape+this.id.substring(2)]||{}).innerHTML || ''; }catch(_){ }
           this.onmouseout = function() {
             const div = this.querySelector('div');
