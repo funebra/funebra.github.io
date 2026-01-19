@@ -1,26 +1,6 @@
 /* ============================================================
-   Balanced Quad Carry (BQC) — digit-bounded 0..9
-   Canon:
-   - Digits are 0..9 only.
-   - Each series block has 40 values.
-   - For series index s:
-       base = 40*s
-       base-1  -> 9_0_0_0   (carry-in), valid only for s>=1
-       base+0..base+36 -> unique balanced quad for 0..36
-       base+37 -> 9_9_9_0
-       base+38 -> 9_9_0_0
-   - For s=0 ("a"):
-       0..36 balanced
-       37 -> 9_9_9_0
-       38 -> 9_9_0_0
-       (no "a9_0_0_0" state)
-
-   Series labels:
-   - s=0..25  => "a".."z"
-   - s=26..51 => "za".."zz"  (matches: za0_0_0_0 = 1040)
+   Balanced Quad Carry (BQC) — digit-bounded 0..9 (corrected)
    ============================================================ */
-
-/** ------------------ helpers ------------------ **/
 
 function sameQuad(a, b) {
   return a.length === 4 && b.length === 4 && a.every((v, i) => v === b[i]);
@@ -29,6 +9,7 @@ function sameQuad(a, b) {
 const Q9000 = [9, 0, 0, 0];
 const Q9990 = [9, 9, 9, 0];
 const Q9900 = [9, 9, 0, 0];
+const Q9999 = [9, 9, 9, 9];
 
 function seriesLabel(s) {
   if (!Number.isInteger(s) || s < 0) throw new Error("seriesLabel: s must be integer >= 0");
@@ -44,16 +25,12 @@ function parseSeriesLabel(token) {
   const t = token.toLowerCase();
   const a = "a".charCodeAt(0);
 
-  // "za".."zz"
   if (t.length >= 2 && t[0] === "z" && t[1] >= "a" && t[1] <= "z") {
     return { s: 26 + (t.charCodeAt(1) - a), rest: token.slice(2) };
   }
-
-  // "a".."z"
   if (t[0] >= "a" && t[0] <= "z") {
     return { s: t.charCodeAt(0) - a, rest: token.slice(1) };
   }
-
   throw new Error("parseSeriesLabel: invalid series label");
 }
 
@@ -70,7 +47,7 @@ function parseQuad(rest) {
 
 /**
  * Unique balanced representation for n in 0..36.
- * (This matches your: 2->0_0_1_1, 3->0_1_1_1, ...)
+ * Matches your canon: 2->0_0_1_1, 3->0_1_1_1, ...
  */
 function balancedQuad0to36(n) {
   if (!Number.isInteger(n) || n < 0 || n > 36) {
@@ -84,42 +61,47 @@ function balancedQuad0to36(n) {
   if (r >= 2) k++;
   if (r >= 3) j++;
 
-  // With n<=36, digits never exceed 9.
   return [i, j, k, l];
 }
 
-/** ------------------ dec -> bqc ------------------ **/
+/** ------------------ dec -> bqc (corrected) ------------------ **/
 
 function dec2bqc(N) {
   if (!Number.isInteger(N) || N < 0) throw new Error("dec2bqc: N must be an integer >= 0");
 
-  // a-series special (no a carry-in)
+  // a-series (special: no a9_0_0_0)
   if (N <= 38) {
     let quad;
     if (N <= 36) quad = balancedQuad0to36(N);
     else if (N === 37) quad = Q9990;
-    else quad = Q9900; // N === 38
+    else quad = Q9900; // 38
     return `a${quad.join("_")}`;
   }
 
-  // For N >= 39, pick series s such that start=40*s-1 <= N < 40*(s+1)-1
-  const s = Math.floor((N + 1) / 40); // 39->1(b), 79->2(c), ...
+  // Choose series by "carry-in" boundaries: 39->b, 79->c, 119->d, ...
+  const s = Math.floor((N + 1) / 40);
   const label = seriesLabel(s);
 
-  const start = 40 * s - 1; // carry-in number
-  const t = N - start;      // 0..39 within block
+  const start = 40 * s - 1; // carry-in number for this series
+  const t = N - start;      // t in 0..39
 
   let quad;
-  if (t === 0) quad = Q9000;                    // base-1
-  else if (t >= 1 && t <= 37) quad = balancedQuad0to36(t - 1); // base..base+36
-  else if (t === 38) quad = Q9990;              // base+37
-  else if (t === 39) quad = Q9900;              // base+38
+
+  // Canon mapping inside block:
+  // t=0   -> 9_0_0_0   (base-1)
+  // t=1..37 -> balanced(0..36)  (base..base+36)
+  // t=38  -> 9_9_9_0   (base+37)
+  // t=39  -> 9_9_0_0   (base+38)
+  if (t === 0) quad = Q9000;
+  else if (t >= 1 && t <= 37) quad = balancedQuad0to36(t - 1);
+  else if (t === 38) quad = Q9990;
+  else if (t === 39) quad = Q9900;
   else throw new Error("dec2bqc: internal range error");
 
   return `${label}${quad.join("_")}`;
 }
 
-/** ------------------ bqc -> dec ------------------ **/
+/** ------------------ bqc -> dec (corrected) ------------------ **/
 
 function bqc2dec(token) {
   if (typeof token !== "string" || token.length < 2) {
@@ -129,11 +111,12 @@ function bqc2dec(token) {
   const { s, rest } = parseSeriesLabel(token);
   const quad = parseQuad(rest);
 
-  // a-series
+  // a-series rules
   if (s === 0) {
     if (sameQuad(quad, Q9990)) return 37;
     if (sameQuad(quad, Q9900)) return 38;
 
+    // only canonical balanced quads for 0..36 are allowed in a-series
     const sum = quad[0] + quad[1] + quad[2] + quad[3];
     if (sum < 0 || sum > 36) throw new Error("bqc2dec: invalid a-series sum");
     const expected = balancedQuad0to36(sum);
@@ -141,29 +124,32 @@ function bqc2dec(token) {
     return sum;
   }
 
-  // s >= 1
+  // s>=1 series
   const base = 40 * s;
 
-  if (sameQuad(quad, Q9000)) return base - 1;
+  // Special states
+  if (sameQuad(quad, Q9000)) return base - 1; // carry-in boundary
   if (sameQuad(quad, Q9990)) return base + 37;
   if (sameQuad(quad, Q9900)) return base + 38;
 
+  // Balanced state must be exactly the canonical balanced quad for its sum (0..36)
   const sum = quad[0] + quad[1] + quad[2] + quad[3];
   if (sum < 0 || sum > 36) throw new Error("bqc2dec: invalid balanced sum");
   const expected = balancedQuad0to36(sum);
   if (!sameQuad(quad, expected)) throw new Error("bqc2dec: non-canonical balanced quad");
+
   return base + sum;
 }
 
-/** ------------------ exports ------------------ **/
 //export { dec2bqc, bqc2dec };
 
-/** ------------------ optional quick test ------------------
-const tests = [0,2,36,37,38,39,40,76,77,78,79,80,117,118,119,120,1040,1080];
+/* Optional quick test (should all be OK):
+const tests = [0,1,2,36,37,38,39,40,76,77,78,79,80,116,117,118,119,120,1040,1080];
 for (const n of tests) {
   const t = dec2bqc(n);
   const back = bqc2dec(t);
   console.log(n, "->", t, "->", back, back === n ? "OK" : "FAIL");
 }
------------------------------------------------------------ */
+*/
+
 
