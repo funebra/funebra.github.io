@@ -156,7 +156,7 @@ function bqc2dec(token) {
 }
 
 /** ------------------ exports ------------------ **/
-export { dec2bqc, bqc2dec };
+//export { dec2bqc, bqc2dec };
 
 /** ------------------ optional quick test ------------------
 const tests = [0,2,36,37,38,39,40,76,77,78,79,80,117,118,119,120,1040,1080];
