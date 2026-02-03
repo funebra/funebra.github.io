@@ -933,7 +933,7 @@ function stopAnimate(){
 
     function mvx(){
       if(eLoop.checked === true && Number(steps.value) >= 0 ){ status = x; }
-      const stepVal = Number(steps.value)||1;
+      const stepVal = Number(steps.value)||0;
       const endVal  = Math.floor(Number(stpEnd.value)||0) / stepVal;
       if(o <= endVal){
         o = o + (Number(stpStart.value)||0) + stepVal; const m=shape.value+o; oo.innerText=o; ob=ob+1; isId +=1; u += 1;
