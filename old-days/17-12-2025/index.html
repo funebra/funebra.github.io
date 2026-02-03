@@ -934,7 +934,7 @@ function stopAnimate(){
     function mvx(){
       if(eLoop.checked === true && Number(steps.value) >= 0 ){ status = x; }
       const stepVal = Number(steps.value)||1;
-      const endVal  = Math.floor(Number(stpEnd.value)||1) / stepVal;
+      const endVal  = (Number(stpEnd.value)||0) / stepVal;
       if(o <= endVal){
         o = o + (Number(stpStart.value)||0) + stepVal; const m=shape.value+o; oo.innerText=o; ob=ob+1; isId +=1; u += 1;
         iu = u*3; zx = zx + 2; i = i - stepVal; iCount += 3.1415; const rad = iCount * deg2radians;
