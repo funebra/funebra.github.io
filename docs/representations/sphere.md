@@ -1,3 +1,4 @@
+```javascript
 // -------------------------------------
 // Funebra Sphere Engine
 // Mathematical Point Cloud
@@ -101,3 +102,4 @@ dot.style.color="rgb("+((phi+p)*a%32)/32*255+", 255, 0 )";
 }
 
 ani();
+```javascript
