@@ -505,10 +505,19 @@
       , '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1104517789201702%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe><br><a href="javascript:swich(3);mvx();">Continue -->'
       , '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Zah8o4epr7k?si=REat67O1MItmii8W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="javascript:swich(4);mvx();">Continue -->'
       , '<img id="myIlluva00" \
-     onclick="document.body.style.background=\'url(https://plabs.at.ua/bluetooth/bg/quake_0_0_1.jpg)\'" \
+     onclick="document.body.style.background=\&quot;url(https://plabs.at.ua/bluetooth/bg/quake_0_0_1.jpg)\&quot;" \
      style="width:360px;height:440px; \
             background:url(https://plabsfill.com/bpot/wow/female/f_0_0_0.gif) \
-                       100% 100%/100% 100%;"> \
+                       100% 100%/100% 100%;"><br> \
+      Console: function playAudio() {
+  const xr = document.getElementById("myAudio");
+  xr.play();
+}
+
+function pauseAudio() {
+  const xr = document.getElementById("myAudio");
+  xr.pause();
+}\
 <audio id="myAudio"> \
   <source src="https://plabsfill.com/bluetooth/theme/LS110600/enterUniverse.mp3" \
           type="audio/mpeg"> \
