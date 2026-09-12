@@ -140,7 +140,7 @@
 
 </head>
 
-<body>
+<body onload='eval(oDef.value);stpEnd.value=0;mvx();'>
   <!-- Background canvas -->
   <canvas id="funebraCanvas" aria-hidden="true"></canvas>
 
@@ -498,7 +498,29 @@
 </div>
 <div id='objDef' style='position:absolute;top:135px;z-Index:1000;left:200px;background:brown;visibility:hidden;'>
     <textarea id='oDef'
-        style='Width:300px;height:230px;'><table style='position:absolute;left:400px;top:480px;'><tr><td>&lt;div style='width:400;height:100;'&gt;&lt;textarea id='ttxt' style='position:;left:;top:;width:400;height:100;' onClick='this.value = scodeZ.value;' &gt;&lt;/textarea&gt;&lt;br&gt;&lt;input type='button' value='Change'&gt;&gt;getTime()&lt;&lt;/div&gt;</td><td><input type='button' value='Run' onClick='if(ttxt.value != &quot;&quot;){eval(ttext.value)}else{alert(&quotcode is empty&quot;);}'></td></tr></table></textarea><br><input
+        style='Width:300px;height:230px;'>
+      
+      stepo=[0,'<iframe src="https://www.facebook.com/plugins/video.php?height=476" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>', '<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1104517789201702%2F&show_text=true&width=267&t=0" width="267" height="591" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe><br><a href="#pcontrol">Continue -->', '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Zah8o4epr7k?si=REat67O1MItmii8W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>','end'];
+
+ steps.value    = 1;
+  stpStart.value = 0;
+  stpEnd.value   = 8 * 8-1;
+  shape.value    = "astory";
+  initsobj(shape.value);
+  const cols = 8;
+  const cellSize = 20;
+  scodeX.value =
+    "(o % " + 8 + ") * " + 20 +
+    " + window.innerWidth/2 - (" + 8 + " * " + 20 + ")/2-580";
+  scodeY.value =
+    "Math.floor(o / " + 8 + ") * " + 20 +
+    " + 300";
+function swich(cnt){itext.value=("'"+stepo[cnt]+"'");}
+swich(3);
+
+
+
+</textarea><br><input
         type='button' value='Change' onclick='eval(oDef.value)'><input type='button' value='Clear'
         onclick='oDef.value =&quot;&quot;'><input type='button' value='Run Code'
         style='background:green;border-radius:10%;border-bottom:3px dotted orange;' onclick='execon()'></div>
