@@ -512,7 +512,7 @@
   '',
   'end'
 ];
-stepo[4] = `
+/* stepo[4] = `
 <img
   id="myIlluva00"
   onclick="document.body.style.background='url(https://plabsfill.com/bluetooth/bg/quake_0_0_1.jpg)'"
@@ -537,7 +537,7 @@ Console: function playAudio
 
 <button onclick="playAudio()" type="button">Play Audio</button>
 <button onclick="pauseAudio()" type="button">Pause Audio</button>
-`;
+`;  */
 
  steps.value    = 1;
   stpStart.value = 0;
@@ -552,7 +552,7 @@ Console: function playAudio
   scodeY.value =
     "Math.floor(o / " + 8 + ") * " + 20 +
     " + 300";
-//function swich(cnt){itext.value=("'"+stepo[cnt]+"'");}
+//function swich(cnt){itext.value=stepo[cnt];}
 swich(2);
 
 
@@ -805,7 +805,7 @@ document.getElementById("gridsetup").onclick = () => {
   mvx();
 };
 
-  function swich(cnt){itext.value=("'"+stepo[cnt]+"'");};
+  function swich(cnt){itext.value= stepo[cnt];};
   var xXx = document.getElementById("myAudio");   
   function playAudio() {    xXx.play();  }   
   function pauseAudio() {    xXx.pause();  };
@@ -1013,7 +1013,7 @@ function stopAnimate(){
             try{
               if(String(clor.value).substring(1, 4)==='rgb'){
                 with(Math){
-                  el.innerHTML = eval(itext.value);
+                  el.innerHTML = itext.value;
                   el.style.fontSize='14pt';
                   el.style.color = eval(clor.value)
                 }
