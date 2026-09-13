@@ -1,6 +1,6 @@
 /* LS110600 — stepo[1] existential gateway
    UFO stays an open question, not evidence.
-   Chain: Neuron → Signal → Observation → BN → Relation → Existential Form
+   living source ≠ BN record ≠ technological projection
 */
 (function (root) {
   const STEPO_1 = `<section class="funebra-project" id="neuron-hunters">
@@ -46,6 +46,26 @@
   </footer>
 </section>`;
 
+  const CSS = `.funebra-project{max-width:42rem;margin:2rem auto 4rem;padding:1.5rem 1.4rem 2rem;color:#e8e6dc;background:rgba(8,10,16,.88);border:1px solid rgba(255,179,71,.35);border-radius:14px;font:16px/1.55 Georgia,"Times New Roman",serif;position:relative;z-index:20}.funebra-project .project-index{letter-spacing:.14em;font:11px/1.3 ui-monospace,monospace;color:#ffb347;margin:0 0 .4rem}.funebra-project h1{font:700 1.85rem/1.15 "Trebuchet MS",sans-serif;margin:.1rem 0 .35rem;color:#fff}.funebra-project .subtitle{margin:0 0 1.2rem;color:#c9c4b3;font-style:italic}.funebra-project h2{font:700 1.05rem/1.2 "Trebuchet MS",sans-serif;color:#ffb347;margin:1.3rem 0 .45rem}.funebra-project p,.funebra-project blockquote{margin:0 0 .75rem}.funebra-project blockquote{border-left:3px solid #ffb347;padding:.2rem 0 .2rem .8rem;color:#f3efe3}.funebra-project .formula{font:13px/1.4 ui-monospace,monospace;color:#9fd6ff}.funebra-project footer{margin-top:1.4rem;padding-top:.8rem;border-top:1px solid rgba(255,179,71,.25);font-size:.85rem;color:#b7b2a3}#neuron-hunters-host{position:relative;z-index:15;padding:12px 12px 80px}`;
+
+  function ensureHost() {
+    if (!document.getElementById('neuron-hunters-css')) {
+      const st = document.createElement('style');
+      st.id = 'neuron-hunters-css';
+      st.textContent = CSS;
+      document.head.appendChild(st);
+    }
+    let host = document.getElementById('neuron-hunters-host');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'neuron-hunters-host';
+      const canvas = document.getElementById('funebraCanvas');
+      if (canvas && canvas.parentNode) canvas.parentNode.insertBefore(host, canvas.nextSibling);
+      else document.body.insertBefore(host, document.body.firstChild);
+    }
+    return host;
+  }
+
   root.STEPO_1 = STEPO_1;
 
   root.installStepoGateway = function installStepoGateway() {
@@ -53,8 +73,8 @@
     root.stepo[1] = STEPO_1;
     if (typeof root.swich === 'function') root.swich(1);
     else if (root.itext) root.itext.value = STEPO_1;
-    const host = document.getElementById('neuron-hunters-host');
-    if (host) host.innerHTML = STEPO_1;
+    const host = ensureHost();
+    host.innerHTML = STEPO_1;
     return STEPO_1;
   };
 
