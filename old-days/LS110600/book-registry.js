@@ -1,17 +1,18 @@
-/* LS110600 — immutable source registry
-   Navigation must not mutate these records.
-   living source ≠ BN record ≠ technological projection
+/* LS110600 — two registries
+   Construction: BN-BOOK-ROOT + four children
+   Projection:   BN-NEURON-HUNTERS (gateway view of the root)
 */
 (function (root) {
   function rec(obj) { return Object.freeze(obj); }
 
-  const SOURCE = rec({
+  const CONSTRUCTION = rec({
     "BN-BOOK-ROOT": rec({
       id: "BN-BOOK-ROOT",
       title: "NEURON HUNTERS",
       kind: "root",
       evidence: "construction-root",
       evidenceStatus: "OPEN",
+      verifiedUfoClaim: false,
       projection: "Constructed-book root. Not a chapter. Not an essay container.",
       relations: rec([
         "BN-UFO",
@@ -20,21 +21,13 @@
         "BN-QUEST-EXISTENCE"
       ])
     }),
-    "BN-NEURON-HUNTERS": rec({
-      id: "BN-NEURON-HUNTERS",
-      title: "Neuron Hunters — gateway",
-      kind: "gateway",
-      evidence: "construction-root",
-      evidenceStatus: "OPEN",
-      projection: "Named gateway view of the book root. Prose here is a projection, not the construction.",
-      relations: rec(["BN-BOOK-ROOT", "BN-UFO", "BN-BIO-TECH", "BN-LIFE-DEATH", "BN-QUEST-EXISTENCE"])
-    }),
     "BN-UFO": rec({
       id: "BN-UFO",
       title: "UFO · Unidentified Observation",
       kind: "inquiry",
       evidence: "open-inquiry",
       evidenceStatus: "OPEN",
+      verifiedUfoClaim: false,
       projection: "Observed, not identified. Observation ≠ Interpretation ≠ Proof.",
       relations: rec(["BN-BOOK-ROOT", "BN-QUEST-EXISTENCE"])
     }),
@@ -44,7 +37,8 @@
       kind: "relation",
       evidence: "conceptual-relation",
       evidenceStatus: "OPEN",
-      projection: "Biological event → BN-point → Relation → Technological form. The record is not the living source.",
+      verifiedUfoClaim: false,
+      projection: "Biological event → BN-point → Relation → Technological form.",
       relations: rec(["BN-BOOK-ROOT", "BN-LIFE-DEATH"])
     }),
     "BN-LIFE-DEATH": rec({
@@ -53,7 +47,8 @@
       kind: "axis",
       evidence: "existential-axis",
       evidenceStatus: "OPEN",
-      projection: "Life → Experience → Trace → Memory → Transformation. Death is not deletion of traces.",
+      verifiedUfoClaim: false,
+      projection: "Life → Experience → Trace → Memory → Transformation.",
       relations: rec(["BN-BOOK-ROOT", "BN-BIO-TECH", "BN-QUEST-EXISTENCE"])
     }),
     "BN-QUEST-EXISTENCE": rec({
@@ -62,19 +57,37 @@
       kind: "purpose",
       evidence: "traversal-purpose",
       evidenceStatus: "OPEN",
-      projection: "Hunt relations through which existence becomes visible — not neurons, not unknown objects as proof.",
+      verifiedUfoClaim: false,
+      projection: "Hunt relations through which existence becomes visible.",
       relations: rec(["BN-BOOK-ROOT", "BN-UFO", "BN-LIFE-DEATH"])
     })
   });
 
-  function getSource(id) {
-    return SOURCE[id] || null;
-  }
+  const PROJECTION = rec({
+    "BN-NEURON-HUNTERS": rec({
+      id: "BN-NEURON-HUNTERS",
+      title: "Neuron Hunters — gateway",
+      kind: "projection",
+      projects: "BN-BOOK-ROOT",
+      evidence: "gateway-view",
+      evidenceStatus: "OPEN",
+      verifiedUfoClaim: false,
+      projection: "Named gateway view of BN-BOOK-ROOT. Not a fifth construction child.",
+      relations: rec(["BN-BOOK-ROOT"])
+    })
+  });
+
+  const SOURCE = rec(Object.assign({}, CONSTRUCTION, PROJECTION));
 
   root.FunebraBookSource = {
+    CONSTRUCTION: CONSTRUCTION,
+    PROJECTION: PROJECTION,
     SOURCE: SOURCE,
-    get: getSource,
+    get: function (id) { return SOURCE[id] || null; },
     ids: Object.freeze(Object.keys(SOURCE)),
-    rootId: "BN-BOOK-ROOT"
+    constructionIds: Object.freeze(Object.keys(CONSTRUCTION)),
+    projectionIds: Object.freeze(Object.keys(PROJECTION)),
+    rootId: "BN-BOOK-ROOT",
+    gatewayId: "BN-NEURON-HUNTERS"
   };
 })(typeof window !== "undefined" ? window : globalThis);
