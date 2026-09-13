@@ -1,4 +1,8 @@
-/* LS110600 engine: hide manifesto, including stamped astory cells. */
+/* LS110600 intended engine surface:
+   - start swich(2)
+   - never stamp manifesto into astory
+   - book lives at book.html
+*/
 (function (root) {
   const NAV = 'style="color:#ffb347;margin:0 .4rem"';
 
@@ -9,13 +13,7 @@
     return '<p class="stepo-nav">' + bits.join(' · ') + '</p>';
   }
 
-  const CSS = [
-    '#neuron-hunters-host, #neuron-hunters,',
-    'section.funebra-project, .funebra-project,',
-    'span[id^="astory"] .funebra-project,',
-    'span[id^="astory"] #neuron-hunters',
-    '{ display:none !important; visibility:hidden !important; height:0 !important; overflow:hidden !important; }'
-  ].join(' ');
+  const CSS = '#neuron-hunters-host,#neuron-hunters,section.funebra-project,.funebra-project,span[id^="astory"] .funebra-project{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important}';
 
   function looksLikeManifesto(s) {
     s = String(s || '');
@@ -30,19 +28,10 @@
       document.head.appendChild(st);
     }
     st.textContent = CSS;
-
-    document.querySelectorAll('#neuron-hunters-host, #neuron-hunters, section.funebra-project, .funebra-project').forEach(function (el) {
-      el.style.display = 'none';
-      if (el.id === 'neuron-hunters-host' || el.id === 'neuron-hunters') el.innerHTML = '';
-    });
-
     document.querySelectorAll('[id^="astory"]').forEach(function (el) {
       if (looksLikeManifesto(el.innerHTML)) el.innerHTML = '';
     });
-
-    if (root.itext && looksLikeManifesto(root.itext.value)) {
-      root.itext.value = '"\u263B"';
-    }
+    if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
   }
 
   function withNav(html, prev, next) {
@@ -78,22 +67,31 @@
     return swich;
   }
 
+  function wrapMvx() {
+    if (!root.mvx || root.mvx.__funebraNav) return;
+    const inner = root.mvx;
+    root.mvx = function () {
+      if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
+      const r = inner.apply(this, arguments);
+      hideManifesto();
+      return r;
+    };
+    root.mvx.__funebraNav = true;
+  }
+
   function boot() {
     hideManifesto();
     wireTape();
     wrapSwich()(2);
+    wrapMvx();
     hideManifesto();
   }
 
   root.installStepoGateway = boot;
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
-  } else {
-    boot();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
   root.addEventListener('load', function () { setTimeout(boot, 0); });
   setTimeout(hideManifesto, 50);
-  setTimeout(hideManifesto, 400);
+  setTimeout(boot, 400);
   setTimeout(hideManifesto, 1200);
 })(typeof window !== 'undefined' ? window : globalThis);

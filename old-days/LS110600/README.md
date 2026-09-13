@@ -1,4 +1,11 @@
-# LS110600 — constructed book
+# LS110600 — intended state
+
+| URL | Role |
+| --- | --- |
+| [book.html](https://funebra.github.io/old-days/LS110600/book.html) | constructed book |
+| [index.html](https://funebra.github.io/old-days/LS110600/) | legacy point engine |
+
+Engine must not stamp the manifesto into `astory` cells (that duplication / overflow is not the book).
 
 ```
 BN-BOOK-ROOT
@@ -9,18 +16,5 @@ BN-BOOK-ROOT
 └── purpose    → BN-QUEST-EXISTENCE
 ```
 
-Construction registry: 1 root + 4 children.  
-Projection registry: gateway view of the root. Not a fifth child.
-
-```
-inquiry status: OPEN
-source records: FROZEN
-topology: CONSTRUCTED
-derived pose: ASSIGNED
-verified UFO claim: NONE
-```
-
-Launch (verified live):  
-https://funebra.github.io/old-days/LS110600/book.html
-
-Protocol start: `stepo[2]` → `BN-BOOK-ROOT`
+Protocol start: `stepo[2]` → `BN-BOOK-ROOT`  
+inquiry: OPEN · verified UFO claim: NONE
