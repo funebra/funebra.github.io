@@ -1,8 +1,18 @@
-/* LS110600 — stepo[1] existential gateway
-   UFO stays an open question, not evidence.
-   living source ≠ BN record ≠ technological projection
+/* LS110600 — stepo tape
+   Start: always swich(2)
+   stepo[1] = gateway (previous from 2)
+   UFO = open question, not evidence
 */
 (function (root) {
+  const NAV = 'style="color:#ffb347;margin:0 .4rem"';
+
+  function nav(prev, next) {
+    const bits = [];
+    if (prev != null) bits.push('<a href="javascript:swich(' + prev + ');mvx();" ' + NAV + '>← Previous</a>');
+    if (next != null) bits.push('<a href="javascript:swich(' + next + ');mvx();" ' + NAV + '>Continue →</a>');
+    return '<p class="stepo-nav">' + bits.join(' · ') + '</p>';
+  }
+
   const STEPO_1 = `<section class="funebra-project" id="neuron-hunters">
   <header>
     <p class="project-index">FUNEBRA™ PROJECT · STEP 01</p>
@@ -42,11 +52,11 @@
   <footer>
     <p>FUNEBRA™ — From Formula to Form.</p>
     <p>Math · Art · Story · BN-points</p>
-    <p><a href="javascript:swich(2);mvx();" style="color:#ffb347">Continue →</a></p>
+    ${nav(null, 2)}
   </footer>
 </section>`;
 
-  const CSS = `.funebra-project{max-width:42rem;margin:2rem auto 4rem;padding:1.5rem 1.4rem 2rem;color:#e8e6dc;background:rgba(8,10,16,.88);border:1px solid rgba(255,179,71,.35);border-radius:14px;font:16px/1.55 Georgia,"Times New Roman",serif;position:relative;z-index:20}.funebra-project .project-index{letter-spacing:.14em;font:11px/1.3 ui-monospace,monospace;color:#ffb347;margin:0 0 .4rem}.funebra-project h1{font:700 1.85rem/1.15 "Trebuchet MS",sans-serif;margin:.1rem 0 .35rem;color:#fff}.funebra-project .subtitle{margin:0 0 1.2rem;color:#c9c4b3;font-style:italic}.funebra-project h2{font:700 1.05rem/1.2 "Trebuchet MS",sans-serif;color:#ffb347;margin:1.3rem 0 .45rem}.funebra-project p,.funebra-project blockquote{margin:0 0 .75rem}.funebra-project blockquote{border-left:3px solid #ffb347;padding:.2rem 0 .2rem .8rem;color:#f3efe3}.funebra-project .formula{font:13px/1.4 ui-monospace,monospace;color:#9fd6ff}.funebra-project footer{margin-top:1.4rem;padding-top:.8rem;border-top:1px solid rgba(255,179,71,.25);font-size:.85rem;color:#b7b2a3}#neuron-hunters-host{position:relative;z-index:15;padding:12px 12px 80px}`;
+  const CSS = `.funebra-project{max-width:42rem;margin:2rem auto 4rem;padding:1.5rem 1.4rem 2rem;color:#e8e6dc;background:rgba(8,10,16,.88);border:1px solid rgba(255,179,71,.35);border-radius:14px;font:16px/1.55 Georgia,"Times New Roman",serif;position:relative;z-index:20}.funebra-project .project-index{letter-spacing:.14em;font:11px/1.3 ui-monospace,monospace;color:#ffb347;margin:0 0 .4rem}.funebra-project h1{font:700 1.85rem/1.15 "Trebuchet MS",sans-serif;margin:.1rem 0 .35rem;color:#fff}.funebra-project .subtitle{margin:0 0 1.2rem;color:#c9c4b3;font-style:italic}.funebra-project h2{font:700 1.05rem/1.2 "Trebuchet MS",sans-serif;color:#ffb347;margin:1.3rem 0 .45rem}.funebra-project p,.funebra-project blockquote{margin:0 0 .75rem}.funebra-project blockquote{border-left:3px solid #ffb347;padding:.2rem 0 .2rem .8rem;color:#f3efe3}.funebra-project .formula{font:13px/1.4 ui-monospace,monospace;color:#9fd6ff}.funebra-project footer{margin-top:1.4rem;padding-top:.8rem;border-top:1px solid rgba(255,179,71,.25);font-size:.85rem;color:#b7b2a3}.stepo-nav{margin:.6rem 0}.stepo-nav a{color:#ffb347}#neuron-hunters-host{position:relative;z-index:15;padding:12px 12px 80px}#neuron-hunters-host.is-idle{display:none}`;
 
   function ensureHost() {
     if (!document.getElementById('neuron-hunters-css')) {
@@ -66,20 +76,56 @@
     return host;
   }
 
-  root.STEPO_1 = STEPO_1;
+  function withNav(html, prev, next) {
+    const s = String(html == null ? '' : html);
+    if (s.indexOf('stepo-nav') !== -1) return s;
+    return s + nav(prev, next);
+  }
 
-  root.installStepoGateway = function installStepoGateway() {
+  function wireTape() {
     if (!Array.isArray(root.stepo)) root.stepo = [0, '', '', '', '', '', 'end'];
     root.stepo[1] = STEPO_1;
-    if (typeof root.swich === 'function') root.swich(1);
-    else if (root.itext) root.itext.value = STEPO_1;
+    if (root.stepo[2] != null && root.stepo[2] !== '') root.stepo[2] = withNav(root.stepo[2], 1, 3);
+    if (root.stepo[3] != null && root.stepo[3] !== '') root.stepo[3] = withNav(root.stepo[3], 2, 4);
+    if (root.stepo[4] != null && root.stepo[4] !== '') root.stepo[4] = withNav(root.stepo[4], 3, null);
+  }
+
+  function applyFrame(cnt) {
     const host = ensureHost();
-    host.innerHTML = STEPO_1;
-    return STEPO_1;
+    if (cnt === 1) {
+      host.classList.remove('is-idle');
+      host.innerHTML = STEPO_1;
+    } else {
+      host.classList.add('is-idle');
+    }
+  }
+
+  root.STEPO_1 = STEPO_1;
+
+  const prevSwich = root.swich;
+  root.swich = function swich(cnt) {
+    const n = Number(cnt);
+    if (typeof prevSwich === 'function' && prevSwich !== root.swich) {
+      try { prevSwich(n); } catch (_) {}
+    } else if (root.itext) {
+      root.itext.value = root.stepo && root.stepo[n] != null ? root.stepo[n] : '';
+    }
+    applyFrame(n);
+    root.__stepoIndex = n;
+    return n;
+  };
+
+  root.installStepoGateway = function installStepoGateway() {
+    wireTape();
+    if (typeof root.swich === 'function') root.swich(2);
+    else if (root.itext && root.stepo) root.itext.value = root.stepo[2];
+    applyFrame(2);
+    return root.stepo[1];
   };
 
   function boot() {
-    root.installStepoGateway();
+    wireTape();
+    root.swich(2);
   }
 
   if (document.readyState === 'loading') {
@@ -87,7 +133,6 @@
   } else {
     boot();
   }
-  // body onload eval(oDef) resets stepo and calls swich(2) — re-assert gateway after that.
   root.addEventListener('load', function () {
     setTimeout(boot, 0);
   });
