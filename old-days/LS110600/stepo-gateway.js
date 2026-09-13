@@ -69,7 +69,7 @@
   root.STEPO_1 = STEPO_1;
 
   root.installStepoGateway = function installStepoGateway() {
-    root.stepo = root.stepo || [0, '', '', '', '', '', 'end'];
+    if (!Array.isArray(root.stepo)) root.stepo = [0, '', '', '', '', '', 'end'];
     root.stepo[1] = STEPO_1;
     if (typeof root.swich === 'function') root.swich(1);
     else if (root.itext) root.itext.value = STEPO_1;
@@ -78,9 +78,17 @@
     return STEPO_1;
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', root.installStepoGateway, { once: true });
-  } else {
+  function boot() {
     root.installStepoGateway();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+  // body onload eval(oDef) resets stepo and calls swich(2) — re-assert gateway after that.
+  root.addEventListener('load', function () {
+    setTimeout(boot, 0);
+  });
 })(typeof window !== 'undefined' ? window : globalThis);
