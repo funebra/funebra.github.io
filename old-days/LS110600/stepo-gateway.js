@@ -1,6 +1,4 @@
-/* LS110600 engine: hide manifesto. Book lives at book.html.
-   Always start stepo[2]. Do not stamp essay HTML into astory cells.
-*/
+/* LS110600 engine: hide manifesto, including stamped astory cells. */
 (function (root) {
   const NAV = 'style="color:#ffb347;margin:0 .4rem"';
 
@@ -12,35 +10,44 @@
   }
 
   const CSS = [
-    '#neuron-hunters-host, #neuron-hunters, section.funebra-project { display:none !important; }',
-    '.funebra-project { display:none !important; }'
-  ].join('');
+    '#neuron-hunters-host, #neuron-hunters,',
+    'section.funebra-project, .funebra-project,',
+    'span[id^="astory"] .funebra-project,',
+    'span[id^="astory"] #neuron-hunters',
+    '{ display:none !important; visibility:hidden !important; height:0 !important; overflow:hidden !important; }'
+  ].join(' ');
+
+  function looksLikeManifesto(s) {
+    s = String(s || '');
+    return s.indexOf('funebra-project') !== -1 || s.indexOf('NEURON HUNTERS') !== -1;
+  }
 
   function hideManifesto() {
-    if (!document.getElementById('neuron-hunters-css')) {
-      const st = document.createElement('style');
+    let st = document.getElementById('neuron-hunters-css');
+    if (!st) {
+      st = document.createElement('style');
       st.id = 'neuron-hunters-css';
-      st.textContent = CSS;
       document.head.appendChild(st);
     }
-    ['neuron-hunters-host', 'neuron-hunters'].forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.innerHTML = '';
-        el.classList.add('is-idle');
-        el.style.display = 'none';
-      }
-    });
-    document.querySelectorAll('section.funebra-project, .funebra-project').forEach(function (el) {
+    st.textContent = CSS;
+
+    document.querySelectorAll('#neuron-hunters-host, #neuron-hunters, section.funebra-project, .funebra-project').forEach(function (el) {
       el.style.display = 'none';
+      if (el.id === 'neuron-hunters-host' || el.id === 'neuron-hunters') el.innerHTML = '';
     });
+
+    document.querySelectorAll('[id^="astory"]').forEach(function (el) {
+      if (looksLikeManifesto(el.innerHTML)) el.innerHTML = '';
+    });
+
+    if (root.itext && looksLikeManifesto(root.itext.value)) {
+      root.itext.value = '"\u263B"';
+    }
   }
 
   function withNav(html, prev, next) {
     const s = String(html == null ? '' : html);
-    if (s.indexOf('funebra-project') !== -1 || s.indexOf('NEURON HUNTERS') !== -1 && s.indexOf('<h1>') !== -1) {
-      return nav(prev, next);
-    }
+    if (looksLikeManifesto(s)) return nav(prev, next);
     if (s.indexOf('stepo-nav') !== -1) return s;
     return s + nav(prev, next);
   }
@@ -51,9 +58,6 @@
     if (root.stepo[2]) root.stepo[2] = withNav(root.stepo[2], 1, 3);
     if (root.stepo[3]) root.stepo[3] = withNav(root.stepo[3], 2, 4);
     if (root.stepo[4]) root.stepo[4] = withNav(root.stepo[4], 3, null);
-    if (root.itext && String(root.itext.value).indexOf('funebra-project') !== -1) {
-      root.itext.value = root.stepo[2] || '';
-    }
   }
 
   function wrapSwich() {
@@ -64,6 +68,7 @@
     function swich(cnt) {
       const n = Number(cnt);
       inner(n);
+      if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
       hideManifesto();
       root.__stepoIndex = n;
       return n;
@@ -73,13 +78,6 @@
     return swich;
   }
 
-  root.installStepoGateway = function installStepoGateway() {
-    hideManifesto();
-    wireTape();
-    wrapSwich()(2);
-    hideManifesto();
-  };
-
   function boot() {
     hideManifesto();
     wireTape();
@@ -87,12 +85,15 @@
     hideManifesto();
   }
 
+  root.installStepoGateway = boot;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot, { once: true });
   } else {
     boot();
   }
-  root.addEventListener('load', function () {
-    setTimeout(boot, 0);
-  });
+  root.addEventListener('load', function () { setTimeout(boot, 0); });
+  setTimeout(hideManifesto, 50);
+  setTimeout(hideManifesto, 400);
+  setTimeout(hideManifesto, 1200);
 })(typeof window !== 'undefined' ? window : globalThis);
