@@ -1,27 +1,47 @@
-# LS110600 — NEURON HUNTERS — The Quest for Existence
+# LS110600 — constructed book
 
-`stepo[1]` is the project gateway.
+NEURON HUNTERS is not an essay stored in `stepo[1]`.
 
-Chain:
+```
+Source objects → Registry → Derived (x,y,z,τ) → Relations → Navigation
+```
 
-Neuron → Signal → Observation → BN → Relation → Existential Form
+constructing a book ≠ writing a book  
+chapter order ≠ construction topology  
+navigation changes projection; it does not mutate source.
 
-UFO is treated as an open question — observation, not verified evidence.
+## Launch
 
-Observation ≠ Interpretation ≠ Proof
+True book (use this):
+https://funebra.github.io/old-days/LS110600/book.html
 
-## Tape
+Always begins at protocol slot **2** → `BN-BOOK-ROOT`.
 
-- `stepo[1]` — Neuron Hunters manifesto (`stepo-gateway.js`)
-- `stepo[2]`… — continue cuts (reel / video / enter-universe)
+| Address | Object | Evidence |
+| --- | --- | --- |
+| BN-BOOK-ROOT | construction root | OPEN |
+| BN-NEURON-HUNTERS | gateway view | OPEN |
+| BN-UFO | unidentified observation | OPEN inquiry |
+| BN-BIO-TECH | biology–technology boundary | conceptual relation |
+| BN-LIFE-DEATH | life/death interval | existential axis |
+| BN-QUEST-EXISTENCE | quest | traversal purpose |
 
-## Open
+## Files
 
-- Engine: https://funebra.github.io/old-days/LS110600/
-- Gateway page: https://funebra.github.io/old-days/LS110600/neuron-hunters.html
+- `book-registry.js` — immutable source records
+- `book-construction.js` — nodes + derived pose + `stepo` protocol
+- `book-renderer.js` — one host per active address
+- `book.html` — launch page
+- `index.html` — legacy point engine (not the book)
 
-In the engine console after load:
+## Status
 
-```js
-stepo[1] = STEPO_1; swich(1); installStepoGateway();
+```
+content concept: PRESENT
+gateway prose: PRESENT (as projection text)
+source objects: REGISTERED
+relation topology: CONSTRUCTED
+XYZτ derivation: ASSIGNED (derived, not rewritten into source)
+book navigator: LAUNCHED (book.html)
+legacy engine stamp path: NOT THE BOOK
 ```
