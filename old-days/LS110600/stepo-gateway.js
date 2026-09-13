@@ -1,6 +1,4 @@
-/* LS110600: stepo[1] = manifesto HTML (slot only).
-   Launch remains swich(2). Manifesto is not itext for mvx().
-*/
+/* LS110600: reveal manifesto as stepo[1]; Previous on stepo[2]. */
 (function (root) {
   const NAV = 'style="color:#ffb347;margin:0 .4rem"';
   function nav(prev, next) {
@@ -14,21 +12,23 @@
 
   const CSS = [
     '#neuron-hunters-host.is-idle{display:none}',
-    '#neuron-hunters-host{position:relative;z-index:20;max-width:42rem;margin:1rem auto;padding:0 12px 80px}',
+    '#neuron-hunters-host{position:relative;z-index:20;max-width:42rem;margin:1rem auto;padding:0 12px 72px}',
     '.funebra-project{max-width:42rem;margin:0 auto;padding:1.5rem 1.4rem;color:#e8e6dc;background:rgba(8,10,16,.92);border:1px solid rgba(255,179,71,.35);border-radius:14px;font:16px/1.55 Georgia,serif}',
     '.funebra-project .project-index{letter-spacing:.14em;font:11px ui-monospace,monospace;color:#ffb347}',
     '.funebra-project h1{font:700 1.85rem/1.15 Trebuchet MS,sans-serif;color:#fff}',
     '.funebra-project h2{color:#ffb347}',
     '.funebra-project .formula{font:13px ui-monospace,monospace;color:#9fd6ff}',
     '.funebra-project blockquote{border-left:3px solid #ffb347;padding-left:.8rem}',
-    'span[id^="astory"] .funebra-project{display:none!important}'
+    'span[id^="astory"] .funebra-project{display:none!important}',
+    '#stepo-nav-bar{position:fixed;left:12px;bottom:12px;z-index:100000;background:rgba(8,10,16,.9);border:1px solid rgba(255,179,71,.4);border-radius:8px;padding:6px 10px;font:13px ui-monospace,monospace}',
+    '#stepo-nav-bar a{color:#ffb347;margin:0 .35rem;text-decoration:none}'
   ].join('');
 
   function looksLikeManifesto(s) {
     return String(s || '').indexOf('funebra-project') !== -1;
   }
 
-  function ensureHost() {
+  function ensureChrome() {
     let st = document.getElementById('neuron-hunters-css');
     if (!st) { st = document.createElement('style'); st.id = 'neuron-hunters-css'; document.head.appendChild(st); }
     st.textContent = CSS;
@@ -36,21 +36,31 @@
     if (!host) {
       host = document.createElement('div');
       host.id = 'neuron-hunters-host';
+      host.className = 'is-idle';
       const canvas = document.getElementById('funebraCanvas');
       if (canvas && canvas.parentNode) canvas.parentNode.insertBefore(host, canvas.nextSibling);
       else document.body.insertBefore(host, document.body.firstChild);
     }
-    return host;
+    let bar = document.getElementById('stepo-nav-bar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'stepo-nav-bar';
+      document.body.appendChild(bar);
+    }
+    return { host: host, bar: bar };
   }
 
   function applyFrame(n) {
-    const host = ensureHost();
+    const ui = ensureChrome();
     if (n === 1) {
-      host.classList.remove('is-idle');
-      host.innerHTML = STEPO_1;
+      ui.host.classList.remove('is-idle');
+      ui.host.innerHTML = STEPO_1;
+      ui.bar.innerHTML = '<a href="javascript:swich(2);mvx();">Continue → stepo[2]</a>';
     } else {
-      host.classList.add('is-idle');
-      host.innerHTML = '';
+      ui.host.classList.add('is-idle');
+      ui.host.innerHTML = '';
+      ui.bar.innerHTML = '<a href="javascript:swich(1);mvx();">← Previous stepo[1] Neuron Hunters</a>' +
+        (n < 4 ? ' · <a href="javascript:swich(' + (n + 1) + ');mvx();">Continue →</a>' : '');
     }
     document.querySelectorAll('[id^="astory"]').forEach(function (el) {
       if (looksLikeManifesto(el.innerHTML)) el.innerHTML = '';
@@ -58,17 +68,26 @@
     if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
   }
 
+  function forcePrevOnTwo(html) {
+    const s = String(html == null ? '' : html);
+    if (looksLikeManifesto(s)) return nav(1, 3);
+    const prev = '<a href="javascript:swich(1);mvx();" ' + NAV + '>← Previous</a>';
+    if (s.indexOf('swich(1)') !== -1) return s;
+    if (s.indexOf('Continue') !== -1) return prev + ' · ' + s;
+    return s + nav(1, 3);
+  }
+
   function withNav(html, prev, next) {
     const s = String(html == null ? '' : html);
     if (looksLikeManifesto(s)) return nav(prev, next);
-    if (s.indexOf('stepo-nav') !== -1) return s;
+    if (s.indexOf('swich(' + prev + ')') !== -1) return s;
     return s + nav(prev, next);
   }
 
   function wireTape() {
     if (!Array.isArray(root.stepo)) root.stepo = [0, '', '', '', '', '', 'end'];
     root.stepo[1] = STEPO_1;
-    if (root.stepo[2]) root.stepo[2] = withNav(root.stepo[2], 1, 3);
+    root.stepo[2] = forcePrevOnTwo(root.stepo[2] || '');
     if (root.stepo[3]) root.stepo[3] = withNav(root.stepo[3], 2, 4);
     if (root.stepo[4]) root.stepo[4] = withNav(root.stepo[4], 3, null);
     root.STEPO_1 = STEPO_1;
