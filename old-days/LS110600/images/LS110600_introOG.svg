@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 981" width="1024" height="981">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#04161a"/>
+      <stop offset="0.45" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#160c22"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7fffd4"/>
+      <stop offset="1" stop-color="#b8f26a"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1024" height="981" rx="36" fill="url(#bg)"/>
+  <text x="512" y="58" text-anchor="middle" fill="#7fffd4" font-family="ui-monospace,monospace" font-size="16" letter-spacing="6">FUNEBRA™ CONSTRUCTED BOOK</text>
+  <circle cx="180" cy="150" r="10" fill="#c9b6ff"/>
+  <circle cx="844" cy="150" r="10" fill="#c9b6ff"/>
+  <circle cx="250" cy="290" r="10" fill="#c9b6ff"/>
+  <circle cx="774" cy="290" r="10" fill="#c9b6ff"/>
+  <line x1="180" y1="150" x2="512" y2="210" stroke="#7fffd4" stroke-opacity=".45"/>
+  <line x1="844" y1="150" x2="512" y2="210" stroke="#7fffd4" stroke-opacity=".45"/>
+  <line x1="250" y1="290" x2="512" y2="210" stroke="#d6c2ff" stroke-opacity=".45"/>
+  <line x1="774" y1="290" x2="512" y2="210" stroke="#d6c2ff" stroke-opacity=".45"/>
+  <circle cx="512" cy="210" r="28" fill="#7fffd4" filter="url(#glow)"/>
+  <circle cx="512" cy="210" r="14" fill="#e8fff8"/>
+  <text x="180" y="132" text-anchor="middle" fill="#9aa3b2" font-size="12" font-family="ui-monospace,monospace">BN-UFO</text>
+  <text x="844" y="132" text-anchor="middle" fill="#9aa3b2" font-size="12" font-family="ui-monospace,monospace">BN-QUEST</text>
+  <text x="250" y="318" text-anchor="middle" fill="#9aa3b2" font-size="12" font-family="ui-monospace,monospace">BN-BIO-TECH</text>
+  <text x="774" y="318" text-anchor="middle" fill="#9aa3b2" font-size="12" font-family="ui-monospace,monospace">BN-LIFE-DEATH</text>
+  <text x="512" y="262" text-anchor="middle" fill="#cfd6e4" font-size="12" font-family="ui-monospace,monospace">BN-BOOK-ROOT</text>
+  <text x="512" y="348" text-anchor="middle" fill="#8b93a7" font-size="13" font-family="ui-monospace,monospace" letter-spacing="3">SOURCE → RELATION → POSE → PROJECTION</text>
+  <line x1="48" y1="372" x2="976" y2="372" stroke="#1c2a3a"/>
+  <rect x="392" y="410" width="240" height="28" rx="14" fill="#7fffd4"/>
+  <text x="512" y="429" text-anchor="middle" fill="#06201c" font-size="13" font-family="ui-monospace,monospace" font-weight="700">LS110600 · NOW OPEN</text>
+  <text x="512" y="500" text-anchor="middle" fill="#f3f6ff" font-size="42" font-family="Georgia,serif">The Book of the</text>
+  <text x="512" y="548" text-anchor="middle" fill="#7fffd4" font-size="42" font-family="Georgia,serif">Seed of Knowledge</text>
+  <text x="512" y="590" text-anchor="middle" fill="#c9b6ff" font-size="26" font-family="Georgia,serif" font-style="italic">EyE(i) Reborn</text>
+  <text x="512" y="650" text-anchor="middle" fill="#d7deea" font-size="18" font-family="Georgia,serif">Enter a living FUNEBRA™ constructed-book environment</text>
+  <text x="512" y="676" text-anchor="middle" fill="#d7deea" font-size="18" font-family="Georgia,serif">where sources become addressed objects and navigation</text>
+  <text x="512" y="702" text-anchor="middle" fill="#d7deea" font-size="18" font-family="Georgia,serif">changes the projection without changing the source.</text>
+  <text x="512" y="748" text-anchor="middle" fill="#e8e6dc" font-size="20" font-family="Georgia,serif">Begin with Neuron Hunters — The Quest for Existence.</text>
+  <rect x="362" y="780" width="300" height="52" rx="26" fill="url(#btn)"/>
+  <text x="512" y="812" text-anchor="middle" fill="#06201c" font-size="16" font-family="ui-monospace,monospace" font-weight="700" letter-spacing="2">ENTER LS110600 →</text>
+  <text x="512" y="900" text-anchor="middle" fill="#7a8496" font-size="12" font-family="ui-monospace,monospace" letter-spacing="3">MATH · ART · STORY · BN-POINTS</text>
+  <text x="512" y="922" text-anchor="middle" fill="#7a8496" font-size="12" font-family="ui-monospace,monospace" letter-spacing="2">FUNEBRA™ — FROM FORMULA TO FORM</text>
+</svg>
