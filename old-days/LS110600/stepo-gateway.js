@@ -1,6 +1,6 @@
-/* LS110600: reveal manifesto as stepo[1]; Previous on stepo[2]. */
+/* LS110600: stepo[1] reveals Neuron Hunters as an astory series. */
 (function (root) {
-  const NAV = 'style="color:#ffb347;margin:0 .4rem"';
+  const NAV = 'style="color:#ffb347;margin:0 .35rem"';
   function nav(prev, next) {
     const bits = [];
     if (prev != null) bits.push('<a href="javascript:swich(' + prev + ');mvx();" ' + NAV + '>← Previous</a>');
@@ -8,78 +8,123 @@
     return '<p class="stepo-nav">' + bits.join(' · ') + '</p>';
   }
 
-  const STEPO_1 = '<section class="funebra-project" id="neuron-hunters">  <header>    <p class="project-index">FUNEBRA™ PROJECT · STEP 01</p>    <h1>NEURON HUNTERS</h1>    <p class="subtitle">Biology · Technology · Life · Death · The Quest for Existence</p>  </header>  <article>    <h2>The Living Signal</h2>    <p>Neuron Hunters explores the boundary between the biological organism and the technologies created to observe, preserve and extend it.</p>    <blockquote>If existence produces a signal, can the signal survive its source?</blockquote>  </article>  <article>    <h2>UFO · The Unidentified Observation</h2>    <p>UFO represents what has been observed but not yet identified.</p>    <p>Funebra does not convert uncertainty into proof. It preserves the difference between observation, interpretation and verified evidence.</p>    <p class="formula">Observation ≠ Interpretation ≠ Proof</p>  </article>  <article>    <h2>Funebra Biology and Technology</h2>    <p>A biological event may be registered as a BN-point without claiming the record is the living being.</p>    <p class="formula">Biological event → BN-point → Relation → Technological form</p>  </article>  <article>    <h2>Life / Death</h2>    <p class="formula">Life → Experience → Trace → Memory → Transformation</p>  </article>  <article>    <h2>Quest for Existence</h2>    <blockquote>We hunt neither neurons nor unknown objects.<br>We hunt the relations through which existence becomes visible.</blockquote>  </article>  <footer>    <p>FUNEBRA™ — From Formula to Form.</p>    <p class="stepo-nav"><a href="javascript:swich(2);mvx();" style="color:#ffb347;margin:0 .4rem">Continue →</a></p>  </footer></section>';
+  const SERIES = [
+    '<p class="project-index">FUNEBRA™ · STEP 01</p><h1>NEURON HUNTERS</h1><p class="subtitle">Biology · Technology · Life · Death · The Quest for Existence</p>',
+    '<h2>The Living Signal</h2><p>Neuron Hunters explores the boundary between the biological organism and the technologies created to observe, preserve and extend it.</p>',
+    '<blockquote>If existence produces a signal, can the signal survive its source?</blockquote>',
+    '<h2>UFO · The Unidentified Observation</h2><p>UFO represents what has been observed but not yet identified.</p>',
+    '<p>Funebra does not convert uncertainty into proof.</p><p class="formula">Observation ≠ Interpretation ≠ Proof</p>',
+    '<h2>Biology / Technology</h2><p class="formula">Biological event → BN-point → Relation → Technological form</p>',
+    '<h2>Life / Death</h2><p class="formula">Life → Experience → Trace → Memory → Transformation</p>',
+    '<h2>Quest for Existence</h2><blockquote>We hunt neither neurons nor unknown objects.<br>We hunt the relations through which existence becomes visible.</blockquote>',
+    '<p>FUNEBRA™ — From Formula to Form.</p>' + nav(null, 2)
+  ];
+
+  const STEPO_1 = '<section class="funebra-project" id="neuron-hunters">' + SERIES.join('') + '</section>';
 
   const CSS = [
-    '#neuron-hunters-host.is-idle{display:none}',
-    '#neuron-hunters-host{position:relative;z-index:20;max-width:42rem;margin:1rem auto;padding:0 12px 72px}',
-    '.funebra-project{max-width:42rem;margin:0 auto;padding:1.5rem 1.4rem;color:#e8e6dc;background:rgba(8,10,16,.92);border:1px solid rgba(255,179,71,.35);border-radius:14px;font:16px/1.55 Georgia,serif}',
-    '.funebra-project .project-index{letter-spacing:.14em;font:11px ui-monospace,monospace;color:#ffb347}',
-    '.funebra-project h1{font:700 1.85rem/1.15 Trebuchet MS,sans-serif;color:#fff}',
-    '.funebra-project h2{color:#ffb347}',
-    '.funebra-project .formula{font:13px ui-monospace,monospace;color:#9fd6ff}',
-    '.funebra-project blockquote{border-left:3px solid #ffb347;padding-left:.8rem}',
-    'span[id^="astory"] .funebra-project{display:none!important}',
     '#stepo-nav-bar{position:fixed;left:12px;bottom:12px;z-index:100000;background:rgba(8,10,16,.9);border:1px solid rgba(255,179,71,.4);border-radius:8px;padding:6px 10px;font:13px ui-monospace,monospace}',
-    '#stepo-nav-bar a{color:#ffb347;margin:0 .35rem;text-decoration:none}'
+    '#stepo-nav-bar a{color:#ffb347;margin:0 .35rem;text-decoration:none}',
+    'span[id^="astory"]{max-width:220px;color:#e8e6dc;font:13px/1.35 Georgia,serif}',
+    'span[id^="astory"] h1{font:700 16px Trebuchet MS,sans-serif;color:#fff;margin:0 0 .3rem}',
+    'span[id^="astory"] h2{font:700 13px Trebuchet MS,sans-serif;color:#ffb347;margin:0 0 .25rem}',
+    'span[id^="astory"] .formula{font:11px ui-monospace,monospace;color:#9fd6ff}',
+    'span[id^="astory"] .project-index{font:10px ui-monospace,monospace;color:#ffb347;letter-spacing:.08em}',
+    'span[id^="astory"] blockquote{border-left:2px solid #ffb347;margin:0;padding-left:.5rem}',
+    '#neuron-hunters-host{display:none!important}'
   ].join('');
 
   function looksLikeManifesto(s) {
     return String(s || '').indexOf('funebra-project') !== -1;
   }
 
-  function ensureChrome() {
+  function ensureBar() {
     let st = document.getElementById('neuron-hunters-css');
     if (!st) { st = document.createElement('style'); st.id = 'neuron-hunters-css'; document.head.appendChild(st); }
     st.textContent = CSS;
-    let host = document.getElementById('neuron-hunters-host');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'neuron-hunters-host';
-      host.className = 'is-idle';
-      const canvas = document.getElementById('funebraCanvas');
-      if (canvas && canvas.parentNode) canvas.parentNode.insertBefore(host, canvas.nextSibling);
-      else document.body.insertBefore(host, document.body.firstChild);
-    }
     let bar = document.getElementById('stepo-nav-bar');
     if (!bar) {
       bar = document.createElement('div');
       bar.id = 'stepo-nav-bar';
       document.body.appendChild(bar);
     }
-    return { host: host, bar: bar };
+    return bar;
+  }
+
+  function cellId(i) { return 'astory' + i; }
+
+  function ensureSeriesCells() {
+    const n = SERIES.length;
+    if (root.shape) root.shape.value = 'astory';
+    if (root.steps) root.steps.value = '1';
+    if (root.stpStart) root.stpStart.value = '0';
+    if (root.stpEnd) root.stpEnd.value = String(Math.max(Number(root.stpEnd && root.stpEnd.value) || 0, n));
+    for (let i = 1; i <= n; i++) {
+      if (!document.getElementById(cellId(i))) {
+        const el = document.createElement('span');
+        el.id = cellId(i);
+        el.style.position = 'absolute';
+        el.style.cursor = 'pointer';
+        document.body.appendChild(el);
+      }
+    }
+  }
+
+  function layoutSeries() {
+    const n = SERIES.length;
+    const colW = 230, rowH = 150, cols = 3;
+    const x0 = 24, y0 = 72;
+    for (let i = 1; i <= n; i++) {
+      const el = document.getElementById(cellId(i));
+      if (!el) continue;
+      const c = (i - 1) % cols;
+      const r = Math.floor((i - 1) / cols);
+      el.style.left = (x0 + c * colW) + 'px';
+      el.style.top = (y0 + r * rowH) + 'px';
+      el.style.zIndex = String(10 + i);
+      el.innerHTML = SERIES[i - 1];
+    }
+  }
+
+  function clearSeries() {
+    for (let i = 1; i <= SERIES.length; i++) {
+      const el = document.getElementById(cellId(i));
+      if (el && looksLikeManifesto(el.innerHTML) === false) {
+        /* still clear our fragments */
+      }
+      if (el) {
+        const html = el.innerHTML || '';
+        if (html.indexOf('NEURON HUNTERS') !== -1 || html.indexOf('Living Signal') !== -1 || html.indexOf('Quest for Existence') !== -1 || html.indexOf('FUNEBRA') !== -1) {
+          el.innerHTML = '';
+        }
+      }
+    }
   }
 
   function applyFrame(n) {
-    const ui = ensureChrome();
+    const bar = ensureBar();
     if (n === 1) {
-      ui.host.classList.remove('is-idle');
-      ui.host.innerHTML = STEPO_1;
-      ui.bar.innerHTML = '<a href="javascript:swich(2);mvx();">Continue → stepo[2]</a>';
+      ensureSeriesCells();
+      layoutSeries();
+      bar.innerHTML = '<a href="javascript:swich(2);mvx();">Continue → stepo[2]</a>';
+      if (root.itext) root.itext.value = '"\u263B"';
     } else {
-      ui.host.classList.add('is-idle');
-      ui.host.innerHTML = '';
-      ui.bar.innerHTML = '<a href="javascript:swich(1);mvx();">← Previous stepo[1] Neuron Hunters</a>' +
+      clearSeries();
+      bar.innerHTML = '<a href="javascript:swich(1);mvx();">← Previous stepo[1] Neuron Hunters</a>' +
         (n < 4 ? ' · <a href="javascript:swich(' + (n + 1) + ');mvx();">Continue →</a>' : '');
+      if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
     }
-    document.querySelectorAll('[id^="astory"]').forEach(function (el) {
-      if (looksLikeManifesto(el.innerHTML)) el.innerHTML = '';
-    });
-    if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
   }
 
   function forcePrevOnTwo(html) {
     const s = String(html == null ? '' : html);
     if (looksLikeManifesto(s)) return nav(1, 3);
-    const prev = '<a href="javascript:swich(1);mvx();" ' + NAV + '>← Previous</a>';
     if (s.indexOf('swich(1)') !== -1) return s;
-    if (s.indexOf('Continue') !== -1) return prev + ' · ' + s;
-    return s + nav(1, 3);
+    return '<a href="javascript:swich(1);mvx();" ' + NAV + '>← Previous</a> · ' + s;
   }
 
   function withNav(html, prev, next) {
     const s = String(html == null ? '' : html);
-    if (looksLikeManifesto(s)) return nav(prev, next);
     if (s.indexOf('swich(' + prev + ')') !== -1) return s;
     return s + nav(prev, next);
   }
@@ -91,6 +136,7 @@
     if (root.stepo[3]) root.stepo[3] = withNav(root.stepo[3], 2, 4);
     if (root.stepo[4]) root.stepo[4] = withNav(root.stepo[4], 3, null);
     root.STEPO_1 = STEPO_1;
+    root.STEPO_1_SERIES = SERIES;
   }
 
   function wrapSwich() {
@@ -98,11 +144,8 @@
     const inner = typeof root.swich === 'function' ? root.swich : function () {};
     function swich(cnt) {
       const n = Number(cnt);
-      if (n === 1) {
-        if (root.itext) root.itext.value = '"\u263B"';
-      } else {
+      if (n !== 1) {
         try { inner(n); } catch (_) {}
-        if (root.itext && looksLikeManifesto(root.itext.value)) root.itext.value = '"\u263B"';
       }
       applyFrame(n);
       root.__stepoIndex = n;
