@@ -1,0 +1,10 @@
+Installed pieces already in repo:
+- stepo-gateway.js
+- neuron-hunters.html
+- #neuron-hunters-host + script tag must be in index.html
+
+Required index.html hooks:
+1. <script src="./stepo-gateway.js"></script>
+2. <div id="neuron-hunters-host"></div>
+3. body onload includes installStepoGateway()
+4. oDef ends with swich(1); installStepoGateway();
