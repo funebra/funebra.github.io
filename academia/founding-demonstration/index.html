@@ -1,23 +1,220 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Founding Demonstration — Math-Art Engine · Funebra</title>
-<style>body{margin:0;background:#0d1219;color:#e9eef4;font:17px/1.65 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:32px 20px 90px}h1,h2{color:#fff}h2{margin-top:2.4em;border-top:1px solid #334152;padding-top:.9em}a{color:#88d3ff}blockquote{border-left:4px solid #72c6ff;padding:2px 20px;background:#15212e}table{border-collapse:collapse;width:100%}th,td{padding:9px 13px;border-bottom:1px solid #334152;text-align:left;vertical-align:top}pre,code{background:#16202b}pre{padding:16px;overflow:auto}nav{max-width:900px;margin:auto;padding:16px 20px;border-bottom:1px solid #334152}nav a{text-decoration:none}.note{background:#15212e;padding:14px 16px;border:1px solid #334152}</style></head>
-<body><nav><a href="/">Funebra</a> / AI-Oriented Academia / Founding Demonstration</nav><main>
-<h1>Founding Demonstration — Math-Art Engine</h1>
-<p><strong>Funebra™ AI-Oriented Academia</strong><br>Dated 23 September 2026.</p>
-<blockquote><p>Observe. Construct. Test. Document. Remain human.</p></blockquote>
-<p>One inspectable construction. Not an academy-wide launch.</p>
-<h2>Committed files (live)</h2>
-<ul>
-<li><a href="ACADEMIA_FOUNDING_DEMONSTRATION.md">demonstration record</a></li>
-<li><a href="founding_export_2026-09-23/TEST_LOG_2026-09-23.md">test log</a></li>
-<li><a href="founding_export_2026-09-23/export_star_formula.py">export_star_formula.py</a> — add next if 404; companion script is live: <a href="founding_export_2026-09-23/export_star_repaired.py">export_star_repaired.py</a></li>
-<li><a href="founding_export_2026-09-23/funebra_star_repaired.obj">repaired OBJ</a></li>
-<li><a href="CHARTER.md">Founding Charter (markdown pointer)</a></li>
-</ul>
-<table><thead><tr><th>Construction</th><th>Open</th><th>Slice</th><th>Physical result</th></tr></thead><tbody>
-<tr><td>Original, 1436 triangles</td><td>PASS</td><td>PASS</td><td>NOT RUN</td></tr>
-<tr><td>Repaired, 36 triangles</td><td>PASS</td><td>PASS; sent 04:10 — 11m29s, 2.74 g, P1S 3DP-01P-616</td><td>Finished 10/10 at 04:22; photographed on the plate</td></tr>
-</tbody></table>
-<p class="note"><strong>Binaries are not on this tree yet.</strong> Plate JPEGs, Studio PNGs, PDFs and 3MF files cannot be committed through the Grok GitHub text API. Copy them from <code>Funebra_Founding_Demonstration_Site_Ready_v3.zip</code> into <code>academia/founding-demonstration/</code> and push from the desktop. Hold the LinkedIn post until those links return 200.</p>
-<p>No off-plate inspection or measured dimensions are recorded.</p>
-<p><strong>Bring one problem or construction to a 7-Day AI Prototype.</strong></p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Funebra founding demonstration: named star formula to OBJ and 3MF, opened and sliced in Bambu Studio; physical print not run."><title>Founding Demonstration — Math-Art Engine · Funebra</title><style>body{margin:0;background:#0d1219;color:#e9eef4;font:17px/1.65 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:32px 20px 90px}h1,h2{line-height:1.18;color:#fff}h1{font-size:clamp(2rem,5vw,3.3rem)}h2{margin-top:2.5em;border-top:1px solid #334152;padding-top:.9em}a{color:#88d3ff}a:hover{color:#bce8ff}blockquote{border-left:4px solid #72c6ff;padding:2px 20px;margin:28px 0;background:#15212e}table{border-collapse:collapse;display:block;overflow-x:auto;width:100%}th,td{padding:9px 13px;text-align:left;border-bottom:1px solid #334152;vertical-align:top}pre,code{background:#16202b;border-radius:4px}code{padding:2px 5px}pre{padding:18px;overflow-x:auto}pre code{padding:0}nav{max-width:900px;margin:auto;padding:16px 20px;border-bottom:1px solid #334152}nav a{text-decoration:none}hr{border:0;border-top:1px solid #334152;margin:2em 0}strong{color:#fff}</style></head><body><nav><a href="/">Funebra</a> / AI-Oriented Academia / Founding Demonstration</nav><main><h1 id="founding-demonstration--math-art-engine">Founding Demonstration
+— Math-Art Engine</h1>
+<p><strong>Funebra™ AI-Oriented Academia</strong><br />
+Subordinate to the <em>Founding Charter (2026)</em>.<br />
+Dated 23 September 2026. Prepared for publication after the dated export
+and repair tests.</p>
+<blockquote>
+<p>Observe. Construct. Test. Document. Remain human.</p>
+</blockquote>
+<p>This page is not an academy-wide launch. It is one inspectable piece
+of work.</p>
+<hr />
+<h2 id="1-observation-and-question">1. Observation and question</h2>
+<p><strong>Observation.</strong> Mathematics already draws. What is
+usually missing is a short, public path from a typed formula in a
+browser to a file a maker can hold or print — without installing a
+studio first.</p>
+<p><strong>Question.</strong> Can a human write a parametric relation in
+the browser, see it move, and export a point-cloud or mesh that a common
+slicer will open?</p>
+<p><strong>Human decision.</strong> Build a lightweight, hackable engine
+rather than another closed visualiser. Keep the author in the formula.
+Treat AI as an instrument for variants and checks, not as the author of
+the form.</p>
+<hr />
+<h2 id="2-construction">2. Construction</h2>
+<p><strong>Programme.</strong> Math-Art Engine — an independent
+laboratory under the academy.</p>
+<table>
+<thead>
+<tr class="header">
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Live construction</td>
+<td><a
+href="https://funebra.github.io/math-art-engine/">https://funebra.github.io/math-art-engine/</a></td>
+</tr>
+<tr class="even">
+<td>Source</td>
+<td><a
+href="https://github.com/funebra/math-art-engine">https://github.com/funebra/math-art-engine</a></td>
+</tr>
+<tr class="odd">
+<td>Named helper used in the test</td>
+<td><a
+href="https://funebra.github.io/math-art-engine/math-helpers/starX/">https://funebra.github.io/math-art-engine/math-helpers/starX/</a></td>
+</tr>
+<tr class="even">
+<td>User site / playground</td>
+<td><a
+href="https://funebra.github.io/">https://funebra.github.io/</a></td>
+</tr>
+<tr class="odd">
+<td>Press kit v1.0 (August 2026)</td>
+<td><a
+href="https://github.com/funebra/math-art-engine/releases/tag/press-kit-v1.0">https://github.com/funebra/math-art-engine/releases/tag/press-kit-v1.0</a></td>
+</tr>
+<tr class="even">
+<td>License</td>
+<td>MIT</td>
+</tr>
+<tr class="odd">
+<td>Dated export folder (relative to this page / pack root)</td>
+<td><code>founding_export_2026-09-23/</code></td>
+</tr>
+<tr class="even">
+<td>Reproducible conversion script</td>
+<td><a
+href="founding_export_2026-09-23/export_star_formula.py"><code>export_star_formula.py</code></a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-one-test-23-september-2026-0102-utc">3. One test (23 September
+2026, 01:02 UTC)</h2>
+<p><strong>Named formula</strong> (published helper usage):</p>
+<pre><code>Steps: 10*36
+X(o): starX(o, 5, 150, 70, 360, 36)
+Y(o): starY(o, 5, 150, 70, 260, 36)
+Z(o): 0</code></pre>
+<p><strong>What was run.</strong> Outline from that signature → centre
+on origin → scale 0.2 (30 mm outer arm) → extrude 2 mm → write dated OBJ
+and 3MF. Scale and extrusion are disclosed test decisions. The helper
+itself is <code>Z = 0</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a
+href="founding_export_2026-09-23/funebra_starX_starY_2026-09-23.obj"><code>funebra_starX_starY_2026-09-23.obj</code></a></td>
+<td>42 022 bytes, 720 vertices, 1436 faces, structural PASS</td>
+</tr>
+<tr class="even">
+<td><a
+href="founding_export_2026-09-23/funebra_starX_starY_2026-09-23.3mf"><code>funebra_starX_starY_2026-09-23.3mf</code></a></td>
+<td>14 886 bytes, valid 3MF package, structural PASS</td>
+</tr>
+<tr class="odd">
+<td>Bounding box</td>
+<td>≈ 57 × 54 × 2 mm</td>
+</tr>
+<tr class="even">
+<td>Bambu Studio v 2.3.0.70 opens <code>.3mf</code></td>
+<td><strong>PASS</strong> — 23 Sep 2026, 03:13–03:15 local. Star on P1S
+plate. Studio size 57.0634 × 54.2705 × 2 mm, 1436 triangles</td>
+</tr>
+<tr class="odd">
+<td>Slice</td>
+<td><strong>PASS</strong> — 0.93 m / 2.83 g PLA, model print 4m35s
+(estimate)</td>
+</tr>
+<tr class="even">
+<td>Physical print</td>
+<td><strong>NOT RUN</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Original screenshots: <a
+href="founding_export_2026-09-23/slicer_screenshots/03_star_on_bed_object_info.png">object</a>,
+<a
+href="founding_export_2026-09-23/slicer_screenshots/05_slice_result.png">slice</a>.
+Log: <a
+href="founding_export_2026-09-23/TEST_LOG_2026-09-23.md"><code>TEST_LOG_2026-09-23.md</code></a>.</p>
+<p>On load, Studio warned: “The 3mf is not from Bambu Lab, load geometry
+data only.” Geometry still loaded. That warning is part of the record,
+not a fail.</p>
+<p><strong>Follow-on repair (same day).</strong> The first preview
+showed crossing lines on the face (fan over a concave 360-point
+outline). A second mesh uses only the 10 outline vertices, ear-clipped:
+<a
+href="founding_export_2026-09-23/funebra_star_repaired.3mf"><code>funebra_star_repaired.3mf</code></a>
+(36 triangles). Studio opened it 03:32–03:33; size unchanged; triangles
+36. Slice of the repaired file is not in the screenshots. Original
+1436-face files were not overwritten. <a
+href="founding_export_2026-09-23/slicer_screenshots_repaired/03_repaired_star_on_bed.png">Repaired
+Studio screenshot</a>. <strong>Repaired open: PASS; repaired slice and
+send: PASS; P1S machine status: Finished 10/10.</strong></p>
+<h3 id="repaired-plate-print-session">Repaired plate: print session</h3>
+<p>The repaired 36-triangle file was sliced and sent to the P1S
+(<code>3DP-01P-616</code>) at 04:10 local on 23 September 2026. Studio
+reported <strong>11m29s and 2.74 g PLA Translucent</strong>. The <a
+href="founding_export_2026-09-23/print_repaired_2026-09-23/01_send_job.png">send
+screen</a> records the job. The <a
+href="founding_export_2026-09-23/print_repaired_2026-09-23/02_finished.png">finished
+screen</a> shows <strong>Finished 10/10</strong> at 04:22. <a
+href="founding_export_2026-09-23/print_repaired_2026-09-23/03_star_on_plate_043655.jpg">Phone
+photo 04:36</a> and <a
+href="founding_export_2026-09-23/print_repaired_2026-09-23/04_star_on_plate_043710.jpg">phone
+photo 04:37</a> show the star on the printer plate after the job.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Construction</th>
+<th>Open</th>
+<th>Slice</th>
+<th>Physical result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Original, 1436 triangles</td>
+<td>PASS</td>
+<td>PASS</td>
+<td>NOT RUN</td>
+</tr>
+<tr class="even">
+<td>Repaired, 36 triangles</td>
+<td>PASS</td>
+<td>PASS; job sent</td>
+<td>Machine Finished 10/10; star photographed <strong>on the
+plate</strong></td>
+</tr>
+</tbody>
+</table>
+<p>No photograph of the part removed from the plate or dimensional
+measurement is in this record. The connection failure and multi-device
+liveview messages concerned remote viewing; the machine status and plate
+photos are separate evidence.</p>
+<hr />
+<h2 id="4-limits">4. Limits</h2>
+<ol type="1">
+<li>The repaired print job finished and the star was photographed on the
+plate. No off-plate inspection or measured dimensions are
+documented.</li>
+<li>Scale 0.2 and a 2 mm extrusion are test decisions, not part of the
+published helper signature.</li>
+<li>Studio loaded geometry only (generic 3MF, not a Bambu project).</li>
+<li>AI wrote the exporter script as instrument: <a
+href="founding_export_2026-09-23/export_star_formula.py"><code>export_star_formula.py</code></a>.</li>
+<li>The academy is not accredited. This page claims one dated
+construction.</li>
+</ol>
+<hr />
+<h2 id="5-reflection">5. Reflection</h2>
+<p>The chain now has a named formula, dated files, a Studio open, a
+repaired mesh, a finished P1S job, and on-plate photos. Off-plate
+inspection and measurement remain open.</p>
+<hr />
+<h2 id="6-invitation">6. Invitation</h2>
+<p><strong>Bring one problem or construction to a 7-Day AI
+Prototype.</strong></p>
+<p>Municipal teams and small businesses: the week is the offer. The
+Founding Charter is the method, not the product.</p>
+<hr />
+<p><em>Canonical method: <a
+href="Funebra_AI_Oriented_Academia_Founding_Charter.pdf">Funebra™
+AI-Oriented Academia — Founding Charter (2026)</a>.</em></p>
+<p><a href="Funebra_Founding_Demonstration_Math_Art_Engine.pdf">Founding
+Demonstration PDF</a> records the first file; this page also records the
+later repair.</p>
 </main></body></html>
