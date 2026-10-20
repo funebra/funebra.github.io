@@ -143,6 +143,7 @@
 <body>
   <!-- Background canvas -->
   <canvas id="funebraCanvas" aria-hidden="true"></canvas>
+  <div id="pScreen" style="position:absolute;left:50%;top:50%;"></div>
 
   <!-- Export toolbar (PNG / GIF) -->
   <div id="exportBar" data-export-ignore>
@@ -1012,7 +1013,7 @@ function stopAnimate(){
           };
         };
         nodo.style.cursor='pointer';
-        document.body.appendChild(nodo);
+        pScreen.appendChild(nodo);
       }
     }
 
